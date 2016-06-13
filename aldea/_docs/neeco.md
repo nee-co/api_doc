@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://neeco.api/
+HOST: http://neeco.api
 
 # neeco
 
@@ -16,7 +16,7 @@ HOST: http://neeco.api/
                 "Ruby",
                 "Scala"
             ]
-        }
+        },
         {
             "event_id": 2,
             "title": "Rails勉強会",
@@ -51,20 +51,30 @@ HOST: http://neeco.api/
 + Response 201 (application/json)
 
         {
-            "massage": "新規イベント作成が正常に行われました"
+            "message": "新規イベント作成が正常に行われました"
         }
 
 + Response 400 (application/json)
 
         {
-            "massage": "新規イベント作成が正常に行われませんでした"
+            "message": "新規イベント作成が正常に行われませんでした"
         }
 
 
 ## Event [/events/{id}]
+### イベント参加 [POST]
++ Parameters
+    + user_id: 1 (number) - 参加ユーザーid
+
++ Response 200 (application/json)
+
+        {
+            "message": "イベントに参加しました。"
+        }
+
 ### イベント情報取得 [GET]
 + Parameters
-    + event_id (number) - 取得対象イベントid
+    + event_id: 1 (number) - 取得対象イベントid
  
 + Response 200 (application/json)
 
@@ -116,7 +126,7 @@ HOST: http://neeco.api/
 
 ### イベント更新 [PATCH]
 + Parameters
-    + event_id (number) - 更新対象イベントid
+    + event_id: 1 (number) - 更新対象イベントid
 
 + Request (application/json)
 
@@ -139,15 +149,69 @@ HOST: http://neeco.api/
 + Response 200 (application/json)
 
         {
-            "massage": "更新が正常に行われました。"
+            "message": "更新が正常に行われました。"
         }
 
 ### イベント削除 [DELETE]
 + Parameters
-    + event_id (number) - 削除対象イベントid
+    + event_id: 1 (number) - 削除対象イベントid
 
 + Response 204 (application/json)
 
         {
-            "massage": "削除が正常に行われました。"
+            "message": "削除が正常に行われました。"
+        }
+
+## Event Public [/events/{id}/public]
+### イベント公開 [PATCH]
++ Parameters
+    + event_id: 1 (number) - 公開対象イベントid
+
++ Response 200 (application/json)
+
+        {
+            "message": "イベントが公開されました。"
+        }
+
+## Comment Post [/events/{id}/comment]
+### コメント投稿 [POST]
++ Request (application/json)
+
+        {
+            "comment": "こんにちは。"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "message": "コメントが投稿されました。"
+        }
+
+## Event Search [/events/search{?keyword,started_at,ended_at]
+### イベント検索 [GET]
++ Parameters
+    + keyword: 'もくもく' (string)
+    + started_at: '2016/06/03' (date)
+    + ended_at: '2016/06/03' (date)
+
++ Response 200 (application/json)
+
+        {
+            "event_id": 1,
+            "title": "第1会もくもく会",
+            "event_image": "image/sample1.jpg",
+            "tags": [
+                "もくもく会",
+                "Ruby",
+                "Scala"
+            ]
+        },
+        {
+            "event_id": 2,
+            "title": "Rails勉強会",
+            "event_image": "image/sample2.jpg",
+            "tags": [
+                "Ruby",
+                "Ruby on Rails"
+            ]
         }
