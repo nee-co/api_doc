@@ -23,7 +23,7 @@
                 "Ruby on Rails"
             ]
         }
- 
+
 + Response 404 (application/json)
 
 ### 新規イベント作成 [POST]
@@ -78,7 +78,7 @@
 ### イベント情報取得 [GET]
 + Parameters
     + event_id: 1 (number) - 取得対象イベントid
- 
+
 + Response 200 (application/json)
 
         {
