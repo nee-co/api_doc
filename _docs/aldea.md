@@ -1,6 +1,4 @@
-FORMAT: 1A
-
-# neeco
+## Group Event AP
 
 ## Events Collection [/events]
 ### イベント全件取得 [GET]

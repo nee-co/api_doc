@@ -1,7 +1,3 @@
-FORMAT: 1A
-
-# Nee-co
-
 ## Group User API
 
 ## User List [/users/list{?user_ids}]
