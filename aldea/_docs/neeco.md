@@ -1,5 +1,4 @@
 FORMAT: 1A
-HOST: http://neeco.api
 
 # neeco
 
@@ -35,11 +34,11 @@ HOST: http://neeco.api
         {
             "title": "第1会もくもく会", - 必須項目
             "event_image": "sample1.jpg",
-            "tags": {
+            "tags": [
                 "もくもく会",
                 "Ruby",
                 "Scala"
-            },
+            ],
             "body": "第1回もくもく会を開催いたします",
             "register_id": "sasaki",
             "started_at": "2016/06/03 12:00",
@@ -62,7 +61,7 @@ HOST: http://neeco.api
 
 
 ## Event [/events/{id}]
-### イベント参加 [POST]
+### イベント参加 [PUT]
 + Parameters
     + user_id: 1 (number) - 参加ユーザーid
 
@@ -70,6 +69,12 @@ HOST: http://neeco.api
 
         {
             "message": "イベントに参加しました。"
+        }
+
++ Response 204 (application/json)
+
+        {
+            "message": "イベントに参加済です。"
         }
 
 ### イベント情報取得 [GET]
@@ -81,11 +86,11 @@ HOST: http://neeco.api
         {
             "title": "第1会もくもく会",
             "event_image": "image/sample1.jpg",
-            "tags": {
+            "tags": [
                 "もくもく会",
                 "Ruby",
                 "Scala"
-            },
+            ],
             "body": "第1回もくもく会を開催いたします",
             "register_id": "sasaki",
             "published_at": "2016/06/01 09:00",
@@ -163,7 +168,7 @@ HOST: http://neeco.api
         }
 
 ## Event Public [/events/{id}/public]
-### イベント公開 [PATCH]
+### イベント公開 [PUT]
 + Parameters
     + event_id: 1 (number) - 公開対象イベントid
 
@@ -190,9 +195,9 @@ HOST: http://neeco.api
 ## Event Search [/events/search{?keyword,started_at,ended_at]
 ### イベント検索 [GET]
 + Parameters
-    + keyword: 'もくもく' (string)
-    + started_at: '2016/06/03' (date)
-    + ended_at: '2016/06/03' (date)
+    + keyword: 'もくもく' (string, optional)
+    + started_at: '2016/06/03' (date, optional)
+    + ended_at: '2016/06/03' (date, optional)
 
 + Response 200 (application/json)
 
