@@ -58,10 +58,10 @@
         }
 
 
-## Event [/events/{id}]
+## Event [/events/{event_id}]
 ### イベント参加 [PUT]
 + Parameters
-    + user_id: 1 (number) - 参加ユーザーid
+    + event_id: 1 (number) - 参加イベントid
 
 + Response 200 (application/json)
 
