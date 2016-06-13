@@ -59,22 +59,6 @@
 
 
 ## Event [/events/{event_id}]
-### イベント参加 [PUT]
-+ Parameters
-    + event_id: 1 (number) - 参加イベントid
-
-+ Response 200 (application/json)
-
-        {
-            "message": "イベントに参加しました。"
-        }
-
-+ Response 204 (application/json)
-
-        {
-            "message": "イベントに参加済です。"
-        }
-
 ### イベント情報取得 [GET]
 + Parameters
     + event_id: 1 (number) - 取得対象イベントid
@@ -163,6 +147,23 @@
 
         {
             "message": "削除が正常に行われました。"
+        }
+
+## Event Join [/events/{event_id}/join]
+### イベント参加 [PUT]
++ Parameters
+    + event_id: 1 (number) - 参加イベントid
+
++ Response 200 (application/json)
+
+        {
+            "message": "イベントに参加しました。"
+        }
+
++ Response 204 (application/json)
+
+        {
+            "message": "イベントに参加済です。"
         }
 
 ## Event Public [/events/{event_id}/public]
