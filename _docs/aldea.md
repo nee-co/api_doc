@@ -101,11 +101,11 @@
                 {
                     "user_id": 2,
                     "name": "tanaka",
-                    "image": "image/tanaka.jpg"
+                    "user_image": "image/tanaka.jpg"
                 }, {
                     "user_id": 3,
                     "name": "satou",
-                    "image": "image/satou.jpg"
+                    "user_image": "image/satou.jpg"
                 }
             ],
             "comments": [
@@ -114,13 +114,13 @@
                     "name": "tanaka",
                     "body": "こんにちは！",
                     "posted_at": "2016/06/01 12:02",
-                    "image": "image/tanaka.jpg"
+                    "user_image": "image/tanaka.jpg"
                 }, {
                     "user_id": 4,
                     "name": "yamada",
                     "body": "参加を考えてます!",
                     "posted_at": "2016/06/01 15:12",
-                    "image": "image/yamada.jpg"
+                    "user_image": "image/yamada.jpg"
                 }
             ]
         }

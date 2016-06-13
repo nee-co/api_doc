@@ -15,21 +15,21 @@
             "user_id": 1,
             "number": "G099C1001",
             "name": "田中 太郎",
-            "image_url": "user/sample1.jpg",
+            "user_image": "user/sample1.jpg",
             "college": "it"
         },
         {
             "user_id": 2,
             "number": "G099C1002",
             "name": "山本 二郎",
-            "image_url": "user/sample2.jpg",
+            "user_image": "user/sample2.jpg",
             "college": "it"
         },
         {
             "user_id": 3,
             "number": "G099C1003",
             "name": "山田 花子 ",
-            "image_url": "user/sample3.jpg",
+            "user_image": "user/sample3.jpg",
             "college": "design"
         }
 
@@ -49,13 +49,13 @@
             "user_id": 1,
             "number": "G099C1001",
             "name": "田中 太郎",
-            "image_url": "user/sample1.jpg",
+            "user_image": "user/sample1.jpg",
             "college": "it"
         },
         {
             "user_id": 3,
             "number": "G099C1003",
             "name": "山田 花子 ",
-            "image_url": "user/sample3.jpg",
+            "user_image": "user/sample3.jpg",
             "college": "design"
         }
