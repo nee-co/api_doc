@@ -165,7 +165,7 @@
             "message": "削除が正常に行われました。"
         }
 
-## Event Public [/events/{id}/public]
+## Event Public [/events/{event_id}/public]
 ### イベント公開 [PUT]
 + Parameters
     + event_id: 1 (number) - 公開対象イベントid
@@ -176,8 +176,10 @@
             "message": "イベントが公開されました。"
         }
 
-## Comment Post [/events/{id}/comment]
+## Comment Post [/events/{event_id}/comment]
 ### コメント投稿 [POST]
++ Parameters
+    + event_id: 1 (number) - コメント対象イベントid
 + Request (application/json)
 
         {
