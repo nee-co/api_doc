@@ -193,7 +193,7 @@
             "message": "コメントが投稿されました。"
         }
 
-## Event Search [/events/search{?keyword,started_on,ended_on]
+## Event Search [/events/search{?keyword,started_on,ended_on}]
 ### イベント検索 [GET]
 + Parameters
     + keyword: 'もくもく' (string, optional) - 検索キーワード
