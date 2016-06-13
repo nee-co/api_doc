@@ -190,12 +190,12 @@
             "message": "コメントが投稿されました。"
         }
 
-## Event Search [/events/search{?keyword,started_at,ended_at]
+## Event Search [/events/search{?keyword,started_on,ended_on]
 ### イベント検索 [GET]
 + Parameters
-    + keyword: 'もくもく' (string, optional)
-    + started_at: '2016/06/03' (date, optional)
-    + ended_at: '2016/06/03' (date, optional)
+    + keyword: 'もくもく' (string, optional) - 検索キーワード
+    + started_on: '2016/06/03' (date, optional) - 開始日
+    + ended_on: '2016/06/03' (date, optional) - 終了日
 
 + Response 200 (application/json)
 
