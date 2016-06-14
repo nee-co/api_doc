@@ -1,4 +1,4 @@
-## Group Event AP
+## Group Event API
 
 ## Events Collection [/events]
 ### イベント全件取得 [GET]
