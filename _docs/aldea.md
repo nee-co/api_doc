@@ -1,6 +1,4 @@
-FORMAT: 1A
-
-# neeco
+## Group Event API
 
 ## Events Collection [/events]
 ### イベント全件取得 [GET]
@@ -25,7 +23,7 @@ FORMAT: 1A
                 "Ruby on Rails"
             ]
         }
- 
+
 + Response 404 (application/json)
 
 ### 新規イベント作成 [POST]
@@ -60,27 +58,11 @@ FORMAT: 1A
         }
 
 
-## Event [/events/{id}]
-### イベント参加 [PUT]
-+ Parameters
-    + user_id: 1 (number) - 参加ユーザーid
-
-+ Response 200 (application/json)
-
-        {
-            "message": "イベントに参加しました。"
-        }
-
-+ Response 204 (application/json)
-
-        {
-            "message": "イベントに参加済です。"
-        }
-
+## Event [/events/{event_id}]
 ### イベント情報取得 [GET]
 + Parameters
     + event_id: 1 (number) - 取得対象イベントid
- 
+
 + Response 200 (application/json)
 
         {
@@ -103,11 +85,11 @@ FORMAT: 1A
                 {
                     "user_id": 2,
                     "name": "tanaka",
-                    "image": "image/tanaka.jpg"
+                    "user_image": "image/tanaka.jpg"
                 }, {
                     "user_id": 3,
                     "name": "satou",
-                    "image": "image/satou.jpg"
+                    "user_image": "image/satou.jpg"
                 }
             ],
             "comments": [
@@ -116,13 +98,13 @@ FORMAT: 1A
                     "name": "tanaka",
                     "body": "こんにちは！",
                     "posted_at": "2016/06/01 12:02",
-                    "image": "image/tanaka.jpg"
+                    "user_image": "image/tanaka.jpg"
                 }, {
                     "user_id": 4,
                     "name": "yamada",
                     "body": "参加を考えてます!",
                     "posted_at": "2016/06/01 15:12",
-                    "image": "image/yamada.jpg"
+                    "user_image": "image/yamada.jpg"
                 }
             ]
         }
@@ -167,7 +149,24 @@ FORMAT: 1A
             "message": "削除が正常に行われました。"
         }
 
-## Event Public [/events/{id}/public]
+## Event Join [/events/{event_id}/join]
+### イベント参加 [PUT]
++ Parameters
+    + event_id: 1 (number) - 参加イベントid
+
++ Response 200 (application/json)
+
+        {
+            "message": "イベントに参加しました。"
+        }
+
++ Response 204 (application/json)
+
+        {
+            "message": "イベントに参加済です。"
+        }
+
+## Event Public [/events/{event_id}/public]
 ### イベント公開 [PUT]
 + Parameters
     + event_id: 1 (number) - 公開対象イベントid
@@ -178,8 +177,10 @@ FORMAT: 1A
             "message": "イベントが公開されました。"
         }
 
-## Comment Post [/events/{id}/comment]
+## Comment Post [/events/{event_id}/comment]
 ### コメント投稿 [POST]
++ Parameters
+    + event_id: 1 (number) - コメント対象イベントid
 + Request (application/json)
 
         {
@@ -192,12 +193,12 @@ FORMAT: 1A
             "message": "コメントが投稿されました。"
         }
 
-## Event Search [/events/search{?keyword,started_at,ended_at]
+## Event Search [/events/search{?keyword,started_on,ended_on}]
 ### イベント検索 [GET]
 + Parameters
-    + keyword: 'もくもく' (string, optional)
-    + started_at: '2016/06/03' (date, optional)
-    + ended_at: '2016/06/03' (date, optional)
+    + keyword: 'もくもく' (string, optional) - 検索キーワード
+    + started_on: '2016/06/03' (date, optional) - 開始日
+    + ended_on: '2016/06/03' (date, optional) - 終了日
 
 + Response 200 (application/json)
 
