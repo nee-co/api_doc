@@ -11,7 +11,7 @@
 `$ npm -g install aglio@latest api-mock@latest`
 
 ### ドキュメント生成
-`$ aglio -i /tmp/neeco.apib -o /tmp/neeco.html`
+`$ aglio -i neeco.apib -o neeco.html`
 
 ### ダミーAPIサーバ
 `$ api-mock neeco.apib`
