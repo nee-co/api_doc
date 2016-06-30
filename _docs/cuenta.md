@@ -4,58 +4,98 @@
 ### ユーザリスト取得 [GET]
 
 **Use Case**
-- イベント管理システム>参加者一覧+コメント投稿者一覧
+- `internal` イベント管理システム>参加者一覧+コメント投稿者一覧
+
+**Note**
+- 全てのユーザが取得できた場合のみ200を返す
+- ユーザが指定されなかった場合は400を返す
+- 一人でも取得できなかった場合は403を返す
 
 + Parameters
-    + user_ids: `1+2+3` (array[string]) - 取得対象ユーザID一覧
+    + user_ids: `1+2+3` (array[string],required) - 取得対象ユーザID一覧
 
 + Response 200 (application/json)
 
         {
-            "user_id": 1,
-            "number": "G099C1001",
-            "name": "田中 太郎",
-            "user_image": "user/sample1.jpg",
-            "college": "it"
-        },
-        {
-            "user_id": 2,
-            "number": "G099C1002",
-            "name": "山本 二郎",
-            "user_image": "user/sample2.jpg",
-            "college": "it"
-        },
-        {
-            "user_id": 3,
-            "number": "G099C1003",
-            "name": "山田 花子 ",
-            "user_image": "user/sample3.jpg",
-            "college": "design"
+          "users": [
+            {
+                "user_id": 1,
+                "number": "G099C1001",
+                "name": "田中 太郎",
+                "user_image": "user/sample1.jpg",
+                "college": "it"
+            },
+            {
+                "user_id": 2,
+                "number": "G099C1002",
+                "name": "山本 二郎",
+                "user_image": "user/sample2.jpg",
+                "college": "it"
+            },
+            {
+                "user_id": 3,
+                "number": "G099C1003",
+                "name": "山田 花子 ",
+                "user_image": "user/sample3.jpg",
+                "college": "design"
+            }
+          ]
         }
 
-## User Search [/users/search{?name,target_ids}]
++ Response 400 (application/json)
+
+        {
+          "message": "リクエストパラメータが不正です"
+        }
+
++ Response 404 (application/json)
+
+        {
+          "message": "一部または全てのユーザが取得できませんでした"
+        }
+
+
+## User Search [/users/search{?name,user_ids,colleges}]
 ### ユーザLIKE検索 [GET]
 
 **Use Case**
-- ファイル管理システム>公開対象追加
+- `internal` ファイル管理システム>公開対象追加>ユーザ登録/検索
+
+**Note**
+- 検索結果が0件の場合でも200を返す
+- nameが指定されなかった場合のみ400を返す
+- `user_ids` と `colleges` はXORの関係、同時に指定されることはない。
+- 仮に `user_ids` と `colleges` の両方が指定された場合は `user_ids` のみ参照する
 
 + Parameters
-    + name: `田` (string) - 氏名
-    + target_ids: `1+2+3` (array[string], optional) - 検索対象ユーザID一覧
+    + name: `田` (string, required) - 氏名
+    + user_ids: `1+2+3` (array[string], optional) - 検索対象ユーザID一覧
+    + colleges: `it+design` (array[string], optional) - 検索対象カレッジName一覧
 
 + Response 200 (application/json)
 
         {
-            "user_id": 1,
-            "number": "G099C1001",
-            "name": "田中 太郎",
-            "user_image": "user/sample1.jpg",
-            "college": "it"
-        },
+          "total_count": 2,
+          "users" [
+            {
+                "user_id": 1,
+                "number": "G099C1001",
+                "name": "田中 太郎",
+                "user_image": "user/sample1.jpg",
+                "college": "it"
+            },
+            {
+                "user_id": 3,
+                "number": "G099C1003",
+                "name": "山田 花子 ",
+                "user_image": "user/sample3.jpg",
+                "college": "design"
+            }
+          ]
+        }
+
++ Response 400 (application/json)
+
         {
-            "user_id": 3,
-            "number": "G099C1003",
-            "name": "山田 花子 ",
-            "user_image": "user/sample3.jpg",
-            "college": "design"
+          "message": "リクエストパラメータが不正です"
         }
