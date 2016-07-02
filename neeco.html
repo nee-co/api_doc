@@ -22,28 +22,28 @@
       "<span class="hljs-attribute">number</span>": <span class="hljs-value"><span class="hljs-string">"G099C1001"</span></span>,
       "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"田中 太郎"</span></span>,
       "<span class="hljs-attribute">user_image</span>": <span class="hljs-value"><span class="hljs-string">"user/sample1.jpg"</span></span>,
-      "<span class="hljs-attribute">college</span>": <span class="hljs-value"><span class="hljs-string">"it"</span>
+      "<span class="hljs-attribute">college</span>": <span class="hljs-value"><span class="hljs-string">"c"</span>
     </span>},
     {
       "<span class="hljs-attribute">user_id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
       "<span class="hljs-attribute">number</span>": <span class="hljs-value"><span class="hljs-string">"G099C1002"</span></span>,
       "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"山本 二郎"</span></span>,
       "<span class="hljs-attribute">user_image</span>": <span class="hljs-value"><span class="hljs-string">"user/sample2.jpg"</span></span>,
-      "<span class="hljs-attribute">college</span>": <span class="hljs-value"><span class="hljs-string">"it"</span>
+      "<span class="hljs-attribute">college</span>": <span class="hljs-value"><span class="hljs-string">"c"</span>
     </span>},
     {
       "<span class="hljs-attribute">user_id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
       "<span class="hljs-attribute">number</span>": <span class="hljs-value"><span class="hljs-string">"G099C1003"</span></span>,
       "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"山田 花子 "</span></span>,
       "<span class="hljs-attribute">user_image</span>": <span class="hljs-value"><span class="hljs-string">"user/sample3.jpg"</span></span>,
-      "<span class="hljs-attribute">college</span>": <span class="hljs-value"><span class="hljs-string">"design"</span>
+      "<span class="hljs-attribute">college</span>": <span class="hljs-value"><span class="hljs-string">"g"</span>
     </span>}
   ]
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"リクエストパラメータが不正です"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>404</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"一部または全てのユーザが取得できませんでした"</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="user-api-user-search" class="resource"><h3 class="resource-heading">User Search <a href="#user-api-user-search" class="permalink">&nbsp;&para;</a></h3><div id="user-api-user-search-get" class="action get"><h4 class="action-heading"><div class="name">ユーザLIKE検索</div><a href="#user-api-user-search-get" class="method get">GET</a><code class="uri">/users/search{?name,user_ids,colleges}</code></h4><p><strong>Use Case</strong></p>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="user-api-user-search" class="resource"><h3 class="resource-heading">User Search <a href="#user-api-user-search" class="permalink">&nbsp;&para;</a></h3><div id="user-api-user-search-get" class="action get"><h4 class="action-heading"><div class="name">ユーザLIKE検索</div><a href="#user-api-user-search-get" class="method get">GET</a><code class="uri">/users/search{?name,user_ids,college_codes}</code></h4><p><strong>Use Case</strong></p>
 <ul>
 <li><code>internal</code> ファイル管理システム&gt;公開対象追加&gt;ユーザ登録/検索</li>
 </ul>
@@ -53,18 +53,18 @@
 <p>検索結果が0件の場合でも200を返す</p>
 </li>
 <li>
-<p>nameが指定されなかった場合のみ400を返す</p>
+<p><code>name</code> が指定されなかった場合のみ400を返す</p>
 </li>
 <li>
-<p><code>user_ids</code> と <code>colleges</code> はXORの関係、同時に指定されることはない。</p>
+<p><code>user_ids</code> と <code>college_codes</code> はXORの関係、同時に指定されることはない。</p>
 </li>
 <li>
-<p>仮に <code>user_ids</code> と <code>colleges</code> の両方が指定された場合は <code>user_ids</code> のみ参照する</p>
+<p>仮に <code>user_ids</code> と <code>college_codes</code> の両方が指定された場合は <code>user_ids</code> のみ参照する</p>
 </li>
 </ul>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/users/search?<span class="hljs-attribute">name=</span><span class="hljs-literal">田</span>&<span class="hljs-attribute">user_ids=</span><span class="hljs-literal">1+2+3</span>&<span class="hljs-attribute">colleges=</span><span class="hljs-literal">it+design</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>name</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>田</span></span><p>氏名</p>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/users/search?<span class="hljs-attribute">name=</span><span class="hljs-literal">田</span>&<span class="hljs-attribute">user_ids=</span><span class="hljs-literal">1+2+3</span>&<span class="hljs-attribute">college_codes=</span><span class="hljs-literal">c+g</span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>name</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>田</span></span><p>氏名</p>
 </dd><dt>user_ids</dt><dd><code>array[string]</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1+2+3</span></span><p>検索対象ユーザID一覧</p>
-</dd><dt>colleges</dt><dd><code>array[string]</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>it+design</span></span><p>検索対象カレッジName一覧</p>
+</dd><dt>college_codes</dt><dd><code>array[string]</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>c+g</span></span><p>検索対象カレッジCode一覧</p>
 </dd></dl></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   <span class="hljs-string">"total_count"</span>: <span class="hljs-number">2</span>,
   <span class="hljs-string">"users"</span> [
@@ -73,14 +73,14 @@
         <span class="hljs-string">"number"</span>: <span class="hljs-string">"G099C1001"</span>,
         <span class="hljs-string">"name"</span>: <span class="hljs-string">"田中 太郎"</span>,
         <span class="hljs-string">"user_image"</span>: <span class="hljs-string">"user/sample1.jpg"</span>,
-        <span class="hljs-string">"college"</span>: <span class="hljs-string">"it"</span>
+        <span class="hljs-string">"college"</span>: <span class="hljs-string">"c"</span>
     },
     {
         <span class="hljs-string">"user_id"</span>: <span class="hljs-number">3</span>,
         <span class="hljs-string">"number"</span>: <span class="hljs-string">"G099C1003"</span>,
         <span class="hljs-string">"name"</span>: <span class="hljs-string">"山田 花子 "</span>,
         <span class="hljs-string">"user_image"</span>: <span class="hljs-string">"user/sample3.jpg"</span>,
-        <span class="hljs-string">"college"</span>: <span class="hljs-string">"design"</span>
+        <span class="hljs-string">"college"</span>: <span class="hljs-string">"g"</span>
     }
   ]
 }</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -220,7 +220,7 @@
         <span class="hljs-string">"Ruby"</span>,
         <span class="hljs-string">"Ruby on Rails"</span>
     ]
-}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 01 Jul 2016</p><script>/* eslint-env browser */
+}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 02 Jul 2016</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 
