@@ -14,61 +14,114 @@
 
 + Response 200 (application/json)
 
-        {
-            "current_dir": "NEECO",
-            "target_type": "colleges",
-            "public_ids": [
-                {
-                    code: "a",
-                    name: "クリエイター"
-                },
-                {
-                    code: "c",
-                    name: "IT"
-                }
-            ],
-            "elements": [
-                {
-                    "type": "file",
-                    "name": "example.txt",
-                    "path": "file/example/example.txt",
-                    "user_name": "田中　太郎",
-                    "inserted_at": "2016/06/03 15:00"
-                },
-                {
-                    "type": "dir",
-                    "name": "exampleDir",
-                    "user_name": "田中　太郎",
-                    "inserted_at": "2016/06/02 12:12"
-                }
-            ]
-        }
+    + Body Attributes
 
-+ Response 200 (application/json)
+        + current_dir: (object) - カレントディレクトリ
+            - name: (string) - ディレクトリ名
+            - target_type: (string) - 公開対象type( `user` or `college` )
+            - targets: (array) - 公開対象一覧
+        + elements: (array) - カレントディレクトリ配下の要素配列
+            - type: (string) - 要素タイプ( `file` or `dir` )
+            - name: (string) - 要素名
+            - path: (string) - ファイルパス(type == `file` のみ)
+            - created_user: (object) - 作成者
+            - updated_user: (object) - 更新者
+            - created_at: (datetime) - 作成日時
+            - updated_at: (datetime) - 更新日時
 
-        {
-            "current_dir": "NEECO",
-            "target_type": "users",
-            "public_ids": [
-                "G013C1145",
-                "G013C1431"
-            ],
-            "elements": [
-                {
-                    "type": "file",
-                    "name": "example.txt",
-                    "path": "file/example/example.txt",
-                    "user_name": "田中　太郎",
-                    "inserted_at": "2016/06/03 15:00"
+    + Body
+
+            {
+                "current_dir": {
+                  "name": "NEECO",
+                  "target_type": "college",
+                  "targets": [
+                      {
+                          code: "a",
+                          name: "クリエイター"
+                      },
+                      {
+                          code: "c",
+                          name: "IT"
+                      }
+                  ]
                 },
-                {
-                    "type": "dir",
-                    "name": "exampleDir",
-                    "user_name": "田中　太郎",
-                    "inserted_at": "2016/06/02 12:12"
-                }
-            ]
-        }
+                "current_dir": {
+                  "name": "NEECO",
+                  "target_type": "user",
+                  "targets": [
+                      {
+                          "name": "田中 太郎",
+                          "number": "G099C0001"
+                          "user_image": "http://example.com/image/tanaka.jpg",
+                          "college": {
+                              "code": "c",
+                              "name": "IT"
+                          }
+                      },
+                      {
+                          "name": "山田 花子",
+                          "number": "G099G0002"
+                          "user_image": "http://example.com/image/yamada.jpg",
+                          "college": {
+                              "code": "g",
+                              "name": "デザイン"
+                          }
+                      }
+                  ]
+                },
+                "elements": [
+                    {
+                        "type": "file",
+                        "name": "example.txt",
+                        "path": "file/example/example.txt",
+                        "created_user": {
+                            "name": "田中 太郎",
+                            "number": "G099C0001"
+                            "user_image": "http://example.com/image/tanaka.jpg",
+                            "college": {
+                                "code": "c",
+                                "name": "IT"
+                            }
+                        },
+                        "updated_user": {
+                            "name": "田中 太郎",
+                            "number": "G099C0001"
+                            "user_image": "http://example.com/image/tanaka.jpg",
+                            "college": {
+                                "code": "c",
+                                "name": "IT"
+                            }
+                        },
+                        "created_at": "2016/06/03 15:00",
+                        "updated_at": "2016/06/03 15:00"
+                    },
+                    {
+                        "type": "dir",
+                        "name": "exampleDir",
+                        "created_user": {
+                            "name": "田中 太郎",
+                            "number": "G099C0001"
+                            "user_image": "http://example.com/image/tanaka.jpg",
+                            "college": {
+                                "code": "c",
+                                "name": "IT"
+                            }
+                        },
+                        "updated_user": {
+                            "name": "山田 花子",
+                            "number": "G099G0002"
+                            "user_image": "http://example.com/image/yamada.jpg",
+                            "college": {
+                                "code": "g",
+                                "name": "デザイン"
+                            }
+                        },
+                        "created_at": "2016/06/03 15:00",
+                        "updated_at": "2016/06/30 15:00"
+                    }
+                ]
+            }
 
 ### ディレクトリ追加 [POST]
 + Parameters
