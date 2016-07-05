@@ -45,7 +45,6 @@
                 "Scala"
             ],
             "body": "第1回もくもく会を開催いたします",
-            "register_id": "sasaki",
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
             "venue": "研究棟B 401",
