@@ -80,7 +80,15 @@
                 "Scala"
             ],
             "body": "第1回もくもく会を開催いたします",
-            "register_id": "sasaki",
+            "register": {
+                "name": "sasaki",
+                "number": "G099C0001"
+                "user_image": "image/sasaki.jpg",
+                "college": {
+                    "code": "c",
+                    "name": "IT"
+                }
+            },
             "published_at": "2016/06/01 09:00",
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
@@ -89,28 +97,48 @@
             "status": 1,
             "entries": [
                 {
-                    "user_id": 2,
                     "name": "tanaka",
-                    "user_image": "image/tanaka.jpg"
-                }, {
-                    "user_id": 3,
+                    "number": "G099C0002"
+                    "user_image": "image/tanaka.jpg",
+                    "college": {
+                        "code": "c",
+                        "name": "IT"
+                    }
+                },
+                {
                     "name": "satou",
-                    "user_image": "image/satou.jpg"
+                    "number": "G099G0003"
+                    "user_image": "image/satou.jpg",
+                    "college": {
+                        "code": "g",
+                        "name": "デザイン"
+                    }
                 }
             ],
             "comments": [
                 {
-                    "user_id": 2,
-                    "name": "tanaka",
                     "body": "こんにちは！",
                     "posted_at": "2016/06/01 12:02",
-                    "user_image": "image/tanaka.jpg"
-                }, {
-                    "user_id": 4,
-                    "name": "yamada",
+                    "user": {
+                        "name": "tanaka",
+                        "number": "G099G0002"
+                        "user_image": "image/tanaka.jpg",
+                        "college": {
+                            "code": "g",
+                            "name": "デザイン"
+                    }
+                },
+                {
                     "body": "参加を考えてます!",
                     "posted_at": "2016/06/01 15:12",
-                    "user_image": "image/yamada.jpg"
+                    "user": {
+                        "name": "yamada",
+                        "number": "G099C0004"
+                        "user_image": "image/yamada.jpg",
+                        "college": {
+                            "code": "c",
+                            "name": "IT"
+                    }
                 }
             ]
         }
