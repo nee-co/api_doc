@@ -1,10 +1,16 @@
 ## Group Event API
 
-## Events Collection [/events]
+## Events Collection [/events{?page,per}]
 ### イベント全件取得 [GET]
++ Parameters
+    + page: 1 (integer, optional) - ページ番号
+    + per: 10 (integer, optional) - 1ページあたりの件数
+
 + Response 200 (application/json)
 
     + Body Attributes
+        + page: (integer) - ページ番号
+        + per: (integer) - 1ページあたりの件数
         + total_count: (integer) - 全イベント数
         + events: (array) - イベント一覧
           - event_id: (integer) - イベントID
@@ -15,6 +21,8 @@
     + Body
 
             {
+                "page": 1,
+                "per": 10,
                 "total_count": 2,
                 "events": [
                     {
@@ -261,16 +269,20 @@
             "message": "コメントが投稿されました。"
         }
 
-## Event Search [/events/search{?keyword,started_on,ended_on}]
+## Event Search [/events/search{?keyword,started_on,ended_on,page,per}]
 ### イベント検索 [GET]
 + Parameters
     + keyword: 'もくもく' (string, optional) - 検索キーワード
     + started_on: '2016/06/03' (date, optional) - 開始日
     + ended_on: '2016/06/03' (date, optional) - 終了日
+    + page: 1 (integer, optional) - ページ番号
+    + per: 10 (integer, optional) - 1ページあたりの件数
 
 + Response 200 (application/json)
 
     + Body Attributes
+        + page: (integer) - ページ番号
+        + per: (integer) - 1ページあたりの件数
         + total_count: (integer) - 全イベント数
         + events: (array) - イベント一覧
           - event_id: (integer) - イベントID
@@ -281,6 +293,8 @@
     + Body
 
             {
+                "page": 1,
+                "per": 10,
                 "total_count": 2,
                 "events": [
                     {
