@@ -12,7 +12,7 @@
                 {
                     "event_id": 1,
                     "title": "第1会もくもく会",
-                    "event_image": "image/sample1.jpg",
+                    "event_image": "http://example.com/image/sample1.jpg",
                     "tags": [
                         "もくもく会",
                         "Ruby",
@@ -22,7 +22,7 @@
                 {
                     "event_id": 2,
                     "title": "Rails勉強会",
-                    "event_image": "image/sample2.jpg",
+                    "event_image": "http://example.com/image/sample2.jpg",
                     "tags": [
                         "Ruby",
                         "Ruby on Rails"
@@ -73,7 +73,7 @@
 
         {
             "title": "第1会もくもく会",
-            "event_image": "image/sample1.jpg",
+            "event_image": "http://example.com/image/sample1.jpg",
             "tags": [
                 "もくもく会",
                 "Ruby",
@@ -83,7 +83,7 @@
             "register": {
                 "name": "sasaki",
                 "number": "G099C0001"
-                "user_image": "image/sasaki.jpg",
+                "user_image": "http://example.com/image/sasaki.jpg",
                 "college": {
                     "code": "c",
                     "name": "IT"
@@ -99,7 +99,7 @@
                 {
                     "name": "tanaka",
                     "number": "G099C0002"
-                    "user_image": "image/tanaka.jpg",
+                    "user_image": "http://example.com/image/tanaka.jpg",
                     "college": {
                         "code": "c",
                         "name": "IT"
@@ -108,7 +108,7 @@
                 {
                     "name": "satou",
                     "number": "G099G0003"
-                    "user_image": "image/satou.jpg",
+                    "user_image": "http://example.com/image/satou.jpg",
                     "college": {
                         "code": "g",
                         "name": "デザイン"
@@ -122,7 +122,7 @@
                     "user": {
                         "name": "tanaka",
                         "number": "G099G0002"
-                        "user_image": "image/tanaka.jpg",
+                        "user_image": "http://example.com/image/tanaka.jpg",
                         "college": {
                             "code": "g",
                             "name": "デザイン"
@@ -134,7 +134,7 @@
                     "user": {
                         "name": "yamada",
                         "number": "G099C0004"
-                        "user_image": "image/yamada.jpg",
+                        "user_image": "http://example.com/image/yamada.jpg",
                         "college": {
                             "code": "c",
                             "name": "IT"
@@ -239,7 +239,7 @@
         {
             "event_id": 1,
             "title": "第1会もくもく会",
-            "event_image": "image/sample1.jpg",
+            "event_image": "http://example.com/image/sample1.jpg",
             "tags": [
                 "もくもく会",
                 "Ruby",
@@ -249,7 +249,7 @@
         {
             "event_id": 2,
             "title": "Rails勉強会",
-            "event_image": "image/sample2.jpg",
+            "event_image": "http://example.com/image/sample2.jpg",
             "tags": [
                 "Ruby",
                 "Ruby on Rails"
