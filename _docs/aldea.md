@@ -208,7 +208,7 @@
             "venue": "研究棟B 402",
             "entry_upper_limit": 11,
         }
- 
+
 + Response 200 (application/json)
 
         {
