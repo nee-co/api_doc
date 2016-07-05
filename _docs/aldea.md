@@ -177,7 +177,7 @@
 + Parameters
     + event_id: 1 (number) - 削除対象イベントid
 
-+ Response 204 (application/json)
++ Response 200 (application/json)
 
         {
             "message": "削除が正常に行われました。"
@@ -194,7 +194,7 @@
             "message": "イベントに参加しました。"
         }
 
-+ Response 204 (application/json)
++ Response 400 (application/json)
 
         {
             "message": "イベントに参加済です。"
