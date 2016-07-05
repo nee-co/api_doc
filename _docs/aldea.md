@@ -237,21 +237,28 @@
 + Response 200 (application/json)
 
         {
-            "event_id": 1,
-            "title": "第1会もくもく会",
-            "event_image": "http://example.com/image/sample1.jpg",
-            "tags": [
-                "もくもく会",
-                "Ruby",
-                "Scala"
-            ]
-        },
-        {
-            "event_id": 2,
-            "title": "Rails勉強会",
-            "event_image": "http://example.com/image/sample2.jpg",
-            "tags": [
-                "Ruby",
-                "Ruby on Rails"
+            "page": 1,
+            "per": 10,
+            "total_count": 2,
+            "events": [
+                {
+                    "event_id": 1,
+                    "title": "第1会もくもく会",
+                    "event_image": "http://example.com/image/sample1.jpg",
+                    "tags": [
+                        "もくもく会",
+                        "Ruby",
+                        "Scala"
+                    ]
+                },
+                {
+                    "event_id": 2,
+                    "title": "Rails勉強会",
+                    "event_image": "http://example.com/image/sample2.jpg",
+                    "tags": [
+                        "Ruby",
+                        "Ruby on Rails"
+                    ]
+                }
             ]
         }
