@@ -51,7 +51,7 @@
                 },
                 {
                     "user_id": 3,
-                    "number": "G099C1003",
+                    "number": "G099G1003",
                     "name": "山田 花子 ",
                     "user_image": "http://example.com/user/sample3.jpg",
                     "college": {
@@ -121,7 +121,7 @@
                 },
                 {
                     "user_id": 3,
-                    "number": "G099C1003",
+                    "number": "G099G1003",
                     "name": "山田 花子 ",
                     "user_image": "http://example.com/user/sample3.jpg",
                     "college": {
