@@ -224,9 +224,8 @@
 
 + Parameters
     + dir_names: `/example/NEECO` (string, required) -現在のディレクトリ階層
-    + type: `dir` (string, required) - 削除対象type(`dir` or `file`)
 
-+ Response 204 (application/json)
++ Response 200 (application/json)
 
         {
             "message": "正常に削除されました。"
