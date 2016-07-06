@@ -20,6 +20,7 @@
         + users: (array) - ユーザ一覧
           - user_id: (integer) - ユーザID
           - number: (string) - 学籍番号
+          - name: (string) - ユーザ名
           - user_image: (string) - プロフィール画像フルパス
           - college: (object) - 所属カレッジ
               * code: (string) - カレッジ一意のコード
@@ -99,6 +100,7 @@
         + users: (array) - ユーザ一覧
           - user_id: (integer) - ユーザID
           - number: (string) - 学籍番号
+          - name: (string) - ユーザ名
           - user_image: (string) - プロフィール画像フルパス
           - college: (object) - 所属カレッジ
               * code: (string) - カレッジ一意のコード
