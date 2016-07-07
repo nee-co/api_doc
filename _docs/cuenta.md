@@ -16,31 +16,52 @@
 
 + Response 200 (application/json)
 
-        {
-          "users": [
+    + Body Attributes
+        + users: (array) - ユーザ一覧
+          - user_id: (integer) - ユーザID
+          - number: (string) - 学籍番号
+          - name: (string) - ユーザ名
+          - user_image: (string) - プロフィール画像フルパス
+          - college: (object) - 所属カレッジ
+              * code: (string) - カレッジ一意のコード
+              * name: (string) - カレッジ名
+
+    + Body
+
             {
-                "user_id": 1,
-                "number": "G099C1001",
-                "name": "田中 太郎",
-                "user_image": "user/sample1.jpg",
-                "college": "c"
-            },
-            {
-                "user_id": 2,
-                "number": "G099C1002",
-                "name": "山本 二郎",
-                "user_image": "user/sample2.jpg",
-                "college": "c"
-            },
-            {
-                "user_id": 3,
-                "number": "G099C1003",
-                "name": "山田 花子 ",
-                "user_image": "user/sample3.jpg",
-                "college": "g"
+              "users": [
+                {
+                    "user_id": 1,
+                    "number": "G099C1001",
+                    "name": "田中 太郎",
+                    "user_image": "http://example.com/user/sample1.jpg",
+                    "college": {
+                      "code": "c",
+                      "name": "IT"
+                    }
+                },
+                {
+                    "user_id": 2,
+                    "number": "G099C1002",
+                    "name": "山本 二郎",
+                    "user_image": "http://example.com/user/sample2.jpg",
+                    "college": {
+                      "code": "c",
+                      "name": "IT"
+                    }
+                },
+                {
+                    "user_id": 3,
+                    "number": "G099G1003",
+                    "name": "山田 花子 ",
+                    "user_image": "http://example.com/user/sample3.jpg",
+                    "college": {
+                      "code": "g",
+                      "name": "デザイン"
+                    }
+                }
+              ]
             }
-          ]
-        }
 
 + Response 400 (application/json)
 
@@ -74,25 +95,44 @@
 
 + Response 200 (application/json)
 
-        {
-          "total_count": 2,
-          "users" [
+    + Body Attributes
+        + total_count: (integer) - ユーザ数
+        + users: (array) - ユーザ一覧
+          - user_id: (integer) - ユーザID
+          - number: (string) - 学籍番号
+          - name: (string) - ユーザ名
+          - user_image: (string) - プロフィール画像フルパス
+          - college: (object) - 所属カレッジ
+              * code: (string) - カレッジ一意のコード
+              * name: (string) - カレッジ名
+
+    + Body
+
             {
-                "user_id": 1,
-                "number": "G099C1001",
-                "name": "田中 太郎",
-                "user_image": "user/sample1.jpg",
-                "college": "c"
-            },
-            {
-                "user_id": 3,
-                "number": "G099C1003",
-                "name": "山田 花子 ",
-                "user_image": "user/sample3.jpg",
-                "college": "g"
+              "total_count": 2,
+              "users" [
+                {
+                    "user_id": 1,
+                    "number": "G099C1001",
+                    "name": "田中 太郎",
+                    "user_image": "http://example.com/user/sample1.jpg",
+                    "college": {
+                      "code": "c",
+                      "name": "IT"
+                    }
+                },
+                {
+                    "user_id": 3,
+                    "number": "G099G1003",
+                    "name": "山田 花子 ",
+                    "user_image": "http://example.com/user/sample3.jpg",
+                    "college": {
+                      "code": "g",
+                      "name": "デザイン"
+                    }
+                }
+              ]
             }
-          ]
-        }
 
 + Response 400 (application/json)
 
