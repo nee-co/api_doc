@@ -76,20 +76,21 @@
         }
 
 
-## User Search [/users/search{?name,user_ids,college_codes}]
+## User Search [/users/search{?str,user_ids,college_codes}]
 ### ユーザLIKE検索 [GET]
 
 **Use Case**
 - `internal` ファイル管理システム>公開対象追加>ユーザ登録/検索
 
 **Note**
+- 氏名と学籍番号を対象にLIKE検索
 - 検索結果が0件の場合でも200を返す
-- `name` が指定されなかった場合のみ400を返す
+- `str` が指定されなかった場合のみ400を返す
 - `user_ids` と `college_codes` はXORの関係、同時に指定されることはない。
 - 仮に `user_ids` と `college_codes` の両方が指定された場合は `user_ids` のみ参照する
 
 + Parameters
-    + name: `田` (string, required) - 氏名
+    + str: `田` (string, required) - 氏名 or 学籍番号
     + user_ids: `1+2+3` (array[string], optional) - 検索対象ユーザID一覧
     + college_codes: `c+g` (array[string], optional) - 検索対象カレッジCode一覧
 
