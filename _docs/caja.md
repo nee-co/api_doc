@@ -1,16 +1,96 @@
 ## Group File API
-
-## Files Collection [/files/list{?dir_names}]
 **Note**
-- 公開対象はカレッジかユーザのいずれかが設定される
-- カレッジとユーザの両方が設定されることはない
++ 公開対象はカレッジかユーザのいずれかが設定される
++ カレッジとユーザの両方が設定されることはない
 
-### ディレクトリ・ファイル取得 [GET]
+## Files Collection [/files/{file_dir_path}]
+### ファイルダウンロード [GET]
+**Note**
++ 現在ログイン中のユーザが閲覧できるディレクトリとファイルを返す
+
++ Parameters
+    + file_dir_path: `example/neeco.txt` (string, required) -現在のディレクトリ階層/ファイル名
+
++ Response 200
+
+        ファイルを直接返す
+
+### ファイル追加 [POST]
+**Note**
++ 正常に追加できた場合に201を返す
+
++ Parameters
+    + file_dir_path: `example/neeco.txt` (string, required) -現在のディレクトリ階層/ファイル名
+
++ Request (application/json)
+
+        {
+            "name": "neeco.txt",
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
+            "target_type": "colleges",
+            "public_ids": [
+                "a",
+                "c"
+            ]
+        ========================================
+            "target_type": "users",
+            "public_ids": [
+                "G013C1145",
+                "G013C1432"
+            ]
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user
+        }
+
++ Response 201
+
+### ファイル公開対象更新 [PUT]
+**Note**
++ 自分が追加したファイルのみ更新可能
+
++ Parameters
+    + file_dir_path: `example/neeco.txt` (string, required) -現在のディレクトリ階層/ファイル名
+
++ Request (application/json)
+
+        {
+            "name": "example.txt",
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
+            "target_type": "college",
+            "public_ids": [
+                "b",
+                "c"
+            ]
+        ========================================
+            "target_type": "users",
+            "public_ids": [
+                "G013C1145",
+                "G013C1432"
+            ]
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user
+        }
+
++ Response 204
+
+### ファイル削除 [DELETE]
+**Note**
++ 自分が追加したファイルのみ削除可能
++ 削除成功時は204を返す。レスポンスボディはなし。
++ 削除失敗時は403を返す。レスポンスボディはなし。
+
++ Parameters
+    + file_dir_path: `example/neeco.txt` (string, required) -現在のディレクトリ階層/ファイル名
+
++ Response 204
+
++ Response 403
+
+## Directories Collection [/files/{file_dir_path}]
+### ディレクトリ配下情報取得 [GET]
 **Note**
 - 現在ログイン中のユーザが閲覧できるディレクトリとファイルを返す
 
 + Parameters
-    + dir_names: `/example/NEECO` (string, required) -現在のディレクトリ階層
+    + file_dir_path: `example/neeco/` (string, required) -現在のディレクトリ階層(末尾は/)
 
 + Response 200 (application/json)
 
@@ -33,7 +113,8 @@
 
             {
                 "current_dir": {
-                  "name": "NEECO",
+                  "name": "neeco",
+            >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
                   "target_type": "college",
                   "targets": [
                       {
@@ -45,9 +126,7 @@
                           name: "IT"
                       }
                   ]
-                },
-                "current_dir": {
-                  "name": "NEECO",
+            ========================================
                   "target_type": "user",
                   "targets": [
                       {
@@ -69,6 +148,7 @@
                           }
                       }
                   ]
+            >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user
                 },
                 "elements": [
                     {
@@ -124,109 +204,71 @@
             }
 
 ### ディレクトリ追加 [POST]
+**Note**
++ 正常に追加できた場合に201を返す
+
 + Parameters
-    + dir_names: `/example/NEECO` (string, required) -現在のディレクトリ階層
+    + file_dir_path: `example/neeco/` (string, required) -現在のディレクトリ階層(末尾は/)
 
 + Request (application/json)
 
         {
-            "type": "dir",
-            "name": "example_dir",
+            "name": "neeco",
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
             "target_type": "colleges",
             "public_ids": [
                 "a",
                 "c"
             ]
-        }
-
-+ Request (application/json)
-
-        {
-            "type": "dir",
-            "name": "example_dir",
+        ========================================
             "target_type": "users",
             "public_ids": [
                 "G013C1145",
                 "G013C1432"
             ]
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user
         }
 
-+ Response 201 (application/json)
++ Response 201
 
-        {
-            "message": "正常に追加されました"
-        }
-
-### ファイル追加 [POST]
-+ Parameters
-    + dir_names: `/example/NEECO` (string, required) -現在のディレクトリ階層
-
-+ Request (application/json)
-
-        {
-            "type": "file",
-            "name": "example.txt",
-            "body": "Example Text",
-            "target_type": "colleges",
-            "public_ids": [
-                "a",
-                "c"
-            ]
-         }
-
-+ Request (application/json)
-
-        {
-            "type": "file",
-            "name": "example.txt",
-            "body": "Example Text",
-            "target_type": "users",
-            "public_ids": [
-                "G013C1145",
-                "G013C1431"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-        {
-            "message": "正常に追加されました"
-        }
-
-### ディレクトリ・ファイル公開対象更新 [PUT]
+### ディレクトリ公開対象更新 [PUT]
 **Note**
-+ 自分が追加したディレクトリ・ファイルのみ更新可能
++ 自分が追加したディレクトリのみ更新可能
 
 + Parameters
-    + dir_names: `/example/NEECO` (string, required) -現在のディレクトリ階層
+    + file_dir_path: `example/neeco/` (string, required) -現在のディレクトリ階層(末尾は/)
 
 + Request (application/json)
 
         {
-            "type": "file",
-            "name": "example.txt",
-            "college_ids": [
+            "name": "neeco",
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
+            "target_type": "college",
+            "public_ids": [
                 "b",
                 "c"
             ]
+        ========================================
+            "target_type": "users",
+            "public_ids": [
+                "G013C1145",
+                "G013C1432"
+            ]
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user
         }
 
-+ Response 200 (application/json)
++ Response 204
 
-        {
-            "message": "正常に公開対象が更新されました。"
-        }
-
-### ディレクトリ・ファイル削除 [DELETE]
+### ディレクトリ削除 [DELETE]
 **Note**
-+ 自分が追加したディレクトリ・ファイルのみ削除可能
-+ ディレクトリを削除した場合、配下ごと削除する
++ 自分が追加したディレクトリのみ削除可能
++ 配下のファイル/ディレクトリも削除する(他人が追加したものも含む)
++ 削除成功時は204を返す。レスポンスボディはなし。
++ 削除失敗時は403を返す。レスポンスボディはなし。
 
 + Parameters
-    + dir_names: `/example/NEECO` (string, required) -現在のディレクトリ階層
+    + file_dir_path: `example/neeco/` (string, required) -現在のディレクトリ階層(末尾は/)
 
-+ Response 200 (application/json)
++ Response 204
 
-        {
-            "message": "正常に削除されました。"
-        }
++ Response 403
