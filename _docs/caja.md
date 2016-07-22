@@ -103,7 +103,6 @@
         + elements: (array) - カレントディレクトリ配下の要素配列
             - type: (string) - 要素タイプ( `file` or `dir` )
             - name: (string) - 要素名
-            - path: (string) - ファイルパス(type == `file` のみ)
             - created_user: (object) - 作成者
             - updated_user: (object) - 更新者
             - created_at: (datetime) - 作成日時
@@ -154,7 +153,6 @@
                     {
                         "type": "file",
                         "name": "example.txt",
-                        "path": "file/example/example.txt",
                         "created_user": {
                             "name": "田中 太郎",
                             "number": "G099C0001"
