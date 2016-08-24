@@ -1,8 +1,50 @@
 ## Group Auth API
 
-##  Auth [/auth/login]
+##  Auth Check [/auth]
+
 **Note**
-* 認証系API
+* 認証確認API
+
+### ログイン中のユーザ情報取得 [GET]
+
+**Note**
+- 未ログインの場合は401を返す
+    * APIクライアントは401が帰ってきた場合はログイン画面にリダイレクトする
+
++ Response 200 (application/json)
+
+    + Body Attributes
+        - user_id: (integer) - ユーザID
+        - number: (string) - 学籍番号
+        - name: (string) - ユーザ名
+        - user_image: (string) - プロフィール画像フルパス
+        - college: (object) - 所属カレッジ
+            * code: (string) - カレッジ一意のコード
+            * name: (string) - カレッジ名
+
+    + Body
+
+            {
+                "user_id": 1,
+                "number": "G099C1001",
+                "name": "田中 太郎",
+                "user_image": "http://example.com/user/sample1.jpg",
+                "college": {
+                  "code": "c",
+                  "name": "IT"
+                }
+            }
+
++ Response 401 (application/json)
+
+        {
+          "message": "ログインしてください"
+        }
+
+##  Auth [/auth/login]
+
+**Note**
+* 認証API
 
 ### ログイン [POST]
 **Note**
