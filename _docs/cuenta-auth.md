@@ -18,7 +18,7 @@
 + Request (application/json)
 
         {
-            "user_number": "g011a1111",
+            "number": "g011a1111",
             "password": "g011a1111password"
         }
 
