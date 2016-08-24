@@ -4,10 +4,6 @@
 
 ### ログイン中のユーザ情報取得 [GET]
 
-**Note**
-- 未ログインの場合は401を返す
-    * APIクライアントは401が返却された場合はログイン画面にリダイレクトする
-
 + Response 200 (application/json)
 
     + Body Attributes
@@ -31,12 +27,6 @@
                   "name": "IT"
                 }
             }
-
-+ Response 401 (application/json)
-
-        {
-          "message": "ログインしてください"
-        }
 
 ## User Search [/users/search{?str,user_ids,college_codes}]
 ### ユーザLIKE検索 [GET]
