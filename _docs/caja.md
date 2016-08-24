@@ -6,7 +6,7 @@
 ## Files Collection [/files/{file_dir_path}]
 ### ファイルダウンロード [GET]
 **Note**
-+ 現在ログイン中のユーザが閲覧できるディレクトリとファイルを返す
++ 指定されたファイルを返す(ダウンロードさせる)
 
 + Parameters
     + file_dir_path: `example/neeco.txt` (string, required) -現在のディレクトリ階層/ファイル名
@@ -27,16 +27,16 @@
         {
             "name": "neeco.txt",
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
-            "target_type": "colleges",
+            "target_type": "college",
             "public_ids": [
                 "a",
                 "c"
             ]
         ========================================
-            "target_type": "users",
+            "target_type": "user",
             "public_ids": [
-                "G013C1145",
-                "G013C1432"
+                "1",
+                "2"
             ]
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user
         }
@@ -53,7 +53,7 @@
 + Request (application/json)
 
         {
-            "name": "example.txt",
+            "name": "neeco.txt",
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
             "target_type": "college",
             "public_ids": [
@@ -61,10 +61,10 @@
                 "c"
             ]
         ========================================
-            "target_type": "users",
+            "target_type": "user",
             "public_ids": [
-                "G013C1145",
-                "G013C1432"
+                "1",
+                "2"
             ]
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user
         }
@@ -129,6 +129,7 @@
                   "target_type": "user",
                   "targets": [
                       {
+                          "user_id": 1,
                           "name": "田中 太郎",
                           "number": "G099C0001"
                           "user_image": "http://example.com/image/tanaka.jpg",
@@ -138,6 +139,7 @@
                           }
                       },
                       {
+                          "user_id": 2,
                           "name": "山田 花子",
                           "number": "G099G0002"
                           "user_image": "http://example.com/image/yamada.jpg",
@@ -154,6 +156,7 @@
                         "type": "file",
                         "name": "example.txt",
                         "created_user": {
+                            "user_id": 1,
                             "name": "田中 太郎",
                             "number": "G099C0001"
                             "user_image": "http://example.com/image/tanaka.jpg",
@@ -163,6 +166,7 @@
                             }
                         },
                         "updated_user": {
+                            "user_id": 1,
                             "name": "田中 太郎",
                             "number": "G099C0001"
                             "user_image": "http://example.com/image/tanaka.jpg",
@@ -178,6 +182,7 @@
                         "type": "dir",
                         "name": "exampleDir",
                         "created_user": {
+                            "user_id": 1,
                             "name": "田中 太郎",
                             "number": "G099C0001"
                             "user_image": "http://example.com/image/tanaka.jpg",
@@ -187,6 +192,7 @@
                             }
                         },
                         "updated_user": {
+                            "user_id": 2,
                             "name": "山田 花子",
                             "number": "G099G0002"
                             "user_image": "http://example.com/image/yamada.jpg",
@@ -213,16 +219,16 @@
         {
             "name": "neeco",
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
-            "target_type": "colleges",
+            "target_type": "college",
             "public_ids": [
                 "a",
                 "c"
             ]
         ========================================
-            "target_type": "users",
+            "target_type": "user",
             "public_ids": [
-                "G013C1145",
-                "G013C1432"
+                "1",
+                "2"
             ]
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user
         }
@@ -247,10 +253,10 @@
                 "c"
             ]
         ========================================
-            "target_type": "users",
+            "target_type": "user",
             "public_ids": [
-                "G013C1145",
-                "G013C1432"
+                "1",
+                "2"
             ]
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user
         }
