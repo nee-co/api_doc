@@ -65,14 +65,96 @@
           "message": "リクエストパラメータが不正です"
         }
 
-## User List [/internal/users/list{?user_ids}]
-### ユーザリスト取得 [GET]
+## User [/users/{user_id}]
+### ユーザ情報取得 [GET]
 
 **Use Case**
-- 内部向けAPI(外部公開しない)
+- プロフィール画面
+
+**Note**
+- 指定されたユーザが見つからなかった場合にのみ404を返す
+
++ Parameters
+    + user_id: `田` (number, required) - ユーザID
+
++ Response 200 (application/json)
+
+    + Body Attributes
+        - user_id: (integer) - ユーザID
+        - number: (string) - 学籍番号
+        - name: (string) - ユーザ名
+        - user_image: (string) - プロフィール画像フルパス
+        - college: (object) - 所属カレッジ
+            * code: (string) - カレッジ一意のコード
+            * name: (string) - カレッジ名
+
+    + Body
+
+            {
+                "user_id": 1,
+                "number": "G099C1001",
+                "name": "田中 太郎",
+                "user_image": "http://example.com/user/sample1.jpg",
+                "college": {
+                  "code": "c",
+                  "name": "IT"
+                }
+            }
+
++ Response 404 (application/json)
+
+        {
+          "message": "指定されたユーザは見つかりませんでした"
+        }
+
+## User [/internal/users/{user_id}]
+### ユーザ情報取得-内部 [GET]
+
+**Note**
+- 内部向けAPI(認証の必要がない)
+- 指定されたユーザが見つからなかった場合にのみ404を返す
+
++ Parameters
+    + user_id: `田` (number, required) - ユーザID
+
++ Response 200 (application/json)
+
+    + Body Attributes
+        - user_id: (integer) - ユーザID
+        - number: (string) - 学籍番号
+        - name: (string) - ユーザ名
+        - user_image: (string) - プロフィール画像フルパス
+        - college: (object) - 所属カレッジ
+            * code: (string) - カレッジ一意のコード
+            * name: (string) - カレッジ名
+
+    + Body
+
+            {
+                "user_id": 1,
+                "number": "G099C1001",
+                "name": "田中 太郎",
+                "user_image": "http://example.com/user/sample1.jpg",
+                "college": {
+                  "code": "c",
+                  "name": "IT"
+                }
+            }
+
++ Response 404 (application/json)
+
+        {
+          "message": "指定されたユーザは見つかりませんでした"
+        }
+
+## User List [/internal/users/list{?user_ids}]
+### ユーザリスト取得-内部 [GET]
+
+**Use Case**
 - イベント管理システム>参加者一覧+コメント投稿者一覧
 
 **Note**
+- 内部向けAPI(認証の必要がない)
 - 全てのユーザが取得できた場合のみ200を返す
 - ユーザが指定されなかった場合は400を返す
 - 一人でも取得できなかった場合は403を返す
