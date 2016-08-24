@@ -1,9 +1,8 @@
 ## Group Auth API
 
 ##  Auth [/auth/login]
-
 **Note**
-* 認証API
+* 認証系API
 
 ### ログイン [POST]
 **Note**
