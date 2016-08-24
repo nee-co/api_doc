@@ -1,5 +1,43 @@
 ## Group User API
 
+##  Login User [/users]
+
+### ログイン中のユーザ情報取得 [GET]
+
+**Note**
+- 未ログインの場合は401を返す
+    * APIクライアントは401が返却された場合はログイン画面にリダイレクトする
+
++ Response 200 (application/json)
+
+    + Body Attributes
+        - user_id: (integer) - ユーザID
+        - number: (string) - 学籍番号
+        - name: (string) - ユーザ名
+        - user_image: (string) - プロフィール画像フルパス
+        - college: (object) - 所属カレッジ
+            * code: (string) - カレッジ一意のコード
+            * name: (string) - カレッジ名
+
+    + Body
+
+            {
+                "user_id": 1,
+                "number": "G099C1001",
+                "name": "田中 太郎",
+                "user_image": "http://example.com/user/sample1.jpg",
+                "college": {
+                  "code": "c",
+                  "name": "IT"
+                }
+            }
+
++ Response 401 (application/json)
+
+        {
+          "message": "ログインしてください"
+        }
+
 ## User Search [/users/search{?str,user_ids,college_codes}]
 ### ユーザLIKE検索 [GET]
 
