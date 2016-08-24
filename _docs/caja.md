@@ -27,13 +27,13 @@
         {
             "name": "neeco.txt",
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
-            "target_type": "colleges",
+            "target_type": "college",
             "public_ids": [
                 "a",
                 "c"
             ]
         ========================================
-            "target_type": "users",
+            "target_type": "user",
             "public_ids": [
                 "1",
                 "2"
@@ -53,7 +53,7 @@
 + Request (application/json)
 
         {
-            "name": "example.txt",
+            "name": "neeco.txt",
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
             "target_type": "college",
             "public_ids": [
@@ -61,7 +61,7 @@
                 "c"
             ]
         ========================================
-            "target_type": "users",
+            "target_type": "user",
             "public_ids": [
                 "1",
                 "2"
@@ -219,13 +219,13 @@
         {
             "name": "neeco",
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
-            "target_type": "colleges",
+            "target_type": "college",
             "public_ids": [
                 "a",
                 "c"
             ]
         ========================================
-            "target_type": "users",
+            "target_type": "user",
             "public_ids": [
                 "1",
                 "2"
@@ -253,7 +253,7 @@
                 "c"
             ]
         ========================================
-            "target_type": "users",
+            "target_type": "user",
             "public_ids": [
                 "1",
                 "2"
