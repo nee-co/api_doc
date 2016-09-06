@@ -103,7 +103,7 @@
 - 指定されたユーザが見つからなかった場合にのみ404を返す
 
 + Parameters
-    + user_id: `田` (number, required) - ユーザID
+    + user_id: `1` (number, required) - ユーザID
 
 + Response 200 (application/json)
 
@@ -143,7 +143,7 @@
 - 指定されたユーザが見つからなかった場合にのみ404を返す
 
 + Parameters
-    + user_id: `田` (number, required) - ユーザID
+    + user_id: `1` (number, required) - ユーザID
 
 + Response 200 (application/json)
 
