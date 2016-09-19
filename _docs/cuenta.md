@@ -29,6 +29,7 @@
             }
 
 ## User Search [/users/search{?str,user_ids,college_codes}]
+
 ### ユーザLIKE検索 [GET]
 
 **Use Case**
@@ -94,6 +95,7 @@
         }
 
 ## User [/users/{user_id}]
+
 ### ユーザ情報取得 [GET]
 
 **Use Case**
@@ -136,6 +138,7 @@
         }
 
 ## User [/internal/users/{user_id}]
+
 ### ユーザ情報取得-内部 [GET]
 
 **Note**
@@ -176,6 +179,7 @@
         }
 
 ## User List [/internal/users/list{?user_ids}]
+
 ### ユーザリスト取得-内部 [GET]
 
 **Use Case**
