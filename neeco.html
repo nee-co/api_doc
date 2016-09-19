@@ -38,7 +38,27 @@
       "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"a"</span></span>,
       "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"クリエイター"</span>
 </span>}
-</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>404</code></strong></div></div></div></section><section id="user-api" class="resource-group"><h2 class="group-heading">User API <a href="#user-api" class="permalink">&para;</a></h2><div id="user-api-login-user" class="resource"><h3 class="resource-heading">Login User <a href="#user-api-login-user" class="permalink">&nbsp;&para;</a></h3><div id="user-api-login-user-get" class="action get"><h4 class="action-heading"><div class="name">ログイン中のユーザ情報取得</div><a href="#user-api-login-user-get" class="method get">GET</a><code class="uri">/users</code></h4><h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/users</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><ul>
+</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>404</code></strong></div></div></div></section><section id="user-api" class="resource-group"><h2 class="group-heading">User API <a href="#user-api" class="permalink">&para;</a></h2><ul>
+<li>
+<p>Request</p>
+<ul>
+<li>
+<p>全てのリクエスト ヘッダーにアクセストークンを付加する必要がある</p>
+</li>
+<li>
+<p>Headers Attributes</p>
+<ul>
+<li>Authorization (string, required) - アクセストークン</li>
+</ul>
+</li>
+<li>
+<p>Headers</p>
+<pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<div id="user-api-login-user" class="resource"><h3 class="resource-heading">Login User <a href="#user-api-login-user" class="permalink">&nbsp;&para;</a></h3><div id="user-api-login-user-get" class="action get"><h4 class="action-heading"><div class="name">ログイン中のユーザ情報取得</div><a href="#user-api-login-user-get" class="method get">GET</a><code class="uri">/users</code></h4><h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/users</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><ul>
 <li>Body Attributes
 <ul>
 <li>user_id: (integer) - ユーザID</li>

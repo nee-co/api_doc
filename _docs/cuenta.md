@@ -1,5 +1,16 @@
 ## Group User API
 
+* Request
+
+    + 全てのリクエスト ヘッダーにアクセストークンを付加する必要がある
+
+    + Headers Attributes
+        - Authorization (string, required) - アクセストークン
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
+
 ##  Login User [/users]
 
 ### ログイン中のユーザ情報取得 [GET]
