@@ -1,5 +1,16 @@
 ## Group User API
 
+* Request
+
+    + 全てのリクエスト ヘッダーにアクセストークンを付加する必要がある
+
+    + Headers Attributes
+        - Authorization (string, required) - アクセストークン
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
+
 ##  Login User [/users]
 
 ### ログイン中のユーザ情報取得 [GET]
@@ -28,7 +39,42 @@
                 }
             }
 
+##  Upload User Image [/users/image]
+
+### ログイン中のユーザ画像更新 [POST]
+
++ Request (multipart/form-data)
+
+        {
+            "image": アップロード対象画像
+        }
+
++ Response 200 (application/json)
+
+    + Body Attributes
+        - user_id: (integer) - ユーザID
+        - number: (string) - 学籍番号
+        - name: (string) - ユーザ名
+        - user_image: (string) - アップロード後 プロフィール画像フルパス
+        - college: (object) - 所属カレッジ
+            * code: (string) - カレッジ一意のコード
+            * name: (string) - カレッジ名
+
+    + Body
+
+            {
+                "user_id": 1,
+                "number": "G099C1001",
+                "name": "田中 太郎",
+                "user_image": "http://example.com/user/sample1.jpg",
+                "college": {
+                  "code": "c",
+                  "name": "IT"
+                }
+            }
+
 ## User Search [/users/search{?str,user_ids,college_codes}]
+
 ### ユーザLIKE検索 [GET]
 
 **Use Case**
@@ -94,6 +140,7 @@
         }
 
 ## User [/users/{user_id}]
+
 ### ユーザ情報取得 [GET]
 
 **Use Case**
@@ -136,6 +183,7 @@
         }
 
 ## User [/internal/users/{user_id}]
+
 ### ユーザ情報取得-内部 [GET]
 
 **Note**
@@ -176,6 +224,7 @@
         }
 
 ## User List [/internal/users/list{?user_ids}]
+
 ### ユーザリスト取得-内部 [GET]
 
 **Use Case**
