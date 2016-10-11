@@ -20,12 +20,12 @@
 + 正常に追加できた場合に201を返す
 
 + Parameters
-    + file_dir_path: `example/neeco.txt` (string, required) -現在のディレクトリ階層/ファイル名
+    + file_dir_path: `example/` (string, required) -現在のディレクトリ階層(末尾は/)
 
 + Request (application/json)
 
         {
-            "name": "neeco.txt",
+            "file": ファイル,
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
             "target_type": "college",
             "public_ids": [
@@ -43,7 +43,7 @@
 
 + Response 201
 
-### ファイル公開対象更新 [PUT]
+### ファイル公開対象更新 [PATCH]
 **Note**
 + 自分が追加したファイルのみ更新可能
 
@@ -53,7 +53,6 @@
 + Request (application/json)
 
         {
-            "name": "neeco.txt",
         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
             "target_type": "college",
             "public_ids": [
@@ -104,7 +103,6 @@
             - type: (string) - 要素タイプ( `file` or `dir` )
             - name: (string) - 要素名
             - created_user: (object) - 作成者
-            - updated_user: (object) - 更新者
             - created_at: (datetime) - 作成日時
             - updated_at: (datetime) - 更新日時
 
@@ -165,16 +163,6 @@
                                 "name": "IT"
                             }
                         },
-                        "updated_user": {
-                            "user_id": 1,
-                            "name": "田中 太郎",
-                            "number": "G099C0001"
-                            "user_image": "http://example.com/image/tanaka.jpg",
-                            "college": {
-                                "code": "c",
-                                "name": "IT"
-                            }
-                        },
                         "created_at": "2016/06/03 15:00",
                         "updated_at": "2016/06/03 15:00"
                     },
@@ -191,28 +179,19 @@
                                 "name": "IT"
                             }
                         },
-                        "updated_user": {
-                            "user_id": 2,
-                            "name": "山田 花子",
-                            "number": "G099G0002"
-                            "user_image": "http://example.com/image/yamada.jpg",
-                            "college": {
-                                "code": "g",
-                                "name": "デザイン"
-                            }
-                        },
                         "created_at": "2016/06/03 15:00",
                         "updated_at": "2016/06/30 15:00"
                     }
                 ]
             }
 
-### ディレクトリ追加 [POST]
+### ディレクトリ追加・更新 [PUT]
 **Note**
 + 正常に追加できた場合に201を返す
++ 既に存在する場合、自分が追加したディレクトリなら更新する
 
 + Parameters
-    + file_dir_path: `example/neeco/` (string, required) -現在のディレクトリ階層(末尾は/)
+    + file_dir_path: `example/` (string, required) -現在のディレクトリ階層(末尾は/)
 
 + Request (application/json)
 
@@ -234,32 +213,6 @@
         }
 
 + Response 201
-
-### ディレクトリ公開対象更新 [PUT]
-**Note**
-+ 自分が追加したディレクトリのみ更新可能
-
-+ Parameters
-    + file_dir_path: `example/neeco/` (string, required) -現在のディレクトリ階層(末尾は/)
-
-+ Request (application/json)
-
-        {
-            "name": "neeco",
-        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> college
-            "target_type": "college",
-            "public_ids": [
-                "b",
-                "c"
-            ]
-        ========================================
-            "target_type": "user",
-            "public_ids": [
-                "1",
-                "2"
-            ]
-        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user
-        }
 
 + Response 204
 
