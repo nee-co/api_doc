@@ -39,6 +39,24 @@
                 }
             }
 
+##  Update User Password [/users/password]
+
+### ログイン中のユーザパスワード変更 [POST]
+
+**Note**
+* パスワード変更成功時 => 204
+* current_passwordが正しく無い => 403
+
++ Request (application/json)
+
+        {
+            "current_password": "current_password",
+            "new_password": "new_password"
+        }
+
++ Response 204
++ Response 403
+
 ##  Upload User Image [/users/image]
 
 ### ログイン中のユーザ画像更新 [POST]
@@ -83,6 +101,7 @@
 **Note**
 - 氏名と学籍番号を対象にLIKE検索
 - 検索結果が0件の場合でも200を返す
+- 検索結果が50件以上の場合は, 先頭50件のみ返す(そのうち、良い感じにsortする)
 - `str` が指定されなかった場合のみ400を返す
 - `user_ids` と `college_codes` はXORの関係、同時に指定されることはない。
 - 仮に `user_ids` と `college_codes` の両方が指定された場合は `user_ids` のみ参照する
