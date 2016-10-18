@@ -39,6 +39,24 @@
                 }
             }
 
+##  Update User Password [/users/password]
+
+### ログイン中のユーザパスワード変更 [POST]
+
+**Note**
+* パスワード変更成功時 => 204
+* current_passwordが正しく無い => 403
+
++ Request (application/json)
+
+        {
+            "current_password": "current_password",
+            "new_password": "new_password"
+        }
+
++ Response 204
++ Response 403
+
 ##  Upload User Image [/users/image]
 
 ### ログイン中のユーザ画像更新 [POST]
