@@ -21,7 +21,7 @@
 - Docker動作環境
 
 ### aglioイメージ ビルド
-`$ docker build -t neeco-api .`
+`$ make image`
 
 ### ドキュメント生成
-`$ docker run --rm -v $(pwd):/tmp -t neeco-api aglio -i /tmp/neeco.apib -o /tmp/neeco.html`
+`$ make doc`
