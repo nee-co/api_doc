@@ -12,31 +12,6 @@
 			"description": "",
 			"item": [
 				{
-					"name": "イベント全件取得",
-					"request": {
-						"url": "{{host}}/events?page=1&per=10",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": "**URI Parameters**\n\n* page `integer` (required) Example: `1`\n    - ページ番号\n\n* per `integer` (required) Example: `10`\n    - 1ページあたりの件数"
-					},
-					"response": []
-				},
-				{
 					"name": "イベント検索",
 					"request": {
 						"url": "{{host}}/events/search?page=1&per=10&keyword=もくもく",
@@ -80,7 +55,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"第1会もくもく会\",\n    \"tags\": [\n        \"もくもく会\",\n        \"Ruby\",\n        \"Scala\"\n    ],\n    \"body\": \"第1回もくもく会を開催いたします\",\n    \"started_at\": \"2016/06/03 12:00\",\n    \"ended_at\": \"2016/06/03 15:00\",\n    \"venue\": \"研究棟B 401\",\n    \"entry_upper_limit\": 10\n}"
+							"raw": "{\n    \"title\": \"第1会もくもく会\",\n    \"tags\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"body\": \"第1回もくもく会を開催いたします\",\n    \"started_at\": \"2016/06/03 12:00\",\n    \"ended_at\": \"2016/06/03 15:00\",\n    \"venue\": \"研究棟B 401\",\n    \"entry_upper_limit\": 10\n}"
 						},
 						"description": ""
 					},
@@ -130,7 +105,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"第2会もくもく会\",\n    \"tags\": [\n        \"もくもく会\",\n        \"Ruby\",\n        \"Scala\",\n        \"Elixir\"\n    ],\n    \"body\": \"第2回もくもく会を開催いたします\",\n    \"started_at\": \"2016/06/03 13:00\",\n    \"ended_at\": \"2016/06/03 16:00\",\n    \"venue\": \"研究棟B 402\",\n    \"entry_upper_limit\": 11\n}"
+							"raw": "{\n    \"title\": \"第2会もくもく会\",\n    \"tags\": [\n        \"1\",\n        \"2\",\n        \"3\",\n        \"4\"\n    ],\n    \"body\": \"第2回もくもく会を開催いたします\",\n    \"started_at\": \"2016/06/03 13:00\",\n    \"ended_at\": \"2016/06/03 16:00\",\n    \"venue\": \"研究棟B 402\",\n    \"entry_upper_limit\": 11\n}"
 						},
 						"description": "**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - 更新対象イベントid"
 					},
@@ -271,7 +246,7 @@
 					"name": "ディレクトリ追加",
 					"request": {
 						"url": "{{host}}/files/{{dir_path}}",
-						"method": "POST",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -286,34 +261,9 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"neeco\",\n    \"target_type\": \"college\",\n    \"public_ids\": [\n        \"b\",\n        \"c\"\n    ]\n}"
+							"raw": "{\n    \"name\": \"neeco\",\n    \"target_type\": \"college\",\n    \"public_ids\": [\n    \t\"a\",\n    \t\"b\",\n    \t\"c\",\n    \t\"d\",\n    \t\"e\",\n    \t\"f\",\n    \t\"g\"\n    ]\n}"
 						},
 						"description": "**Note**\n\n* 正常に追加できた場合に201を返す\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco/`\n    - 現在のディレクトリ階層(末尾は/)"
-					},
-					"response": []
-				},
-				{
-					"name": "ディレクトリ公開対象更新",
-					"request": {
-						"url": "{{host}}/files/{{dir_path}}",
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"neeco\",\n    \"target_type\": \"user\",\n    \"public_ids\": [\n        \"1\",\n        \"2\"\n    ]\n}"
-						},
-						"description": "**Note**\n\n* 自分が追加したディレクトリのみ更新可能\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco/`\n    - 現在のディレクトリ階層(末尾は/)"
 					},
 					"response": []
 				},
@@ -391,8 +341,27 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"neeco.txt\",\n    \"target_type\": \"college\",\n    \"public_ids\": [\n        \"a\",\n        \"c\"\n    ]\n}"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "target_type",
+									"value": "college",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "public_ids",
+									"value": "\"a,b,c,d,e,f,g\"",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "file",
+									"value": "dios.png",
+									"type": "file",
+									"enabled": true
+								}
+							]
 						},
 						"description": "**Note**\n\n* 正常に追加できた場合に201を返す\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco.txt`\n    - 現在のディレクトリ階層/ファイル名\n"
 					},
@@ -445,6 +414,77 @@
 							"raw": ""
 						},
 						"description": "**Note**\n\n* 自分が追加したファイルのみ削除可能\n* 削除成功時は204を返す。レスポンスボディはなし。\n* 削除失敗時は403を返す。レスポンスボディはなし。\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco.txt`\n    - 現在のディレクトリ階層/ファイル名\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cartero-Notification",
+			"description": "",
+			"item": [
+				{
+					"name": "通知追加-内部",
+					"request": {
+						"url": "http://localhost:3000/internal/notifications",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": 1,\n  \"title\": \"[更新] もくもく会 #2\",\n  \"body\": \"イベント内容が変更されました\",\n  \"link\": \"http://example.com/events/2\",\n  \"image\": \"http://example.com/images/events/sample1.jpg\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ログイン中のユーザ宛の通知一覧取得",
+					"request": {
+						"url": "http://localhost:3000/notifications",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-consumer-custom-id",
+								"value": "1",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": \"1\",\n  \"title\": \"[更新] もくもく会 #2\",\n  \"body\": \"イベント内容が変更されました\",\n  \"link\": \"http://example.com/events/2\",\n  \"image\": \"http://example.com/images/events/sample1.jpg\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "確認済み通知の削除",
+					"request": {
+						"url": "http://localhost:3000/notifications/57e93a77d9201ad7bd8fcaaf",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": \"1\",\n  \"title\": \"[更新] もくもく会 #2\",\n  \"body\": \"イベント内容が変更されました\",\n  \"link\": \"http://example.com/events/2\",\n  \"image\": \"http://example.com/images/events/sample1.jpg\"\n}"
+						},
+						"description": ""
 					},
 					"response": []
 				}
