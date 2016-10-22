@@ -41,9 +41,10 @@
 
 ##  Update User Password [/users/password]
 
-### ログイン中のユーザパスワード変更 [POST]
+### ログイン中のユーザパスワード変更 [PATCH]
 
 **Note**
+
 * パスワード変更成功時 => 204
 * current_passwordが正しく無い => 403
 
