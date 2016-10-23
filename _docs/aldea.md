@@ -187,7 +187,7 @@
 * 対象イベントが見つからない => 404
 
 + Parameters
-    + event_id: 1 (number) - 更新対象イベントid
+    + event_id: 1 (number) - イベントid
 
 + Request (application/json)
 
@@ -240,7 +240,7 @@
 * 対象イベントが見つからない => 404
 
 + Parameters
-    + event_id: 1 (number) - 削除対象イベントid
+    + event_id: 1 (number) - イベントid
 
 + Response 204
 + Response 403
@@ -257,7 +257,7 @@
 * 対象イベントが見つからない => 404
 
 + Parameters
-    + event_id: 1 (number) - 公開対象イベントid
+    + event_id: 1 (number) - イベントid
 
 + Response 204
 + Response 403
@@ -275,7 +275,7 @@
 * 対象イベントが見つからない => 404
 
 + Parameters
-    + event_id: 1 (number) - 参加イベントid
+    + event_id: 1 (number) - イベントid
 
 + Response 204
 + Response 403
@@ -291,7 +291,7 @@
 * 対象イベントが見つからない => 404
 
 + Parameters
-    + event_id: 1 (number) - 参加イベントid
+    + event_id: 1 (number) - イベントid
 
 + Response 204
 + Response 403
@@ -309,7 +309,7 @@
 * 対象イベントが見つからない => 404
 
 + Parameters
-    + event_id: 1 (number) - 参加イベントid
+    + event_id: 1 (number) - イベントid
 
 + Response 204
 + Response 403
