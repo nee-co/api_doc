@@ -71,6 +71,7 @@
 **Note**
 
 * body: Markdown形式
+* status == draft && 自分 != 開催者 => 404
 * 対象イベントが見つからない => 404
 
 + Parameters
