@@ -2,7 +2,7 @@
 
 **Note**
 
-* ステータス: { 0: `非公開` , 1: `公開/受付中` , 2: `満員` , 3: `受付終了` }
+* ステータス: { 0: `非公開(draft)` , 1: `公開/受付中(published)` , 2: `満員(full)` , 3: `受付終了(closed)` }
 
 * Request
 
@@ -58,7 +58,8 @@
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
             "venue": "研究棟B 401",
-            "entry_upper_limit": 10
+            "entry_upper_limit": 10,
+            "status": "draft"
         }
 
 + Response 400
@@ -70,6 +71,7 @@
 **Note**
 
 * body: Markdown形式
+* status == draft && 自分 != 開催者 => 404
 * 対象イベントが見つからない => 404
 
 + Parameters
@@ -94,7 +96,7 @@
       + ended_at: (datetime) - 終了日時
       + venue: (string) - 会場
       + entry_upper_limit: (integer) - 上限人数
-      + status: (integer) - イベントステータス
+      + status: (string) - イベントステータス
       + entries: (array) - 参加者一覧(イベント作成者と同じフィールド)
       + comments: (array) - コメント一覧
           - body: (string) - コメント内容(Markdown形式)
@@ -126,7 +128,7 @@
                 "ended_at": "2016/06/03 15:00",
                 "venue": "研究棟B 401",
                 "entry_upper_limit": 10,
-                "status": 1,
+                "status": "published",
                 "entries": [
                     {
                         "name": "tanaka",
@@ -361,7 +363,7 @@
         + events: (array) - イベント一覧
           - event_id: (integer) - イベントID
           - title: (string) - イベントタイトル
-          - status: (integer) - ステータスID
+          - status: (string) - ステータス
           - event_image: (string) - イベント画像フルパス
           - tags: (array) - タグ名
 
@@ -376,7 +378,7 @@
                         "event_id": 1,
                         "title": "第1会もくもく会",
                         "event_image": "http://example.com/image/sample1.jpg",
-                        "status": 1,
+                        "status": "published",
                         "tags": [
                             "もくもく会",
                             "Ruby",
@@ -387,7 +389,7 @@
                         "event_id": 2,
                         "title": "Rails勉強会",
                         "event_image": "http://example.com/image/sample2.jpg",
-                        "status": 2,
+                        "status": "published",
                         "tags": [
                             "Ruby",
                             "Ruby on Rails"
@@ -416,7 +418,7 @@
         + events: (array) - イベント一覧
           - event_id: (integer) - イベントID
           - title: (string) - イベントタイトル
-          - status: (integer) - ステータスID
+          - status: (string) - ステータス
           - event_image: (string) - イベント画像フルパス
           - tags: (array) - タグ名
 
@@ -431,7 +433,7 @@
                         "event_id": 1,
                         "title": "第1会もくもく会",
                         "event_image": "http://example.com/image/sample1.jpg",
-                        "status": 1,
+                        "status": "draft",
                         "tags": [
                             "もくもく会",
                             "Ruby",
@@ -442,7 +444,7 @@
                         "event_id": 2,
                         "title": "Rails勉強会",
                         "event_image": "http://example.com/image/sample2.jpg",
-                        "status": 2,
+                        "status": "full",
                         "tags": [
                             "Ruby",
                             "Ruby on Rails"
@@ -489,7 +491,7 @@
                         "event_id": 1,
                         "title": "第1会もくもく会",
                         "event_image": "http://example.com/image/sample1.jpg",
-                        "status": 1,
+                        "status": "published",
                         "tags": [
                             "もくもく会",
                             "Ruby",
@@ -500,7 +502,7 @@
                         "event_id": 2,
                         "title": "Rails勉強会",
                         "event_image": "http://example.com/image/sample2.jpg",
-                        "status": 2,
+                        "status": "published",
                         "tags": [
                             "Ruby",
                             "Ruby on Rails"
