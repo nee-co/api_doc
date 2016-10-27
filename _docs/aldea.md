@@ -58,8 +58,7 @@
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
             "venue": "研究棟B 401",
-            "entry_upper_limit": 10,
-            "status": "draft"
+            "entry_upper_limit": 10
         }
 
 + Response 400
@@ -80,9 +79,10 @@
 + Response 200 (application/json)
 
     + Body Attributes
+      + event_id: (number) - イベントID
       + title: (string) - イベントタイトル
       + event_image: (string) - イベント画像フルパス
-      + tags: (array) - タグ名
+      + tags: (array) - タグ名配列
       + body: (string) - イベント内容(Markdown形式)
       + register: (object) - イベント登録者
           - name: (string) - ユーザ名
@@ -106,6 +106,7 @@
     + Body
 
             {
+                "event_id": 1,
                 "title": "第1会もくもく会",
                 "event_image": "http://example.com/image/sample1.jpg",
                 "tags": [
@@ -224,9 +225,11 @@
                 "Elixir"
             ],
             "body": "第2回もくもく会を開催いたします",
+            "published_at": "2016/06/01 09:00",
             "started_at": "2016/06/03 13:00",
             "ended_at": "2016/06/03 16:00",
             "venue": "研究棟B 402",
+            "status": "published",
             "entry_upper_limit": 11
         }
 
@@ -336,7 +339,7 @@
 + Request (application/json)
 
         {
-            "comment": "## こんにちは。",
+            "body": "## こんにちは。",
             "notify": true
         }
 
