@@ -321,7 +321,7 @@
 + Response 403
 + Response 404
 
-## Comment Post [/events/{event_id}/comment]
+## Comments Collection [/events/{event_id}/comments]
 ### コメント投稿 [POST]
 
 **Note**
