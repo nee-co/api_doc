@@ -321,7 +321,7 @@
 + Response 403
 + Response 404
 
-## Comment Post [/events/{event_id}/comment]
+## Comments Collection [/events/{event_id}/comments]
 ### コメント投稿 [POST]
 
 **Note**
@@ -351,7 +351,9 @@
 
 **Note**
 
-* 自分が参加しているイベント(開催日が決定している && 開催日が今日以降)
+* 自分が参加しているイベント(下記のどちらか)
+    + イベントステータス = 公開/受付中 OR 満員
+    + イベントステータス = 受付終了 AND 開催日が今日以降
 
 + Parameters
     + page: 1 (integer, required) - ページ番号
