@@ -9,33 +9,8 @@
 	"item": [
 		{
 			"name": "Aldea-Event",
-			"description": "",
+			"description": "**Note**\n\nステータス\n  {\n    0: 非公開(draft),\n    1: 公開/受付中(published),\n    2: 満員(full),\n    3: 受付終了(closed)\n  }",
 			"item": [
-				{
-					"name": "イベント検索",
-					"request": {
-						"url": "{{host}}/events/search?page=1&per=10&keyword=もくもく",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": "**URI Parameters**\n\n* keyword `string` (optional) Example: `もくもく`\n    - 検索キーワード\n\n* page `integer` (required) Example: `1`\n    - ページ番号\n\n* per `integer` (required) Example: `10`\n    - 1ページあたりの件数"
-					},
-					"response": []
-				},
 				{
 					"name": "新規イベント作成",
 					"request": {
@@ -55,23 +30,18 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"第1会もくもく会\",\n    \"tags\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"body\": \"第1回もくもく会を開催いたします\",\n    \"started_at\": \"2016/06/03 12:00\",\n    \"ended_at\": \"2016/06/03 15:00\",\n    \"venue\": \"研究棟B 401\",\n    \"entry_upper_limit\": 10\n}"
+							"raw": "{\n    \"title\": \"第1会もくもく会\",\n    \"tags\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"body\": \"第1回もくもく会を開催いたします\",\n    \"started_at\": \"2016/11/01 12:00\",\n    \"ended_at\": \"2016/11/01 15:00\",\n    \"venue\": \"研究棟B 501\",\n    \"entry_upper_limit\": 5\n}"
 						},
-						"description": ""
+						"description": "**Note**\n\n* body: Markdown形式\n* tag: 各タグidの配列\n* event_image: json値ではなくイベント画像ファイル\n* 必須項目(title)が未設定の場合 => 400"
 					},
 					"response": []
 				},
 				{
-					"name": "イベント情報取得",
+					"name": "イベント詳細取得",
 					"request": {
 						"url": "{{host}}/events/{{event_id}}",
 						"method": "GET",
 						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
@@ -82,7 +52,7 @@
 							"mode": "raw",
 							"raw": "{\n    \"title\": \"第1会もくもく会\",\n    \"tags\": [\n        \"もくもく会\",\n        \"Ruby\",\n        \"Scala\"\n    ],\n    \"body\": \"第1回もくもく会を開催いたします\",\n    \"started_at\": \"2016/06/03 12:00\",\n    \"ended_at\": \"2016/06/03 15:00\",\n    \"venue\": \"研究棟B 401\",\n    \"entry_upper_limit\": 10\n}"
 						},
-						"description": "**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - 取得対象イベントid"
+						"description": "**Note**\n\n* body: Markdown形式\n* status == draft && 自分 != 開催者 => 404\n* 対象イベントが見つからない => 404\n\n**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - イベントid"
 					},
 					"response": []
 				},
@@ -105,9 +75,9 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"第2会もくもく会\",\n    \"tags\": [\n        \"1\",\n        \"2\",\n        \"3\",\n        \"4\"\n    ],\n    \"body\": \"第2回もくもく会を開催いたします\",\n    \"started_at\": \"2016/06/03 13:00\",\n    \"ended_at\": \"2016/06/03 16:00\",\n    \"venue\": \"研究棟B 402\",\n    \"entry_upper_limit\": 11\n}"
+							"raw": "{\n    \"title\": \"第2会もくもく会\",\n    \"tags\": [\n        \"1\",\n        \"2\",\n        \"3\",\n        \"4\"\n    ],\n    \"body\": \"第2回もくもく会を開催いたします\",\n    \"started_at\": \"2016/06/03 13:00\",\n    \"ended_at\": \"2016/06/03 16:00\",\n    \"venue\": \"研究棟B 402\",\n    \"entry_upper_limit\": 11,\n    \"notify\": true\n}"
 						},
-						"description": "**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - 更新対象イベントid"
+						"description": "**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - イベントid"
 					},
 					"response": []
 				},
@@ -118,11 +88,6 @@
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
@@ -132,21 +97,16 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": "**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - 削除対象イベントid"
+						"description": "**Note**\n\n* イベント開催者のみ(それ以外 => 403)\n* イベントステータスが 非公開 の場合にのみ削除可能 => 204\n* イベントステータスが 非公開 以外の場合 => 403\n* 対象イベントが見つからない => 404\n\n**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - イベントid"
 					},
 					"response": []
 				},
 				{
-					"name": "イベント参加",
+					"name": "イベント検索",
 					"request": {
-						"url": "{{host}}/events/{{event_id}}/join",
-						"method": "PUT",
+						"url": "{{host}}/events/search?page=1&per=10&keyword=もくもく",
+						"method": "GET",
 						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
@@ -154,10 +114,10 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": ""
+							"mode": "formdata",
+							"formdata": []
 						},
-						"description": "**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - 参加イベントid"
+						"description": "**URI Parameters**\n\n* keyword `string` (optional) Example: `もくもく`\n    - 検索キーワード\n\n* page `integer` (required) Example: `1`\n    - ページ番号\n\n* per `integer` (required) Example: `10`\n    - 1ページあたりの件数"
 					},
 					"response": []
 				},
@@ -168,10 +128,25 @@
 						"method": "PUT",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
 								"description": ""
-							},
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "**Note**\n\n* イベント開催者のみ(それ以外 => 403)\n* イベントステータスが 非公開 の場合にのみ公開可能 => 204\n* イベントステータスが 非公開 以外の場合 => 403\n* 対象イベントが見つからない => 404\n\n**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - イベントid"
+					},
+					"response": []
+				},
+				{
+					"name": "イベント参加",
+					"request": {
+						"url": "{{host}}/events/{{event_id}}/entry",
+						"method": "PUT",
+						"header": [
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
@@ -182,14 +157,54 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": "**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - 公開対象イベントid"
+						"description": "**Note**\n\n* ステータス= 公開/受付中 && 参加予定人数が参加上限人数を超えた時にステータスを 満員 に変更する\n* イベントステータスが 公開/受付中 の場合にのみ参加可能 => 204\n* イベントステータスが 公開/受付中 以外の場合 => 403\n* イベント開催者は参加できない => 403\n* 対象イベントが見つからない => 404\n\n**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - イベントid"
+					},
+					"response": []
+				},
+				{
+					"name": "イベント参加キャンセル",
+					"request": {
+						"url": "{{host}}/events/{{event_id}}/entry",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "**Note**\n\n* ステータス= 満員 && 参加予定人数が参加上限人数を下回った時にステータスを 公開/受付中 に変更する\n* イベントステータスが 公開/受付中 満員 受付終了 の場合にのみ参加可能 => 204\n* イベントステータスが上記以外の場合 or 参加していない場合 => 403\n* 対象イベントが見つからない => 404\n\n\n**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - イベントid"
+					},
+					"response": []
+				},
+				{
+					"name": "イベント受付終了",
+					"request": {
+						"url": "{{host}}/events/{{event_id}}/close",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "**Note**\n\n* イベント開催者のみ(それ以外 => 403)\n* これからの参加を停止する(元に戻せないため注意)\n* イベントステータスが 公開/受付中 満員 の場合にのみステータス変更可能 => 204\n* イベントステータスが上記以外の場合 => 403\n* 対象イベントが見つからない => 404\n\n**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - イベントid"
 					},
 					"response": []
 				},
 				{
 					"name": "コメント投稿",
 					"request": {
-						"url": "{{host}}/events/{{event_id}}/comment",
+						"url": "{{host}}/events/{{event_id}}/comments",
 						"method": "POST",
 						"header": [
 							{
@@ -205,9 +220,49 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"comment\": \"こんにちは。\"\n}"
+							"raw": "{\n  \"body\": \"こんにちは。\"\n}"
 						},
-						"description": "**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - コメント対象イベントid"
+						"description": "**Note**\n\n* comment: Markdown形式\n* 開催者のみ, 参加者にコメント投稿通知を送ることができる(任意)\n* 参加者のコメントは開催者に通知が送られる\n* イベントステータスが 非公開 以外の場合にのみ投稿可能 => 204\n* イベントステータスが 非公開 の場合 => 403\n* 対象イベントが見つからない => 404\n\n**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - コメント対象イベントid"
+					},
+					"response": []
+				},
+				{
+					"name": "参加予定イベント一覧取得",
+					"request": {
+						"url": "{{host}}/events/entries?page=1&per=10",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n- 自分が参加しているイベント(下記のどちらか)\n    + イベントステータス = 公開/受付中 OR 満員\n    + イベントステータス = 受付終了 AND 開催日が今日以降"
+					},
+					"response": []
+				},
+				{
+					"name": "自分が開催しているイベント一覧取得",
+					"request": {
+						"url": "{{host}}/events/own?page=1&per=10",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* 自分が開催しているイベント(過去・未来問わず)"
 					},
 					"response": []
 				}
@@ -224,11 +279,6 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
@@ -243,7 +293,7 @@
 					"response": []
 				},
 				{
-					"name": "ディレクトリ追加",
+					"name": "ディレクトリ追加/更新",
 					"request": {
 						"url": "{{host}}/files/{{dir_path}}",
 						"method": "PUT",
@@ -261,7 +311,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"neeco\",\n    \"target_type\": \"college\",\n    \"public_ids\": [\n    \t\"a\",\n    \t\"b\",\n    \t\"c\",\n    \t\"d\",\n    \t\"e\",\n    \t\"f\",\n    \t\"g\"\n    ]\n}"
+							"raw": "{\n    \"name\": \"neeco\",\n    \"target_type\": \"college\",\n    \"public_ids\": [\n      \"a\",\n      \"b\",\n      \"c\",\n      \"d\",\n      \"e\",\n      \"f\",\n      \"g\"\n    ]\n}"
 						},
 						"description": "**Note**\n\n* 正常に追加できた場合に201を返す\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco/`\n    - 現在のディレクトリ階層(末尾は/)"
 					},
@@ -273,11 +323,6 @@
 						"url": "{{host}}/files/{{dir_path}}",
 						"method": "DELETE",
 						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
@@ -304,11 +349,6 @@
 						"url": "{{host}}/files/{{file_path}}",
 						"method": "GET",
 						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
@@ -357,7 +397,7 @@
 								},
 								{
 									"key": "file",
-									"value": "dios.png",
+									"value": "",
 									"type": "file",
 									"enabled": true
 								}
@@ -399,11 +439,6 @@
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
@@ -426,7 +461,7 @@
 				{
 					"name": "通知追加-内部",
 					"request": {
-						"url": "http://localhost:3000/internal/notifications",
+						"url": "{{host}}/internal/notifications",
 						"method": "POST",
 						"header": [
 							{
@@ -446,17 +481,12 @@
 				{
 					"name": "ログイン中のユーザ宛の通知一覧取得",
 					"request": {
-						"url": "http://localhost:3000/notifications",
+						"url": "{{host}}/notifications",
 						"method": "GET",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "x-consumer-custom-id",
-								"value": "1",
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
 								"description": ""
 							}
 						],
@@ -471,18 +501,18 @@
 				{
 					"name": "確認済み通知の削除",
 					"request": {
-						"url": "http://localhost:3000/notifications/57e93a77d9201ad7bd8fcaaf",
+						"url": "http://localhost:3000/notifications/{{notification_id}}",
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
 								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user_id\": \"1\",\n  \"title\": \"[更新] もくもく会 #2\",\n  \"body\": \"イベント内容が変更されました\",\n  \"link\": \"http://example.com/events/2\",\n  \"image\": \"http://example.com/images/events/sample1.jpg\"\n}"
+							"raw": ""
 						},
 						"description": ""
 					},
@@ -492,7 +522,7 @@
 		},
 		{
 			"name": "Cuenta-Auth",
-			"description": "",
+			"description": "**Note**\n\n* 認証系API\n* ログアウトAPIは存在せず、クライアントがアクセストークンを破棄することでログアウトしたとみなす",
 			"item": [
 				{
 					"name": "ログイン",
@@ -510,7 +540,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"g002b8136\",\n  \"password\": \"g002b8136password\"\n}"
 						},
-						"description": "**Note**\n\n* アクセストークンを必要としない\n* 学籍番号とパスワードで認証を行う\n* 認証成功時: Kongと連携しアクセストークンを作成する\n    - アクセストークンの有効期限は1週間\n    - アクセストークンが作成済みであっても、追加で作成する(複数デバイス対応)\n    - APIクライアントはアクセストークンを保持する必要がある。\n* 認証失敗時: 404を返す\n* パラメータ不正時: 400を返す"
+						"description": "**Note**\n\n* アクセストークンを必要としない\n* 学籍番号(大文字/小文字問わない)とパスワードで認証を行う\n* 認証成功時: Kongと連携しアクセストークンを作成する\n* アクセストークンの有効期限は1週間\n* アクセストークンが作成済みであっても、追加で作成する(複数デバイス対応)\n* APIクライアントはアクセストークンを保持する必要がある。\n* 認証失敗時: 404を返す\n* パラメータ不正時: 400を返す"
 					},
 					"response": []
 				}
@@ -518,13 +548,33 @@
 		},
 		{
 			"name": "Cuenta-User",
-			"description": "",
+			"description": "**Note**\n\n* 全てのリクエストヘッダーにアクセストークンを付加する必要がある",
 			"item": [
 				{
-					"name": "ユーザリスト取得",
+					"name": "ログイン中のユーザ情報取得",
 					"request": {
-						"url": "{{host}}/users/list?user_ids=1+2+3",
+						"url": "{{host}}/users",
 						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ログイン中のユーザパスワード変更",
+					"request": {
+						"url": "{{host}}/users/password",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -538,10 +588,42 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "{\n  \"current_password\": \"g002b8136password\",\n  \"new_password\": \"g002b8136\"\n}"
 						},
-						"description": "**Note**\n\n* 全てのユーザが取得できた場合のみ200を返す\n* ユーザが指定されなかった場合は400を返す\n* 一人でも取得できなかった場合は403を返す\n\n**URI Parameters**\n\n* user_ids `array[string]` (required) Example: `1+2+3`\n    - 取得対象ユーザID一覧"
+						"description": "**Note**\n\n* パスワード変更成功時 => 204\n* current_passwordが正しく無い => 403"
+					},
+					"response": []
+				},
+				{
+					"name": "ログイン中のユーザ画像更新",
+					"request": {
+						"url": "{{host}}/users/image",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"value": "",
+									"type": "file",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
 					},
 					"response": []
 				},
@@ -551,11 +633,6 @@
 						"url": "{{host}}/users/search?str=田&college_ids=c",
 						"method": "GET",
 						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
@@ -567,6 +644,34 @@
 							"formdata": []
 						},
 						"description": "**Note**\n\n* 氏名と学籍番号を対象にLIKE検索\n* 検索結果が0件の場合でも200を返す\n* str が指定されなかった場合のみ400を返す\n* user_ids と college_codesはXORの関係、同時に指定されることはない。\n* 仮に user_ids とcollege_codesの両方が指定された場合は user_ids のみ参照する\n\n**URI Parameters**\n\n* str `string` (required) Example: `田`\n    - 氏名 or 学籍番号\n\n* user_ids `array[string]` (optional) Example: `1+2+3`\n    - 検索対象ユーザID一覧\n\n* college_codes `array[string]` (optional) Example: `c+g`\n    - 検索対象カレッジCode一覧"
+					},
+					"response": []
+				},
+				{
+					"name": "ユーザ情報取得-内部",
+					"request": {
+						"url": "{{host}}/internal/users/{{user_id}}",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* 内部向けAPI(認証の必要がない)\n* 指定されたユーザが見つからなかった場合にのみ404を返す"
+					},
+					"response": []
+				},
+				{
+					"name": "ユーザリスト取得-内部",
+					"request": {
+						"url": "{{host}}/internal/users/list?1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* 内部向けAPI(認証の必要がない)\n* 全てのユーザが取得できた場合のみ200を返す\n* ユーザが指定されなかった場合は400を返す\n* 一人でも取得できなかった場合は403を返す"
 					},
 					"response": []
 				}
