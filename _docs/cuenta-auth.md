@@ -42,3 +42,36 @@
 * Response 400
 
 * Response 404
+
+
+## Group Token API
+
+* Request
+
+    + 全てのリクエスト ヘッダーにアクセストークンを付加する必要がある
+
+    + Headers Attributes
+        - Authorization (string, required) - アクセストークン
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
+
+##  Update Token [/token]
+
+### アクセストークンの有効期限延長 [POST]
+
+**Note**
+
+* アクセストークンの有効期限を1週間延長する(実装はトークン再作成)
+
+* Response 200 (application/json)
+
+    + Body Attributes
+        * token: (string) - 更新後アクセストークン
+
+    + Body
+
+            {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."
+            }
