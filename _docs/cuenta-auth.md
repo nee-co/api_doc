@@ -19,14 +19,14 @@
 * 認証失敗時: 404を返す
 * パラメータ不正時: 400を返す
 
-+ Request (application/json)
+* Request (application/json)
 
         {
             "number": "g011a1111",
             "password": "g011a1111password"
         }
 
-+ Response 201 (application/json)
+* Response 201 (application/json)
 
         {
             "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
@@ -39,6 +39,6 @@
               "name": "クリエイターズ"
         }
 
-+ Response 400
+* Response 400
 
-+ Response 404
+* Response 404
