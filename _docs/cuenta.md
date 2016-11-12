@@ -1,19 +1,98 @@
-## Group User API
+## Group Auth API
 
-* Request
+##  Auth [/auth/login]
 
-    + 全てのリクエスト ヘッダーにアクセストークンを付加する必要がある
+**Note**
+* 認証系API
+* ログアウトAPIは存在せず、クライアントがアクセストークンを破棄することでログアウトしたとみなす
 
-    + Headers Attributes
-        - Authorization (string, required) - アクセストークン
+### ログイン [POST]
 
-    + Headers
+**Note**
+* アクセストークンを必要としない
+* 学籍番号(大文字/小文字問わない)とパスワードで認証を行う
+* 認証成功時: Kongと連携しアクセストークンを作成する
+    + アクセストークンの有効期限は1週間
+    + アクセストークンが作成済みであっても、追加で作成する(複数デバイス対応)
+    + APIクライアントはアクセストークンを保持する必要がある。
+* 認証失敗時: 404を返す
+* パラメータ不正時: 400を返す
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
+* Request (multipart/form-data)
+
+    + Body Attributes
+        * number: `g011a1111` (string, required) - 学籍番号
+        * password: `g011a1111password` (string, required) - パスワード
+
+    + Body
+
+            {
+                "number": "g011a1111",
+                "password": "g011a1111password"
+            }
+
+* Response 201 (application/json)
+
+        {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+            "user_id": 1,
+            "number": "G011C1111",
+            "name": "田中 太郎",
+            "user_image": "http://example.com/user/sample1.jpg",
+            "college": {
+              "code": "a",
+              "name": "クリエイターズ"
+        }
+
+* Response 400
+
+* Response 404
+
+
+## Group Token API
+
+**Request**
+* 全てのリクエスト ヘッダーにアクセストークンを付加する必要がある
+* Headers Attributes
+    + Authorization (string, required) - アクセストークン
+* Headers
+
+        Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
+
+##  Update Token [/token]
+
+### アクセストークンの有効期限延長 [POST]
+
+**Note**
+* アクセストークンの有効期限を1週間延長する(トークン再作成)
+
+* Response 200 (application/json)
+
+    + Body Attributes
+        * token: (string) - 更新後アクセストークン
+
+    + Body
+
+            {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."
+            }
+
+## Group Login User API
+
+**Note**
+* ログイン中のユーザを操作するAPI
+
+**Request**
+* 全てのリクエスト ヘッダーにアクセストークンを付加する必要がある
+* Headers Attributes
+    + Authorization (string, required) - アクセストークン
+* Headers
+
+        Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
 
 ##  Login User [/user]
 
-### ログイン中のユーザ情報取得 [GET]
+### ユーザ情報取得 [GET]
 
 * Response 200 (application/json)
 
@@ -43,10 +122,9 @@
 
 ##  Login User Password [/user/password]
 
-### ログイン中のユーザパスワード変更 [PATCH]
+### ユーザパスワード変更 [PATCH]
 
 **Note**
-
 * パスワード変更成功時 => 204
 * current_passwordが正しく無い => 403
 
@@ -68,10 +146,9 @@
 
 ##  Login User Note [/user/note]
 
-### ログイン中のユーザ備考変更 [PATCH]
+### ユーザ備考変更 [PATCH]
 
 **Note**
-
 * 備考変更成功時 => 204
 
 * Request (multipart/form-data)
@@ -89,7 +166,7 @@
 
 ##  Login User Image [/user/image]
 
-### ログイン中のユーザ画像更新 [POST]
+### ユーザ画像更新 [POST]
 
 * Request (multipart/form-data)
 
@@ -128,7 +205,9 @@
                 }
             }
 
-## User Search [/users/search{?str,user_ids,college_codes}]
+## Group User API
+
+## User Search [/users/search{?str,user_ids,college_codes,except_ids}]
 
 ### ユーザLIKE検索 [GET]
 
@@ -142,8 +221,9 @@
 
 * Parameters
     + str: `田` (string, required) - 氏名 or 学籍番号
-    + user_ids: `1+2+3` (array[string], optional) - 検索対象ユーザID一覧
-    + college_codes: `c+g` (array[string], optional) - 検索対象カレッジCode一覧
+    + user_ids: `1+2+3+4` (array[string], optional) - 検索対象ユーザID
+    + college_codes: `c+g` (array[string], optional) - 検索対象カレッジCode
+    + except_ids: `4` (array[string], optional) - 検索対象外ユーザID
 
 * Response 200 (application/json)
 
@@ -240,7 +320,7 @@
           "message": "指定されたユーザは見つかりませんでした"
         }
 
-## User [/internal/users/{user_id}]
+## Internal User [/internal/users/{user_id}]
 
 ### ユーザ情報取得-内部 [GET]
 
@@ -277,24 +357,24 @@
                 }
             }
 
-+ Response 404 (application/json)
+* Response 404 (application/json)
 
         {
           "message": "指定されたユーザは見つかりませんでした"
         }
 
-## User List [/internal/users/list{?user_ids}]
+## Internal User List [/internal/users/list{?user_ids}]
 
 ### ユーザリスト取得-内部 [GET]
 
 **Use Case**
-- イベント管理システム>参加者一覧+コメント投稿者一覧
+* イベント管理システム>参加者一覧+コメント投稿者一覧
 
 **Note**
-- 内部向けAPI(認証の必要がない)
-- 全てのユーザが取得できた場合のみ200を返す
-- ユーザが指定されなかった場合は400を返す
-- 一人でも取得できなかった場合は403を返す
+* 内部向けAPI(認証の必要がない)
+* 全てのユーザが取得できた場合のみ200を返す
+* ユーザが指定されなかった場合は400を返す
+* 一人でも取得できなかった場合は403を返す
 
 * Parameters
     + user_ids: `1+2+3` (array[string], required) - 取得対象ユーザID一覧
