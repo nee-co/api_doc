@@ -1,30 +1,110 @@
-## Group User API
+## Group Auth API
 
-* Request
+##  Auth [/auth/login]
 
-    + 全てのリクエスト ヘッダーにアクセストークンを付加する必要がある
+**Note**
+* 認証系API
+* ログアウトAPIは存在せず、クライアントがアクセストークンを破棄することでログアウトしたとみなす
 
-    + Headers Attributes
-        - Authorization (string, required) - アクセストークン
+### ログイン [POST]
 
-    + Headers
+**Note**
+* アクセストークンを必要としない
+* 学籍番号(大文字/小文字問わない)とパスワードで認証を行う
+* 認証成功時: Kongと連携しアクセストークンを作成する
+    + アクセストークンの有効期限は1週間
+    + アクセストークンが作成済みであっても、追加で作成する(複数デバイス対応)
+    + APIクライアントはアクセストークンを保持する必要がある。
+* 認証失敗時: 404を返す
+* パラメータ不正時: 400を返す
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
-
-##  Login User [/users]
-
-### ログイン中のユーザ情報取得 [GET]
-
-+ Response 200 (application/json)
+* Request (multipart/form-data)
 
     + Body Attributes
-        - user_id: (integer) - ユーザID
-        - number: (string) - 学籍番号
-        - name: (string) - ユーザ名
-        - user_image: (string) - プロフィール画像フルパス
-        - college: (object) - 所属カレッジ
-            * code: (string) - カレッジ一意のコード
-            * name: (string) - カレッジ名
+        * number: `g011a1111` (string, required) - 学籍番号
+        * password: `g011a1111password` (string, required) - パスワード
+
+    + Body
+
+            {
+                "number": "g011a1111",
+                "password": "g011a1111password"
+            }
+
+* Response 201 (application/json)
+
+        {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+            "user_id": 1,
+            "number": "G011C1111",
+            "name": "田中 太郎",
+            "user_image": "http://example.com/user/sample1.jpg",
+            "college": {
+              "code": "a",
+              "name": "クリエイターズ"
+        }
+
+* Response 400
+
+* Response 404
+
+
+## Group Token API
+
+**Request**
+* 全てのリクエスト ヘッダーにアクセストークンを付加する必要がある
+* Headers Attributes
+    + Authorization (string, required) - アクセストークン
+* Headers
+
+        Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
+
+##  Update Token [/token]
+
+### アクセストークンの有効期限延長 [POST]
+
+**Note**
+* アクセストークンの有効期限を1週間延長する(トークン再作成)
+
+* Response 200 (application/json)
+
+    + Body Attributes
+        * token: (string) - 更新後アクセストークン
+
+    + Body
+
+            {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."
+            }
+
+## Group Login User API
+
+**Note**
+* ログイン中のユーザを操作するAPI
+
+**Request**
+* 全てのリクエスト ヘッダーにアクセストークンを付加する必要がある
+* Headers Attributes
+    + Authorization (string, required) - アクセストークン
+* Headers
+
+        Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
+
+##  Login User [/user]
+
+### ユーザ情報取得 [GET]
+
+* Response 200 (application/json)
+
+    + Body Attributes
+        * user_id: (number) - ユーザID
+        * number: (string) - 学籍番号
+        * name: (string) - ユーザ名
+        * note: (string) - 備考
+        * user_image: (string) - ユーザ画像URL
+        * college: (object) - 所属カレッジ
+            + code: (string) - カレッジ一意のコード
+            + name: (string) - カレッジ名
 
     + Body
 
@@ -32,52 +112,84 @@
                 "user_id": 1,
                 "number": "G099C1001",
                 "name": "田中 太郎",
-                "user_image": "http://example.com/user/sample1.jpg",
+                "note": "ハロー",
+                "user_image": "https://static.neec.ooo/user/sample1.jpg",
                 "college": {
                   "code": "c",
                   "name": "IT"
                 }
             }
 
-##  Update User Password [/users/password]
+##  Login User Password [/user/password]
 
-### ログイン中のユーザパスワード変更 [PATCH]
+### ユーザパスワード変更 [PATCH]
 
 **Note**
-
 * パスワード変更成功時 => 204
 * current_passwordが正しく無い => 403
 
-+ Request (application/json)
-
-        {
-            "current_password": "current_password",
-            "new_password": "new_password"
-        }
-
-+ Response 204
-+ Response 403
-
-##  Upload User Image [/users/image]
-
-### ログイン中のユーザ画像更新 [POST]
-
-+ Request (multipart/form-data)
-
-        {
-            "image": アップロード対象画像
-        }
-
-+ Response 200 (application/json)
+* Request (multipart/form-data)
 
     + Body Attributes
-        - user_id: (integer) - ユーザID
-        - number: (string) - 学籍番号
-        - name: (string) - ユーザ名
-        - user_image: (string) - アップロード後 プロフィール画像フルパス
-        - college: (object) - 所属カレッジ
-            * code: (string) - カレッジ一意のコード
-            * name: (string) - カレッジ名
+        * current_password: `current_password` (string, required) - 現在のパスワード
+        * new_password: `new_password` (string, required) - 変更後パスワード
+
+    + Body
+
+            {
+                "current_password": "current_password",
+                "new_password": "new_password"
+            }
+
+* Response 204
+* Response 403
+
+##  Login User Note [/user/note]
+
+### ユーザ備考変更 [PATCH]
+
+**Note**
+* 備考変更成功時 => 204
+
+* Request (multipart/form-data)
+
+    + Body Attributes
+        * note: `ボーリング得意です` (string, required) - 変更後備考
+
+    + Body
+
+            {
+                "note": "ボーリング得意です",
+            }
+
+* Response 204
+
+##  Login User Image [/user/image]
+
+### ユーザ画像更新 [POST]
+
+* Request (multipart/form-data)
+
+    + Body Attributes
+        * image: (file) - アップロード画像
+
+    + Body
+
+            {
+                "image": アップロード画像
+            }
+
+* Response 200 (application/json)
+
+    + Body Attributes
+        * user_id: (number) - ユーザID
+        * number: (string) - 学籍番号
+        * name: (string) - ユーザ名
+        * note: (string) - 備考
+        * user_image: (string) - ユーザ画像URL
+        * college: (object) - 所属カレッジ
+            + code: (string) - カレッジ一意のコード
+            + name: (string) - カレッジ名
 
     + Body
 
@@ -85,45 +197,47 @@
                 "user_id": 1,
                 "number": "G099C1001",
                 "name": "田中 太郎",
-                "user_image": "http://example.com/user/sample1.jpg",
+                "note": "Hello",
+                "user_image": "https://static.neec.ooo/user/sample2.jpg",
                 "college": {
                   "code": "c",
                   "name": "IT"
                 }
             }
 
-## User Search [/users/search{?str,user_ids,college_codes}]
+## Group User API
+
+## User Search [/users/search{?str,user_ids,college_codes,except_ids}]
 
 ### ユーザLIKE検索 [GET]
 
-**Use Case**
-- ファイル管理システム>公開対象追加>ユーザ登録/検索
-
 **Note**
-- 氏名と学籍番号を対象にLIKE検索
-- 検索結果が0件の場合でも200を返す
-- 検索結果が50件以上の場合は, 先頭50件のみ返す(そのうち、良い感じにsortする)
-- `str` が指定されなかった場合のみ400を返す
-- `user_ids` と `college_codes` はXORの関係、同時に指定されることはない。
-- 仮に `user_ids` と `college_codes` の両方が指定された場合は `user_ids` のみ参照する
+* 氏名と学籍番号を対象にLIKE検索
+* 検索結果が0件の場合でも200を返す
+* 検索結果が50件以上の場合は, 先頭50件のみ返す(そのうち、良い感じにsortする)
+* `str` が指定されなかった場合のみ400を返す
+* `user_ids` と `college_codes` はXORの関係、同時に指定されることはない。
+* 仮に `user_ids` と `college_codes` の両方が指定された場合は `user_ids` のみ参照する
 
-+ Parameters
+* Parameters
     + str: `田` (string, required) - 氏名 or 学籍番号
-    + user_ids: `1+2+3` (array[string], optional) - 検索対象ユーザID一覧
-    + college_codes: `c+g` (array[string], optional) - 検索対象カレッジCode一覧
+    + user_ids: `1+2+3+4` (array[string], optional) - 検索対象ユーザID
+    + college_codes: `c+g` (array[string], optional) - 検索対象カレッジCode
+    + except_ids: `4` (array[string], optional) - 検索対象外ユーザID
 
-+ Response 200 (application/json)
+* Response 200 (application/json)
 
     + Body Attributes
-        + total_count: (integer) - ユーザ数
-        + users: (array) - ユーザ一覧
-          - user_id: (integer) - ユーザID
-          - number: (string) - 学籍番号
-          - name: (string) - ユーザ名
-          - user_image: (string) - プロフィール画像フルパス
-          - college: (object) - 所属カレッジ
-              * code: (string) - カレッジ一意のコード
-              * name: (string) - カレッジ名
+        * total_count: (number) - ユーザ数
+        * users: (array) - ユーザ一覧
+          + user_id: (number) - ユーザID
+          + number: (string) - 学籍番号
+          + name: (string) - ユーザ名
+          + note: (string) - 備考
+          + user_image: (string) - ユーザ画像URL
+          + college: (object) - 所属カレッジ
+              - code: (string) - カレッジ一意のコード
+              - name: (string) - カレッジ名
 
     + Body
 
@@ -134,7 +248,8 @@
                     "user_id": 1,
                     "number": "G099C1001",
                     "name": "田中 太郎",
-                    "user_image": "http://example.com/user/sample1.jpg",
+                    "note": "ハロー",
+                    "user_image": "https://static.neec.ooo/user/sample1.jpg",
                     "college": {
                       "code": "c",
                       "name": "IT"
@@ -144,7 +259,8 @@
                     "user_id": 3,
                     "number": "G099G1003",
                     "name": "山田 花子 ",
-                    "user_image": "http://example.com/user/sample3.jpg",
+                    "note": "Hello",
+                    "user_image": "https://static.neec.ooo/user/sample3.jpg",
                     "college": {
                       "code": "g",
                       "name": "デザイン"
@@ -153,7 +269,7 @@
               ]
             }
 
-+ Response 400 (application/json)
+* Response 400 (application/json)
 
         {
           "message": "リクエストパラメータが不正です"
@@ -164,24 +280,25 @@
 ### ユーザ情報取得 [GET]
 
 **Use Case**
-- プロフィール画面
+* プロフィール画面
 
 **Note**
-- 指定されたユーザが見つからなかった場合にのみ404を返す
+* 指定されたユーザが見つからなかった場合にのみ404を返す
 
-+ Parameters
+* Parameters
     + user_id: `1` (number, required) - ユーザID
 
-+ Response 200 (application/json)
+* Response 200 (application/json)
 
     + Body Attributes
-        - user_id: (integer) - ユーザID
-        - number: (string) - 学籍番号
-        - name: (string) - ユーザ名
-        - user_image: (string) - プロフィール画像フルパス
-        - college: (object) - 所属カレッジ
-            * code: (string) - カレッジ一意のコード
-            * name: (string) - カレッジ名
+        * user_id: (number) - ユーザID
+        * number: (string) - 学籍番号
+        * name: (string) - ユーザ名
+        * note: (strign) - 備考
+        * user_image: (string) - ユーザ画像URL
+        * college: (object) - 所属カレッジ
+            + code: (string) - カレッジ一意のコード
+            + name: (string) - カレッジ名
 
     + Body
 
@@ -189,7 +306,8 @@
                 "user_id": 1,
                 "number": "G099C1001",
                 "name": "田中 太郎",
-                "user_image": "http://example.com/user/sample1.jpg",
+                "note": "Hello",
+                "user_image": "https://static.neec.ooo/user/sample1.jpg",
                 "college": {
                   "code": "c",
                   "name": "IT"
@@ -202,27 +320,28 @@
           "message": "指定されたユーザは見つかりませんでした"
         }
 
-## User [/internal/users/{user_id}]
+## Internal User [/internal/users/{user_id}]
 
 ### ユーザ情報取得-内部 [GET]
 
 **Note**
-- 内部向けAPI(認証の必要がない)
-- 指定されたユーザが見つからなかった場合にのみ404を返す
+* 内部向けAPI(認証の必要がない)
+* 指定されたユーザが見つからなかった場合にのみ404を返す
 
-+ Parameters
+* Parameters
     + user_id: `1` (number, required) - ユーザID
 
-+ Response 200 (application/json)
+* Response 200 (application/json)
 
     + Body Attributes
-        - user_id: (integer) - ユーザID
-        - number: (string) - 学籍番号
-        - name: (string) - ユーザ名
-        - user_image: (string) - プロフィール画像フルパス
-        - college: (object) - 所属カレッジ
-            * code: (string) - カレッジ一意のコード
-            * name: (string) - カレッジ名
+        * user_id: (number) - ユーザID
+        * number: (string) - 学籍番号
+        * name: (string) - ユーザ名
+        * note: (string) - 備考
+        * user_image: (string) - ユーザ画像URL
+        * college: (object) - 所属カレッジ
+            + code: (string) - カレッジ一意のコード
+            + name: (string) - カレッジ名
 
     + Body
 
@@ -230,46 +349,48 @@
                 "user_id": 1,
                 "number": "G099C1001",
                 "name": "田中 太郎",
-                "user_image": "http://example.com/user/sample1.jpg",
+                "note": "",
+                "user_image": "https://static.neec.ooo/user/sample1.jpg",
                 "college": {
                   "code": "c",
                   "name": "IT"
                 }
             }
 
-+ Response 404 (application/json)
+* Response 404 (application/json)
 
         {
           "message": "指定されたユーザは見つかりませんでした"
         }
 
-## User List [/internal/users/list{?user_ids}]
+## Internal User List [/internal/users/list{?user_ids}]
 
 ### ユーザリスト取得-内部 [GET]
 
 **Use Case**
-- イベント管理システム>参加者一覧+コメント投稿者一覧
+* イベント管理システム>参加者一覧+コメント投稿者一覧
 
 **Note**
-- 内部向けAPI(認証の必要がない)
-- 全てのユーザが取得できた場合のみ200を返す
-- ユーザが指定されなかった場合は400を返す
-- 一人でも取得できなかった場合は403を返す
+* 内部向けAPI(認証の必要がない)
+* 全てのユーザが取得できた場合のみ200を返す
+* ユーザが指定されなかった場合は400を返す
+* 一人でも取得できなかった場合は403を返す
 
-+ Parameters
+* Parameters
     + user_ids: `1+2+3` (array[string], required) - 取得対象ユーザID一覧
 
-+ Response 200 (application/json)
+* Response 200 (application/json)
 
     + Body Attributes
-        + users: (array) - ユーザ一覧
-          - user_id: (integer) - ユーザID
-          - number: (string) - 学籍番号
-          - name: (string) - ユーザ名
-          - user_image: (string) - プロフィール画像フルパス
-          - college: (object) - 所属カレッジ
-              * code: (string) - カレッジ一意のコード
-              * name: (string) - カレッジ名
+        * users: (array) - ユーザ一覧
+          + user_id: (number) - ユーザID
+          + number: (string) - 学籍番号
+          + name: (string) - ユーザ名
+          + note: (string) - 備考
+          + user_image: (string) - ユーザ画像URL
+          + college: (object) - 所属カレッジ
+              - code: (string) - カレッジ一意のコード
+              - name: (string) - カレッジ名
 
     + Body
 
@@ -279,7 +400,7 @@
                     "user_id": 1,
                     "number": "G099C1001",
                     "name": "田中 太郎",
-                    "user_image": "http://example.com/user/sample1.jpg",
+                    "user_image": "https://static.neec.ooo/user/sample1.jpg",
                     "college": {
                       "code": "c",
                       "name": "IT"
@@ -289,7 +410,7 @@
                     "user_id": 2,
                     "number": "G099C1002",
                     "name": "山本 二郎",
-                    "user_image": "http://example.com/user/sample2.jpg",
+                    "user_image": "https://static.neec.ooo/user/sample2.jpg",
                     "college": {
                       "code": "c",
                       "name": "IT"
@@ -299,7 +420,7 @@
                     "user_id": 3,
                     "number": "G099G1003",
                     "name": "山田 花子 ",
-                    "user_image": "http://example.com/user/sample3.jpg",
+                    "user_image": "https://static.neec.ooo/user/sample3.jpg",
                     "college": {
                       "code": "g",
                       "name": "デザイン"
@@ -308,13 +429,13 @@
               ]
             }
 
-+ Response 400 (application/json)
+* Response 400 (application/json)
 
         {
           "message": "リクエストパラメータが不正です"
         }
 
-+ Response 404 (application/json)
+* Response 404 (application/json)
 
         {
           "message": "一部または全てのユーザが取得できませんでした"
