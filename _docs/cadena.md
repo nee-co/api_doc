@@ -203,13 +203,12 @@
 
 * Response 200 (application/json)
     + Body Attributes
-        * groups: (array[group]) - グループ一覧
-            + group_id: (number) - グループID
-            + name: (string) - グループ名
-            + note: (string) - 備考
-            + is_private: (boolean) - 非公開フラグ
-            + group_image: (string) - グループ画像URL
-            + members: (array[user])
+        * group_id: (number) - グループID
+        * name: (string) - グループ名
+        * note: (string) - 備考
+        * is_private: (boolean) - 非公開フラグ
+        * group_image: (string) - グループ画像URL
+        * members: (array[user])
 
     + Body
 
@@ -450,7 +449,7 @@
 
 ##  Internal Group [/internal/groups/{group_id}]
 
-### グループメンバID取得+内部 [GET]
+### グループメンバID取得-内部 [GET]
 
 **Note**
 
@@ -474,3 +473,39 @@
             }
 
 * Response 400
+
+##  Internal Group Collection [/internal/groups{?user_id}]
+
+### 指定ユーザが所属するグループ一覧-内部 [GET]
+
+* Parameters
+    + user_id: 1 (number, required) - ユーザID
+
+* Response 200 (application/json)
+    + Body Attributes
+        * groups: (array[group]) - グループ一覧
+            + group_id: (number) - グループID
+            + name: (string) - グループ名
+            + note: (string) - 備考
+            + is_private: (boolean) - 非公開フラグ
+            + group_image: (string) - グループ画像URL
+
+    + Body
+
+                "groups": [
+                    {
+                        "group_id": 1,
+                        "name": "IS-07",
+                        "note": "ITスペシャリスト科 7期のグループ",
+                        "is_private": false,
+                        "group_image": "https://static.neec.ooo/hoehoge.png"
+
+                    },
+                    {
+                        "group_id": 2,
+                        "name": "IS-07-Systems",
+                        "note": "ITスペシャリスト科 7期システム専攻",
+                        "is_private": true,
+                        "group_image": "https://static.neec.ooo/fugafuga.jpg"
+                    }
+                ]
