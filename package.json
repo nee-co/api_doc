@@ -1,0 +1,19 @@
+{
+  "name": "api-documents",
+  "version": "1.0.0",
+  "description": "API documents for Nee-co.",
+  "devDependencies": {
+    "aglio": "^2.3"
+  },
+  "scripts": {
+    "postinstall": "aglio -i src/neeco.apib -o build/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/nhac/api_doc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/nhac/api_doc#readme"
+}
