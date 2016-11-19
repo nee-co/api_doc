@@ -22,7 +22,6 @@
 **Note**
 
 * body: Markdown形式
-* tag: 各タグidの配列
 * event_image: json値ではなくイベント画像ファイル
 * 必須項目(title)が未設定の場合 => 400
 
@@ -31,11 +30,6 @@
         {
             "title": "第1会もくもく会",
             "event_image": イベント画像(type=file),
-            "tags": [
-                "1",
-                "2",
-                "3"
-            ],
             "body": "第1回もくもく会を開催いたします",
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
@@ -49,11 +43,6 @@
             "event_id": 1,
             "title": "第1会もくもく会",
             "event_image": "sample1.jpg",
-            "tags": [
-                "もくもく会",
-                "Ruby",
-                "Scala"
-            ],
             "body": "第1回もくもく会を開催いたします",
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
@@ -82,7 +71,6 @@
       + event_id: (number) - イベントID
       + title: (string) - イベントタイトル
       + event_image: (string) - イベント画像フルパス
-      + tags: (array) - タグ名配列
       + body: (string) - イベント内容(Markdown形式)
       + register: (object) - イベント登録者
           - name: (string) - ユーザ名
@@ -91,7 +79,6 @@
           - college: (object) - 所属カレッジ
               * code: (string) - カレッジ一意のコード
               * name: (string) - カレッジ名
-      + published_at: (datetime) - 公開日時
       + started_at: (datetime) - 開催日時
       + ended_at: (datetime) - 終了日時
       + venue: (string) - 会場
@@ -109,11 +96,6 @@
                 "event_id": 1,
                 "title": "第1会もくもく会",
                 "event_image": "http://example.com/image/sample1.jpg",
-                "tags": [
-                    "もくもく会",
-                    "Ruby",
-                    "Scala"
-                ],
                 "body": "第1回もくもく会を開催いたします",
                 "register": {
                     "name": "sasaki",
@@ -124,7 +106,6 @@
                         "name": "IT"
                     }
                 },
-                "published_at": "2016/06/01 09:00",
                 "started_at": "2016/06/03 12:00",
                 "ended_at": "2016/06/03 15:00",
                 "venue": "研究棟B 401",
@@ -198,12 +179,6 @@
         {
             "title": "第2会もくもく会",
             "event_image": "sample2.jpg",
-            "tags": [
-                "1",
-                "2",
-                "3",
-                "4"
-            ],
             "body": "第2回もくもく会を開催いたします",
             "started_at": "2016/06/03 13:00",
             "ended_at": "2016/06/03 16:00",
@@ -218,14 +193,7 @@
             "event_id": 1,
             "title": "第2会もくもく会",
             "event_image": "sample2.jpg",
-            "tags": [
-                "もくもく会",
-                "Ruby",
-                "Scala",
-                "Elixir"
-            ],
             "body": "第2回もくもく会を開催いたします",
-            "published_at": "2016/06/01 09:00",
             "started_at": "2016/06/03 13:00",
             "ended_at": "2016/06/03 16:00",
             "venue": "研究棟B 402",
@@ -397,7 +365,6 @@
           - title: (string) - イベントタイトル
           - status: (string) - ステータス
           - event_image: (string) - イベント画像フルパス
-          - tags: (array) - タグ名
 
     + Body
 
@@ -410,22 +377,13 @@
                         "event_id": 1,
                         "title": "第1会もくもく会",
                         "event_image": "http://example.com/image/sample1.jpg",
-                        "status": "published",
-                        "tags": [
-                            "もくもく会",
-                            "Ruby",
-                            "Scala"
-                        ]
+                        "status": "published"
                     },
                     {
                         "event_id": 2,
                         "title": "Rails勉強会",
                         "event_image": "http://example.com/image/sample2.jpg",
-                        "status": "published",
-                        "tags": [
-                            "Ruby",
-                            "Ruby on Rails"
-                        ]
+                        "status": "published"
                     }
                 ]
             }
@@ -452,7 +410,6 @@
           - title: (string) - イベントタイトル
           - status: (string) - ステータス
           - event_image: (string) - イベント画像フルパス
-          - tags: (array) - タグ名
 
     + Body
 
@@ -465,22 +422,13 @@
                         "event_id": 1,
                         "title": "第1会もくもく会",
                         "event_image": "http://example.com/image/sample1.jpg",
-                        "status": "draft",
-                        "tags": [
-                            "もくもく会",
-                            "Ruby",
-                            "Scala"
-                        ]
+                        "status": "draft"
                     },
                     {
                         "event_id": 2,
                         "title": "Rails勉強会",
                         "event_image": "http://example.com/image/sample2.jpg",
-                        "status": "full",
-                        "tags": [
-                            "Ruby",
-                            "Ruby on Rails"
-                        ]
+                        "status": "full"
                     }
                 ]
             }
@@ -510,7 +458,6 @@
           - title: (string) - イベントタイトル
           - status: (integer) - ステータスID
           - event_image: (string) - イベント画像フルパス
-          - tags: (array) - タグ名
 
     + Body
 
@@ -523,22 +470,13 @@
                         "event_id": 1,
                         "title": "第1会もくもく会",
                         "event_image": "http://example.com/image/sample1.jpg",
-                        "status": "published",
-                        "tags": [
-                            "もくもく会",
-                            "Ruby",
-                            "Scala"
-                        ]
+                        "status": "published"
                     },
                     {
                         "event_id": 2,
                         "title": "Rails勉強会",
                         "event_image": "http://example.com/image/sample2.jpg",
-                        "status": "published",
-                        "tags": [
-                            "Ruby",
-                            "Ruby on Rails"
-                        ]
+                        "status": "published"
                     }
                 ]
             }
