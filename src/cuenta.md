@@ -312,51 +312,6 @@
 
 * Response 400
 
-## User [/users/{user_id}]
-
-### ユーザ情報取得 [GET]
-
-**Use Case**
-* プロフィール画面
-
-**Note**
-* 指定されたユーザが見つからなかった場合にのみ404を返す
-
-* Parameters
-    + user_id: `1` (number, required) - ユーザID
-
-* Response 200 (application/json)
-
-    + Body Attributes
-        * id: (number) - ユーザID
-        * number: (string) - 学籍番号
-        * name: (string) - ユーザ名
-        * note: (strign) - 備考
-        * image: (string) - ユーザ画像URL
-        * college: (object) - 所属カレッジ
-            + code: (string) - カレッジ一意のコード
-            + name: (string) - カレッジ名
-
-    + Body
-
-            {
-                "id": 1,
-                "number": "G099C1001",
-                "name": "田中 太郎",
-                "note": "Hello",
-                "image": "https://static.neec.ooo/user/sample1.jpg",
-                "college": {
-                  "code": "c",
-                  "name": "IT"
-                }
-            }
-
-+ Response 404 (application/json)
-
-        {
-          "message": "指定されたユーザは見つかりませんでした"
-        }
-
 ## Internal User [/internal/users/{user_id}]
 
 ### ユーザ情報取得-内部 [GET]
