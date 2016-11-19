@@ -206,28 +206,24 @@
 
 ## Group User API
 
-## User Search [/users/search{?str,user_ids,college_codes,except_ids}]
+## User Name Search [/users/search{?name,limit,offset,except_ids}]
 
-### ユーザLIKE検索 [GET]
+### ユーザ名LIKE検索 [GET]
 
 **Note**
-* 氏名と学籍番号を対象にLIKE検索
-* 検索結果が0件の場合でも200を返す
-* 検索結果が50件以上の場合は, 先頭50件のみ返す(そのうち、良い感じにsortする)
-* `str` が指定されなかった場合のみ400を返す
-* `user_ids` と `college_codes` はXORの関係、同時に指定されることはない。
-* 仮に `user_ids` と `college_codes` の両方が指定された場合は `user_ids` のみ参照する
+* 氏名を対象にLIKE検索
+* 検索結果が0件の場合 => 200(空配列)
+* パラメータ不正 => 400
 
 * Parameters
-    + str: `田` (string, required) - 氏名 or 学籍番号
-    + user_ids: `1+2+3+4` (array[string], optional) - 検索対象ユーザID
-    + college_codes: `c+g` (array[string], optional) - 検索対象カレッジCode
-    + except_ids: `4` (array[string], optional) - 検索対象外ユーザID
+    + name: `田` (string, required) - ユーザ名
+    + limit: 1 (number, required) - 取得数
+    + offset: 0 (number, required) - 取得開始位置 (0 origin)
+    + except_ids: `4` (array[number], required) - 検索対象外ユーザID
 
 * Response 200 (application/json)
 
     + Body Attributes
-        * total_count: (number) - ユーザ数
         * users: (array) - ユーザ一覧
           + id: (number) - ユーザID
           + number: (string) - 学籍番号
@@ -241,7 +237,6 @@
     + Body
 
             {
-              "total_count": 2,
               "users" [
                 {
                     "id": 1,
@@ -268,11 +263,54 @@
               ]
             }
 
-* Response 400 (application/json)
+* Response 400
 
-        {
-          "message": "リクエストパラメータが不正です"
-        }
+## User Number Search [/users/search{?number,except_ids}]
+
+### 学籍番号LIKE検索 [GET]
+
+**Note**
+* 学籍番号を対象にLIKE検索
+* 学籍番号は大文字・小文字どちらでも良い
+* 検索結果が1件の場合にのみユーザ情報を返す(0件 or 2件以上 => 200の空配列)
+* パラメータ不正 => 400
+
+* Parameters
+    + number: `G099C1001` (string, required) - 学籍番号
+    + except_ids: `4` (array[number], required) - 検索対象外ユーザID
+
+* Response 200 (application/json)
+
+    + Body Attributes
+        * users: (array) - ユーザ一覧
+          + id: (number) - ユーザID
+          + number: (string) - 学籍番号
+          + name: (string) - ユーザ名
+          + note: (string) - 備考
+          + image: (string) - ユーザ画像URL
+          + college: (object) - 所属カレッジ
+              - code: (string) - カレッジ一意のコード
+              - name: (string) - カレッジ名
+
+    + Body
+
+            {
+              "users" [
+                {
+                    "id": 1,
+                    "number": "G099C1001",
+                    "name": "田中 太郎",
+                    "note": "ハロー",
+                    "image": "https://static.neec.ooo/user/sample1.jpg",
+                    "college": {
+                      "code": "c",
+                      "name": "IT"
+                    }
+                },
+              ]
+            }
+
+* Response 400
 
 ## User [/users/{user_id}]
 
