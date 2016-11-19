@@ -47,6 +47,7 @@
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
             "venue": "研究棟B 401",
+            "status": "draft",
             "entry_upper_limit": 10
         }
 
@@ -363,8 +364,9 @@
         + events: (array) - イベント一覧
           - id: (number) - イベントID
           - title: (string) - イベントタイトル
-          - status: (string) - ステータス
           - image: (string) - イベント画像フルパス
+          - started_at: (datetime) - 開催日時
+          - ended_at: (datetime) - 終了日時
 
     + Body
 
@@ -377,13 +379,15 @@
                         "id": 1,
                         "title": "第1会もくもく会",
                         "image": "http://example.com/image/sample1.jpg",
-                        "status": "published"
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     },
                     {
                         "id": 2,
                         "title": "Rails勉強会",
                         "image": "http://example.com/image/sample2.jpg",
-                        "status": "published"
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     }
                 ]
             }
@@ -408,8 +412,9 @@
         + events: (array) - イベント一覧
           - id: (number) - イベントID
           - title: (string) - イベントタイトル
-          - status: (string) - ステータス
           - image: (string) - イベント画像フルパス
+          - started_at: (datetime) - 開催日時
+          - ended_at: (datetime) - 終了日時
 
     + Body
 
@@ -422,13 +427,15 @@
                         "id": 1,
                         "title": "第1会もくもく会",
                         "image": "http://example.com/image/sample1.jpg",
-                        "status": "draft"
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     },
                     {
                         "id": 2,
                         "title": "Rails勉強会",
                         "image": "http://example.com/image/sample2.jpg",
-                        "status": "full"
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     }
                 ]
             }
@@ -456,8 +463,9 @@
         + events: (array) - イベント一覧
           - id: (number) - イベントID
           - title: (string) - イベントタイトル
-          - status: (number) - ステータスID
           - image: (string) - イベント画像フルパス
+          - started_at: (datetime) - 開催日時
+          - ended_at: (datetime) - 終了日時
 
     + Body
 
@@ -470,13 +478,15 @@
                         "id": 1,
                         "title": "第1会もくもく会",
                         "image": "http://example.com/image/sample1.jpg",
-                        "status": "published"
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     },
                     {
                         "id": 2,
                         "title": "Rails勉強会",
                         "image": "http://example.com/image/sample2.jpg",
-                        "status": "published"
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     }
                 ]
             }
