@@ -447,7 +447,7 @@
                 ]
             }
 
-## Event Search [/events/search{?keyword,started_at,ended_at,page,per}]
+## Event Search [/events/search{?keyword,page,per}]
 ### イベント検索 [GET]
 
 **Note**
@@ -460,8 +460,6 @@
 
 + Parameters
     + keyword: 'もくもく' (string, required) - 検索キーワード
-    + started_at: '2016/06/03' (date, optional) - 開始日時
-    + ended_at: '2016/06/03' (date, optional) - 終了日時
     + page: 1 (number, required) - ページ番号
     + per: 10 (number, required) - 1ページあたりの件数
 
