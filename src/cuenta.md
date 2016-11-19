@@ -96,11 +96,11 @@
 * Response 200 (application/json)
 
     + Body Attributes
-        * user_id: (number) - ユーザID
+        * id: (number) - ユーザID
         * number: (string) - 学籍番号
         * name: (string) - ユーザ名
         * note: (string) - 備考
-        * user_image: (string) - ユーザ画像URL
+        * image: (string) - ユーザ画像URL
         * college: (object) - 所属カレッジ
             + code: (string) - カレッジ一意のコード
             + name: (string) - カレッジ名
@@ -108,11 +108,11 @@
     + Body
 
             {
-                "user_id": 1,
+                "id": 1,
                 "number": "G099C1001",
                 "name": "田中 太郎",
                 "note": "ハロー",
-                "user_image": "https://static.neec.ooo/user/sample1.jpg",
+                "image": "https://static.neec.ooo/user/sample1.jpg",
                 "college": {
                   "code": "c",
                   "name": "IT"
@@ -181,11 +181,11 @@
 * Response 200 (application/json)
 
     + Body Attributes
-        * user_id: (number) - ユーザID
+        * id: (number) - ユーザID
         * number: (string) - 学籍番号
         * name: (string) - ユーザ名
         * note: (string) - 備考
-        * user_image: (string) - ユーザ画像URL
+        * image: (string) - ユーザ画像URL
         * college: (object) - 所属カレッジ
             + code: (string) - カレッジ一意のコード
             + name: (string) - カレッジ名
@@ -193,11 +193,11 @@
     + Body
 
             {
-                "user_id": 1,
+                "id": 1,
                 "number": "G099C1001",
                 "name": "田中 太郎",
                 "note": "Hello",
-                "user_image": "https://static.neec.ooo/user/sample2.jpg",
+                "image": "https://static.neec.ooo/user/sample2.jpg",
                 "college": {
                   "code": "c",
                   "name": "IT"
@@ -229,11 +229,11 @@
     + Body Attributes
         * total_count: (number) - ユーザ数
         * users: (array) - ユーザ一覧
-          + user_id: (number) - ユーザID
+          + id: (number) - ユーザID
           + number: (string) - 学籍番号
           + name: (string) - ユーザ名
           + note: (string) - 備考
-          + user_image: (string) - ユーザ画像URL
+          + image: (string) - ユーザ画像URL
           + college: (object) - 所属カレッジ
               - code: (string) - カレッジ一意のコード
               - name: (string) - カレッジ名
@@ -244,22 +244,22 @@
               "total_count": 2,
               "users" [
                 {
-                    "user_id": 1,
+                    "id": 1,
                     "number": "G099C1001",
                     "name": "田中 太郎",
                     "note": "ハロー",
-                    "user_image": "https://static.neec.ooo/user/sample1.jpg",
+                    "image": "https://static.neec.ooo/user/sample1.jpg",
                     "college": {
                       "code": "c",
                       "name": "IT"
                     }
                 },
                 {
-                    "user_id": 3,
+                    "id": 3,
                     "number": "G099G1003",
                     "name": "山田 花子 ",
                     "note": "Hello",
-                    "user_image": "https://static.neec.ooo/user/sample3.jpg",
+                    "image": "https://static.neec.ooo/user/sample3.jpg",
                     "college": {
                       "code": "g",
                       "name": "デザイン"
@@ -290,11 +290,11 @@
 * Response 200 (application/json)
 
     + Body Attributes
-        * user_id: (number) - ユーザID
+        * id: (number) - ユーザID
         * number: (string) - 学籍番号
         * name: (string) - ユーザ名
         * note: (strign) - 備考
-        * user_image: (string) - ユーザ画像URL
+        * image: (string) - ユーザ画像URL
         * college: (object) - 所属カレッジ
             + code: (string) - カレッジ一意のコード
             + name: (string) - カレッジ名
@@ -302,11 +302,11 @@
     + Body
 
             {
-                "user_id": 1,
+                "id": 1,
                 "number": "G099C1001",
                 "name": "田中 太郎",
                 "note": "Hello",
-                "user_image": "https://static.neec.ooo/user/sample1.jpg",
+                "image": "https://static.neec.ooo/user/sample1.jpg",
                 "college": {
                   "code": "c",
                   "name": "IT"
@@ -333,11 +333,11 @@
 * Response 200 (application/json)
 
     + Body Attributes
-        * user_id: (number) - ユーザID
+        * id: (number) - ユーザID
         * number: (string) - 学籍番号
         * name: (string) - ユーザ名
         * note: (string) - 備考
-        * user_image: (string) - ユーザ画像URL
+        * image: (string) - ユーザ画像URL
         * college: (object) - 所属カレッジ
             + code: (string) - カレッジ一意のコード
             + name: (string) - カレッジ名
@@ -345,11 +345,11 @@
     + Body
 
             {
-                "user_id": 1,
+                "id": 1,
                 "number": "G099C1001",
                 "name": "田中 太郎",
                 "note": "",
-                "user_image": "https://static.neec.ooo/user/sample1.jpg",
+                "image": "https://static.neec.ooo/user/sample1.jpg",
                 "college": {
                   "code": "c",
                   "name": "IT"
@@ -382,11 +382,11 @@
 
     + Body Attributes
         * users: (array) - ユーザ一覧
-          + user_id: (number) - ユーザID
+          + id: (number) - ユーザID
           + number: (string) - 学籍番号
           + name: (string) - ユーザ名
           + note: (string) - 備考
-          + user_image: (string) - ユーザ画像URL
+          + image: (string) - ユーザ画像URL
           + college: (object) - 所属カレッジ
               - code: (string) - カレッジ一意のコード
               - name: (string) - カレッジ名
@@ -396,30 +396,30 @@
             {
               "users": [
                 {
-                    "user_id": 1,
+                    "id": 1,
                     "number": "G099C1001",
                     "name": "田中 太郎",
-                    "user_image": "https://static.neec.ooo/user/sample1.jpg",
+                    "image": "https://static.neec.ooo/user/sample1.jpg",
                     "college": {
                       "code": "c",
                       "name": "IT"
                     }
                 },
                 {
-                    "user_id": 2,
+                    "id": 2,
                     "number": "G099C1002",
                     "name": "山本 二郎",
-                    "user_image": "https://static.neec.ooo/user/sample2.jpg",
+                    "image": "https://static.neec.ooo/user/sample2.jpg",
                     "college": {
                       "code": "c",
                       "name": "IT"
                     }
                 },
                 {
-                    "user_id": 3,
+                    "id": 3,
                     "number": "G099G1003",
                     "name": "山田 花子 ",
-                    "user_image": "https://static.neec.ooo/user/sample3.jpg",
+                    "image": "https://static.neec.ooo/user/sample3.jpg",
                     "college": {
                       "code": "g",
                       "name": "デザイン"
