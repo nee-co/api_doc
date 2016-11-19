@@ -81,7 +81,7 @@
               * code: (string) - カレッジ一意のコード
               * name: (string) - カレッジ名
       + started_at: (datetime) - 開催日時
-      + ended_at: (datetime) - 終了日時
+      + ended_at: (datetime) - 終了日時時
       + venue: (string) - 会場
       + entry_upper_limit: (number) - 上限人数
       + status: (string) - イベントステータス
@@ -236,7 +236,7 @@
 * イベント開催者のみ(それ以外 => 403)
 * イベントステータスが `非公開` の場合にのみ公開可能 => 204
 * イベントステータスが `非公開` 以外の場合 => 403
-* タイトル, 開催日時, 終了日時, 開催場所, 内容 すべてが記入済みの場合にのみ公開可能 => 204(未記入あり => 403)
+* タイトル, 開催日時, 終了日時時, 開催場所, 内容 すべてが記入済みの場合にのみ公開可能 => 204(未記入あり => 403)
 * 対象イベントが見つからない => 404
 
 + Parameters
@@ -373,7 +373,7 @@
           - title: (string) - イベントタイトル
           - image: (string) - イベント画像フルパス
           - started_at: (datetime) - 開催日時
-          - ended_at: (datetime) - 終了日時
+          - ended_at: (datetime) - 終了日時時
 
     + Body
 
@@ -421,7 +421,7 @@
           - title: (string) - イベントタイトル
           - image: (string) - イベント画像フルパス
           - started_at: (datetime) - 開催日時
-          - ended_at: (datetime) - 終了日時
+          - ended_at: (datetime) - 終了日時時
 
     + Body
 
@@ -447,7 +447,7 @@
                 ]
             }
 
-## Event Search [/events/search{?keyword,started_on,ended_on,page,per}]
+## Event Search [/events/search{?keyword,started_at,ended_at,page,per}]
 ### イベント検索 [GET]
 
 **Note**
@@ -455,13 +455,13 @@
 * 自分が開催するイベントは検索対象外
 * イベントステータス = 公開/受付中 OR 満員
 * 今日以降に開催するイベント
-* 開始日時でソート
+* 開始日時時でソート
 * パラメータが不正 => 400
 
 + Parameters
     + keyword: 'もくもく' (string, required) - 検索キーワード
-    + started_on: '2016/06/03' (date, optional) - 開始日
-    + ended_on: '2016/06/03' (date, optional) - 終了日
+    + started_at: '2016/06/03' (date, optional) - 開始日時
+    + ended_at: '2016/06/03' (date, optional) - 終了日時
     + page: 1 (number, required) - ページ番号
     + per: 10 (number, required) - 1ページあたりの件数
 
@@ -476,7 +476,7 @@
           - title: (string) - イベントタイトル
           - image: (string) - イベント画像フルパス
           - started_at: (datetime) - 開催日時
-          - ended_at: (datetime) - 終了日時
+          - ended_at: (datetime) - 終了日時時
 
     + Body
 
