@@ -22,14 +22,14 @@
 **Note**
 
 * body: Markdown形式
-* event_image: json値ではなくイベント画像ファイル
+* image: json値ではなくイベント画像ファイル
 * 必須項目(title)が未設定の場合 => 400
 
 + Request (application/json)
 
         {
             "title": "第1会もくもく会",
-            "event_image": イベント画像(type=file),
+            "image": イベント画像(type=file),
             "body": "第1回もくもく会を開催いたします",
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
@@ -40,9 +40,9 @@
 + Response 201 (application/json)
 
         {
-            "event_id": 1,
+            "id": 1,
             "title": "第1会もくもく会",
-            "event_image": "sample1.jpg",
+            "image": "sample1.jpg",
             "body": "第1回もくもく会を開催いたします",
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
@@ -68,9 +68,9 @@
 + Response 200 (application/json)
 
     + Body Attributes
-      + event_id: (number) - イベントID
+      + id: (number) - イベントID
       + title: (string) - イベントタイトル
-      + event_image: (string) - イベント画像フルパス
+      + image: (string) - イベント画像フルパス
       + body: (string) - イベント内容(Markdown形式)
       + register: (object) - イベント登録者
           - name: (string) - ユーザ名
@@ -93,9 +93,9 @@
     + Body
 
             {
-                "event_id": 1,
+                "id": 1,
                 "title": "第1会もくもく会",
-                "event_image": "http://example.com/image/sample1.jpg",
+                "image": "http://example.com/image/sample1.jpg",
                 "body": "第1回もくもく会を開催いたします",
                 "register": {
                     "name": "sasaki",
@@ -178,7 +178,7 @@
 
         {
             "title": "第2会もくもく会",
-            "event_image": "sample2.jpg",
+            "image": "sample2.jpg",
             "body": "第2回もくもく会を開催いたします",
             "started_at": "2016/06/03 13:00",
             "ended_at": "2016/06/03 16:00",
@@ -190,9 +190,9 @@
 + Response 200 (application/json)
 
         {
-            "event_id": 1,
+            "id": 1,
             "title": "第2会もくもく会",
-            "event_image": "sample2.jpg",
+            "image": "sample2.jpg",
             "body": "第2回もくもく会を開催いたします",
             "started_at": "2016/06/03 13:00",
             "ended_at": "2016/06/03 16:00",
@@ -361,10 +361,10 @@
         + per: (integer) - 1ページあたりの件数
         + total_count: (integer) - 全イベント数
         + events: (array) - イベント一覧
-          - event_id: (integer) - イベントID
+          - id: (integer) - イベントID
           - title: (string) - イベントタイトル
           - status: (string) - ステータス
-          - event_image: (string) - イベント画像フルパス
+          - image: (string) - イベント画像フルパス
 
     + Body
 
@@ -374,15 +374,15 @@
                 "total_count": 2,
                 "events": [
                     {
-                        "event_id": 1,
+                        "id": 1,
                         "title": "第1会もくもく会",
-                        "event_image": "http://example.com/image/sample1.jpg",
+                        "image": "http://example.com/image/sample1.jpg",
                         "status": "published"
                     },
                     {
-                        "event_id": 2,
+                        "id": 2,
                         "title": "Rails勉強会",
-                        "event_image": "http://example.com/image/sample2.jpg",
+                        "image": "http://example.com/image/sample2.jpg",
                         "status": "published"
                     }
                 ]
@@ -406,10 +406,10 @@
         + per: (integer) - 1ページあたりの件数
         + total_count: (integer) - 全イベント数
         + events: (array) - イベント一覧
-          - event_id: (integer) - イベントID
+          - id: (integer) - イベントID
           - title: (string) - イベントタイトル
           - status: (string) - ステータス
-          - event_image: (string) - イベント画像フルパス
+          - image: (string) - イベント画像フルパス
 
     + Body
 
@@ -419,15 +419,15 @@
                 "total_count": 2,
                 "events": [
                     {
-                        "event_id": 1,
+                        "id": 1,
                         "title": "第1会もくもく会",
-                        "event_image": "http://example.com/image/sample1.jpg",
+                        "image": "http://example.com/image/sample1.jpg",
                         "status": "draft"
                     },
                     {
-                        "event_id": 2,
+                        "id": 2,
                         "title": "Rails勉強会",
-                        "event_image": "http://example.com/image/sample2.jpg",
+                        "image": "http://example.com/image/sample2.jpg",
                         "status": "full"
                     }
                 ]
@@ -454,10 +454,10 @@
         + per: (integer) - 1ページあたりの件数
         + total_count: (integer) - 全イベント数
         + events: (array) - イベント一覧
-          - event_id: (integer) - イベントID
+          - id: (integer) - イベントID
           - title: (string) - イベントタイトル
           - status: (integer) - ステータスID
-          - event_image: (string) - イベント画像フルパス
+          - image: (string) - イベント画像フルパス
 
     + Body
 
@@ -467,15 +467,15 @@
                 "total_count": 2,
                 "events": [
                     {
-                        "event_id": 1,
+                        "id": 1,
                         "title": "第1会もくもく会",
-                        "event_image": "http://example.com/image/sample1.jpg",
+                        "image": "http://example.com/image/sample1.jpg",
                         "status": "published"
                     },
                     {
-                        "event_id": 2,
+                        "id": 2,
                         "title": "Rails勉強会",
-                        "event_image": "http://example.com/image/sample2.jpg",
+                        "image": "http://example.com/image/sample2.jpg",
                         "status": "published"
                     }
                 ]
