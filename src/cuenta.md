@@ -1,12 +1,12 @@
-## Group Auth API
+## Group Token API
 
-##  Auth [/auth/login]
+##  Token Create [/token]
 
 **Note**
-* 認証系API
+* アクセストークン関連API
 * ログアウトAPIは存在せず、クライアントがアクセストークンを破棄することでログアウトしたとみなす
 
-### ログイン [POST]
+### アクセストークン発行API [POST]
 
 **Note**
 * アクセストークンを必要としない
@@ -33,48 +33,47 @@
 
 * Response 201 (application/json)
 
-        {
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
-            "user_id": 1,
-            "number": "G011C1111",
-            "name": "田中 太郎",
-            "user_image": "http://example.com/user/sample1.jpg",
-            "college": {
-              "code": "a",
-              "name": "クリエイターズ"
-        }
+    + Body Attributes
+        * token: (string) - アクセストークン
+        * expires_at: (string) - アクセストークン有効期限(ISO 8601)
+
+    + Body
+
+            {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+                "expires_at" "2016-11-27T00:50:23.883467+09:00"
+            }
 
 * Response 400
 
 * Response 404
 
+##  Token Refresh [/token/refresh]
 
-## Group Token API
-
-**Request**
-* 全てのリクエスト ヘッダーにアクセストークンを付加する必要がある
-* Headers Attributes
-    + Authorization (string, required) - アクセストークン
-* Headers
-
-        Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
-
-##  Update Token [/token]
-
-### アクセストークンの有効期限延長 [POST]
+### アクセストークンの再生成 [POST]
 
 **Note**
-* アクセストークンの有効期限を1週間延長する(トークン再作成)
+* アクセストークンの有効期限を1週間延長する(トークン再生成)
+
+* Request
+
+    + Headers Attributes
+        + Authorization (string, required) - アクセストークン
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
 
 * Response 200 (application/json)
-
     + Body Attributes
-        * token: (string) - 更新後アクセストークン
+        * token: (string) - アクセストークン
+        * expires_at: (string) - アクセストークン有効期限(ISO 8601)
 
     + Body
 
             {
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...."
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+                "expires_at" "2016-11-27T00:50:23.883467+09:00"
             }
 
 ## Group Login User API
