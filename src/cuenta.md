@@ -318,7 +318,7 @@
 
 **Note**
 * 内部向けAPI(認証の必要がない)
-* 指定されたユーザが見つからなかった場合にのみ404を返す
+* 指定されたユーザが見つからない => 404
 
 * Parameters
     + user_id: `1` (number, required) - ユーザID
@@ -349,11 +349,7 @@
                 }
             }
 
-* Response 404 (application/json)
-
-        {
-          "message": "指定されたユーザは見つかりませんでした"
-        }
+* Response 404
 
 ## Internal User List [/internal/users/list{?user_ids}]
 
@@ -365,8 +361,8 @@
 **Note**
 * 内部向けAPI(認証の必要がない)
 * 全てのユーザが取得できた場合のみ200を返す
-* ユーザが指定されなかった場合は400を返す
-* 一人でも取得できなかった場合は403を返す
+* パラメータ不正 => 400
+* 一人でも取得できなかった場合 => 404
 
 * Parameters
     + user_ids: `1+2+3` (array[string], required) - 取得対象ユーザID一覧
@@ -421,14 +417,6 @@
               ]
             }
 
-* Response 400 (application/json)
+* Response 400
 
-        {
-          "message": "リクエストパラメータが不正です"
-        }
-
-* Response 404 (application/json)
-
-        {
-          "message": "一部または全てのユーザが取得できませんでした"
-        }
+* Response 404
