@@ -22,10 +22,9 @@
 **Note**
 
 * body: Markdown形式
-* image: json値ではなくイベント画像ファイル
 * 必須項目(title)が未設定の場合 => 400
 
-+ Request (application/json)
++ Request (multipart/form-data)
 
         {
             "title": "第1会もくもく会",
@@ -182,7 +181,7 @@
 + Parameters
     + event_id: 1 (number) - イベントid
 
-+ Request (application/json)
++ Request (multipart/form-data)
 
         {
             "title": "第2会もくもく会",
