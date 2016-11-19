@@ -458,7 +458,7 @@
 * パラメータが不正 => 400
 
 + Parameters
-    + keyword: 'もくもく' (string, required) - 検索キーワード
+    + keyword: もくもく (string, required) - 検索キーワード
     + page: 1 (number, required) - ページ番号
     + per: 10 (number, required) - 1ページあたりの件数
 
