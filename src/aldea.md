@@ -82,7 +82,7 @@
       + started_at: (datetime) - 開催日時
       + ended_at: (datetime) - 終了日時
       + venue: (string) - 会場
-      + entry_upper_limit: (integer) - 上限人数
+      + entry_upper_limit: (number) - 上限人数
       + status: (string) - イベントステータス
       + entries: (array) - 参加者一覧(イベント作成者と同じフィールド)
       + comments: (array) - コメント一覧
@@ -351,17 +351,17 @@
     + イベントステータス = 受付終了 AND 開催日が今日以降
 
 + Parameters
-    + page: 1 (integer, required) - ページ番号
-    + per: 10 (integer, required) - 1ページあたりの件数
+    + page: 1 (number, required) - ページ番号
+    + per: 10 (number, required) - 1ページあたりの件数
 
 + Response 200 (application/json)
 
     + Body Attributes
-        + page: (integer) - ページ番号
-        + per: (integer) - 1ページあたりの件数
-        + total_count: (integer) - 全イベント数
+        + page: (number) - ページ番号
+        + per: (number) - 1ページあたりの件数
+        + total_count: (number) - 全イベント数
         + events: (array) - イベント一覧
-          - id: (integer) - イベントID
+          - id: (number) - イベントID
           - title: (string) - イベントタイトル
           - status: (string) - ステータス
           - image: (string) - イベント画像フルパス
@@ -396,17 +396,17 @@
 * 開催日が今日以降の自分が開催しているイベント
 
 + Parameters
-    + page: 1 (integer, required) - ページ番号
-    + per: 10 (integer, required) - 1ページあたりの件数
+    + page: 1 (number, required) - ページ番号
+    + per: 10 (number, required) - 1ページあたりの件数
 
 + Response 200 (application/json)
 
     + Body Attributes
-        + page: (integer) - ページ番号
-        + per: (integer) - 1ページあたりの件数
-        + total_count: (integer) - 全イベント数
+        + page: (number) - ページ番号
+        + per: (number) - 1ページあたりの件数
+        + total_count: (number) - 全イベント数
         + events: (array) - イベント一覧
-          - id: (integer) - イベントID
+          - id: (number) - イベントID
           - title: (string) - イベントタイトル
           - status: (string) - ステータス
           - image: (string) - イベント画像フルパス
@@ -444,19 +444,19 @@
     + keyword: 'もくもく' (string, required) - 検索キーワード
     + started_on: '2016/06/03' (date, optional) - 開始日
     + ended_on: '2016/06/03' (date, optional) - 終了日
-    + page: 1 (integer, required) - ページ番号
-    + per: 10 (integer, required) - 1ページあたりの件数
+    + page: 1 (number, required) - ページ番号
+    + per: 10 (number, required) - 1ページあたりの件数
 
 + Response 200 (application/json)
 
     + Body Attributes
-        + page: (integer) - ページ番号
-        + per: (integer) - 1ページあたりの件数
-        + total_count: (integer) - 全イベント数
+        + page: (number) - ページ番号
+        + per: (number) - 1ページあたりの件数
+        + total_count: (number) - 全イベント数
         + events: (array) - イベント一覧
-          - id: (integer) - イベントID
+          - id: (number) - イベントID
           - title: (string) - イベントタイトル
-          - status: (integer) - ステータスID
+          - status: (number) - ステータスID
           - image: (string) - イベント画像フルパス
 
     + Body
