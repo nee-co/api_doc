@@ -221,22 +221,22 @@
                 "image": "https://static.neec.ooo/hoehoge.png",
                 "members": [
                     {
-                        "user_id": 1,
+                        "id": 1,
                         "name": "田中 太郎",
                         "number": "G099C0001",
                         "note": "こんにちわ",
-                        "user_image": "https://static.neec.ooo/tanaka.png",
+                        "image": "https://static.neec.ooo/tanaka.png",
                         "college": {
                             "code": "c",
                             "name": "IT"
                         }
                     },
                     {
-                        "user_id": 2,
+                        "id": 2,
                         "name": "山田 花子",
                         "number": "G099C0002",
                         "note": "はーい",
-                        "user_image": "https://static.neec.ooo/yamada.png",
+                        "image": "https://static.neec.ooo/yamada.png",
                         "college": {
                             "code": "c",
                             "name": "IT"
@@ -245,11 +245,11 @@
                 ],
                 "invitations": [
                     {
-                        "user_id": 3,
+                        "id": 3,
                         "name": "ビル・ジョブズ",
                         "number": "G099C0004",
                         "note": "パソコンは友達",
-                        "user_image": "https://static.neec.ooo/jobs.png",
+                        "image": "https://static.neec.ooo/jobs.png",
                         "college": {
                             "code": "c",
                             "name": "IT"
