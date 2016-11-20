@@ -453,7 +453,6 @@
 ### グループメンバID取得-内部 [GET]
 
 **Note**
-
 * 内部向けAPI(認証の必要がない)
 * 対象グループが見つからない => 404
 
@@ -479,6 +478,10 @@
 
 ### 指定ユーザが所属するグループ一覧-内部 [GET]
 
+**Note**
+
+* 内部向けAPI(認証の必要がない)
+
 * Parameters
     + user_id: 1 (number, required) - ユーザID
 
@@ -493,6 +496,7 @@
 
     + Body
 
+            {
                 "groups": [
                     {
                         "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
@@ -510,3 +514,4 @@
                         "image": "https://static.neec.ooo/fugafuga.jpg"
                     }
                 ]
+            }
