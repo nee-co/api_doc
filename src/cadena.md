@@ -448,32 +448,6 @@
 * Response 403
 * Response 404
 
-##  Internal Group [/internal/groups/{group_id}]
-
-### グループメンバID取得-内部 [GET]
-
-**Note**
-* 内部向けAPI(認証の必要がない)
-* 対象グループが見つからない => 404
-
-* Parameters
-    + group_id: 1 (number) - グループID
-
-* Response 200 (application/json)
-    + Body Attributes
-        - member_ids: (array[number]) - グループメンバID一覧
-
-    + Body
-
-            {
-                "member_ids": [
-                    1,
-                    2,
-                ]
-            }
-
-* Response 400
-
 ##  Internal Group Collection [/internal/groups{?user_id}]
 
 ### 指定ユーザが所属するグループ一覧-内部 [GET]
