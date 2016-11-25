@@ -27,7 +27,8 @@
 
         * folders: (array[folder]) - TOPフォルダ一覧
             * folder_id: (string) - フォルダID
-            * name: (string) - フォルダ名
+            * name: (string) - フォルダ名(=グループ名)
+            * image: (string) - フォルダ画像(=グループ画像)
             * updated_user (user) - 更新者
             * updated_at: (datetime) - 更新日時
 
@@ -38,6 +39,7 @@
                     {
                         "folder_id": "abreveurygbeurveru...",
                         "name": "IS-07",
+                        "image": "https://static.neec.ooo/hoehoge.png",
                         "updated_user": {
                             "user_id": 1,
                             "name": "田中 太郎",
@@ -54,6 +56,7 @@
                     {
                         "folder_id": "abreveurygbeurveru...",
                         "name": "IS-08",
+                        "image": "https://static.neec.ooo/fugafuga.png",
                         "updated_user": {
                             "user_id": 2,
                             "name": "山田 花子",
