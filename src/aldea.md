@@ -22,20 +22,13 @@
 **Note**
 
 * body: Markdown形式
-* tag: 各タグidの配列
-* event_image: json値ではなくイベント画像ファイル
 * 必須項目(title)が未設定の場合 => 400
 
-+ Request (application/json)
++ Request (multipart/form-data)
 
         {
             "title": "第1会もくもく会",
-            "event_image": イベント画像(type=file),
-            "tags": [
-                "1",
-                "2",
-                "3"
-            ],
+            "image": イベント画像(type=file),
             "body": "第1回もくもく会を開催いたします",
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
@@ -46,18 +39,14 @@
 + Response 201 (application/json)
 
         {
-            "event_id": 1,
+            "id": 1,
             "title": "第1会もくもく会",
-            "event_image": "sample1.jpg",
-            "tags": [
-                "もくもく会",
-                "Ruby",
-                "Scala"
-            ],
+            "image": "sample1.jpg",
             "body": "第1回もくもく会を開催いたします",
             "started_at": "2016/06/03 12:00",
             "ended_at": "2016/06/03 15:00",
             "venue": "研究棟B 401",
+            "status": "draft",
             "entry_upper_limit": 10
         }
 
@@ -79,10 +68,9 @@
 + Response 200 (application/json)
 
     + Body Attributes
-      + event_id: (number) - イベントID
+      + id: (number) - イベントID
       + title: (string) - イベントタイトル
-      + event_image: (string) - イベント画像フルパス
-      + tags: (array) - タグ名配列
+      + image: (string) - イベント画像フルパス
       + body: (string) - イベント内容(Markdown形式)
       + register: (object) - イベント登録者
           - name: (string) - ユーザ名
@@ -91,11 +79,10 @@
           - college: (object) - 所属カレッジ
               * code: (string) - カレッジ一意のコード
               * name: (string) - カレッジ名
-      + published_at: (datetime) - 公開日時
       + started_at: (datetime) - 開催日時
-      + ended_at: (datetime) - 終了日時
+      + ended_at: (datetime) - 終了日時時
       + venue: (string) - 会場
-      + entry_upper_limit: (integer) - 上限人数
+      + entry_upper_limit: (number) - 上限人数
       + status: (string) - イベントステータス
       + entries: (array) - 参加者一覧(イベント作成者と同じフィールド)
       + comments: (array) - コメント一覧
@@ -106,25 +93,20 @@
     + Body
 
             {
-                "event_id": 1,
+                "id": 1,
                 "title": "第1会もくもく会",
-                "event_image": "http://example.com/image/sample1.jpg",
-                "tags": [
-                    "もくもく会",
-                    "Ruby",
-                    "Scala"
-                ],
+                "image": "http://example.com/image/sample1.jpg",
                 "body": "第1回もくもく会を開催いたします",
                 "register": {
+                    "id": 1,
                     "name": "sasaki",
                     "number": "G099C0001"
-                    "user_image": "http://example.com/image/sasaki.jpg",
+                    "image": "http://example.com/image/sasaki.jpg",
                     "college": {
                         "code": "c",
                         "name": "IT"
                     }
                 },
-                "published_at": "2016/06/01 09:00",
                 "started_at": "2016/06/03 12:00",
                 "ended_at": "2016/06/03 15:00",
                 "venue": "研究棟B 401",
@@ -132,18 +114,20 @@
                 "status": "published",
                 "entries": [
                     {
+                        "id": 2,
                         "name": "tanaka",
                         "number": "G099C0002"
-                        "user_image": "http://example.com/image/tanaka.jpg",
+                        "image": "http://example.com/image/tanaka.jpg",
                         "college": {
                             "code": "c",
                             "name": "IT"
                         }
                     },
                     {
+                        "id": 3
                         "name": "satou",
                         "number": "G099G0003"
-                        "user_image": "http://example.com/image/satou.jpg",
+                        "image": "http://example.com/image/satou.jpg",
                         "college": {
                             "code": "g",
                             "name": "デザイン"
@@ -155,24 +139,28 @@
                         "body": "こんにちは！",
                         "posted_at": "2016/06/01 12:02",
                         "user": {
+                            "id": 2,
                             "name": "tanaka",
                             "number": "G099G0002"
-                            "user_image": "http://example.com/image/tanaka.jpg",
+                            "image": "http://example.com/image/tanaka.jpg",
                             "college": {
                                 "code": "g",
                                 "name": "デザイン"
+                            }
                         }
                     },
                     {
                         "body": "参加を考えてます!",
                         "posted_at": "2016/06/01 15:12",
                         "user": {
+                            "id": 4,
                             "name": "yamada",
                             "number": "G099C0004"
-                            "user_image": "http://example.com/image/yamada.jpg",
+                            "image": "http://example.com/image/yamada.jpg",
                             "college": {
                                 "code": "c",
                                 "name": "IT"
+                            }
                         }
                     }
                 ]
@@ -193,17 +181,11 @@
 + Parameters
     + event_id: 1 (number) - イベントid
 
-+ Request (application/json)
++ Request (multipart/form-data)
 
         {
             "title": "第2会もくもく会",
-            "event_image": "sample2.jpg",
-            "tags": [
-                "1",
-                "2",
-                "3",
-                "4"
-            ],
+            "image": "sample2.jpg",
             "body": "第2回もくもく会を開催いたします",
             "started_at": "2016/06/03 13:00",
             "ended_at": "2016/06/03 16:00",
@@ -215,17 +197,10 @@
 + Response 200 (application/json)
 
         {
-            "event_id": 1,
+            "id": 1,
             "title": "第2会もくもく会",
-            "event_image": "sample2.jpg",
-            "tags": [
-                "もくもく会",
-                "Ruby",
-                "Scala",
-                "Elixir"
-            ],
+            "image": "sample2.jpg",
             "body": "第2回もくもく会を開催いたします",
-            "published_at": "2016/06/01 09:00",
             "started_at": "2016/06/03 13:00",
             "ended_at": "2016/06/03 16:00",
             "venue": "研究棟B 402",
@@ -260,7 +235,7 @@
 * イベント開催者のみ(それ以外 => 403)
 * イベントステータスが `非公開` の場合にのみ公開可能 => 204
 * イベントステータスが `非公開` 以外の場合 => 403
-* タイトル, 開催日時, 終了日時, 開催場所, 内容 すべてが記入済みの場合にのみ公開可能 => 204(未記入あり => 403)
+* タイトル, 開催日時, 終了日時時, 開催場所, 内容 すべてが記入済みの場合にのみ公開可能 => 204(未記入あり => 403)
 * 対象イベントが見つからない => 404
 
 + Parameters
@@ -383,21 +358,21 @@
     + イベントステータス = 受付終了 AND 開催日が今日以降
 
 + Parameters
-    + page: 1 (integer, required) - ページ番号
-    + per: 10 (integer, required) - 1ページあたりの件数
+    + page: 1 (number, required) - ページ番号
+    + per: 10 (number, required) - 1ページあたりの件数
 
 + Response 200 (application/json)
 
     + Body Attributes
-        + page: (integer) - ページ番号
-        + per: (integer) - 1ページあたりの件数
-        + total_count: (integer) - 全イベント数
+        + page: (number) - ページ番号
+        + per: (number) - 1ページあたりの件数
+        + total_count: (number) - 全イベント数
         + events: (array) - イベント一覧
-          - event_id: (integer) - イベントID
+          - id: (number) - イベントID
           - title: (string) - イベントタイトル
-          - status: (string) - ステータス
-          - event_image: (string) - イベント画像フルパス
-          - tags: (array) - タグ名
+          - image: (string) - イベント画像フルパス
+          - started_at: (datetime) - 開催日時
+          - ended_at: (datetime) - 終了日時時
 
     + Body
 
@@ -407,25 +382,18 @@
                 "total_count": 2,
                 "events": [
                     {
-                        "event_id": 1,
+                        "id": 1,
                         "title": "第1会もくもく会",
-                        "event_image": "http://example.com/image/sample1.jpg",
-                        "status": "published",
-                        "tags": [
-                            "もくもく会",
-                            "Ruby",
-                            "Scala"
-                        ]
+                        "image": "http://example.com/image/sample1.jpg",
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     },
                     {
-                        "event_id": 2,
+                        "id": 2,
                         "title": "Rails勉強会",
-                        "event_image": "http://example.com/image/sample2.jpg",
-                        "status": "published",
-                        "tags": [
-                            "Ruby",
-                            "Ruby on Rails"
-                        ]
+                        "image": "http://example.com/image/sample2.jpg",
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     }
                 ]
             }
@@ -438,21 +406,21 @@
 * 開催日が今日以降の自分が開催しているイベント
 
 + Parameters
-    + page: 1 (integer, required) - ページ番号
-    + per: 10 (integer, required) - 1ページあたりの件数
+    + page: 1 (number, required) - ページ番号
+    + per: 10 (number, required) - 1ページあたりの件数
 
 + Response 200 (application/json)
 
     + Body Attributes
-        + page: (integer) - ページ番号
-        + per: (integer) - 1ページあたりの件数
-        + total_count: (integer) - 全イベント数
+        + page: (number) - ページ番号
+        + per: (number) - 1ページあたりの件数
+        + total_count: (number) - 全イベント数
         + events: (array) - イベント一覧
-          - event_id: (integer) - イベントID
+          - id: (number) - イベントID
           - title: (string) - イベントタイトル
-          - status: (string) - ステータス
-          - event_image: (string) - イベント画像フルパス
-          - tags: (array) - タグ名
+          - image: (string) - イベント画像フルパス
+          - started_at: (datetime) - 開催日時
+          - ended_at: (datetime) - 終了日時時
 
     + Body
 
@@ -462,55 +430,50 @@
                 "total_count": 2,
                 "events": [
                     {
-                        "event_id": 1,
+                        "id": 1,
                         "title": "第1会もくもく会",
-                        "event_image": "http://example.com/image/sample1.jpg",
-                        "status": "draft",
-                        "tags": [
-                            "もくもく会",
-                            "Ruby",
-                            "Scala"
-                        ]
+                        "image": "http://example.com/image/sample1.jpg",
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     },
                     {
-                        "event_id": 2,
+                        "id": 2,
                         "title": "Rails勉強会",
-                        "event_image": "http://example.com/image/sample2.jpg",
-                        "status": "full",
-                        "tags": [
-                            "Ruby",
-                            "Ruby on Rails"
-                        ]
+                        "image": "http://example.com/image/sample2.jpg",
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     }
                 ]
             }
 
-## Event Search [/events/search{?keyword,started_on,ended_on,page,per}]
+## Event Search [/events/search{?keyword,page,per}]
 ### イベント検索 [GET]
 
 **Note**
-
+* イベントタイトル, イベント内容が検索対象
+* 自分が開催するイベントは検索対象外
+* イベントステータス = 公開/受付中 OR 満員
+* 今日以降に開催するイベント
+* 開始日時時でソート
 * パラメータが不正 => 400
 
 + Parameters
-    + keyword: 'もくもく' (string, required) - 検索キーワード
-    + started_on: '2016/06/03' (date, optional) - 開始日
-    + ended_on: '2016/06/03' (date, optional) - 終了日
-    + page: 1 (integer, required) - ページ番号
-    + per: 10 (integer, required) - 1ページあたりの件数
+    + keyword: もくもく (string, required) - 検索キーワード
+    + page: 1 (number, required) - ページ番号
+    + per: 10 (number, required) - 1ページあたりの件数
 
 + Response 200 (application/json)
 
     + Body Attributes
-        + page: (integer) - ページ番号
-        + per: (integer) - 1ページあたりの件数
-        + total_count: (integer) - 全イベント数
+        + page: (number) - ページ番号
+        + per: (number) - 1ページあたりの件数
+        + total_count: (number) - 全イベント数
         + events: (array) - イベント一覧
-          - event_id: (integer) - イベントID
+          - id: (number) - イベントID
           - title: (string) - イベントタイトル
-          - status: (integer) - ステータスID
-          - event_image: (string) - イベント画像フルパス
-          - tags: (array) - タグ名
+          - image: (string) - イベント画像フルパス
+          - started_at: (datetime) - 開催日時
+          - ended_at: (datetime) - 終了日時時
 
     + Body
 
@@ -520,25 +483,18 @@
                 "total_count": 2,
                 "events": [
                     {
-                        "event_id": 1,
+                        "id": 1,
                         "title": "第1会もくもく会",
-                        "event_image": "http://example.com/image/sample1.jpg",
-                        "status": "published",
-                        "tags": [
-                            "もくもく会",
-                            "Ruby",
-                            "Scala"
-                        ]
+                        "image": "http://example.com/image/sample1.jpg",
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     },
                     {
-                        "event_id": 2,
+                        "id": 2,
                         "title": "Rails勉強会",
-                        "event_image": "http://example.com/image/sample2.jpg",
-                        "status": "published",
-                        "tags": [
-                            "Ruby",
-                            "Ruby on Rails"
-                        ]
+                        "image": "http://example.com/image/sample2.jpg",
+                        "started_at": "2016/06/03 13:00",
+                        "ended_at": "2016/06/03 16:00"
                     }
                 ]
             }

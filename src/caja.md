@@ -26,8 +26,9 @@
     * Body Attributes
 
         * folders: (array[folder]) - TOPフォルダ一覧
-            * folder_id: (string) - フォルダID
-            * name: (string) - フォルダ名
+            * id: (string) - フォルダID(uuid)
+            * name: (string) - フォルダ名(=グループ名)
+            * image: (string) - フォルダ画像(=グループ画像)
             * updated_user (user) - 更新者
             * updated_at: (datetime) - 更新日時
 
@@ -36,14 +37,15 @@
             {
                 "folders": [
                     {
-                        "folder_id": "abreveurygbeurveru...",
+                        "id": "abreveurygbeurveru...",
                         "name": "IS-07",
+                        "image": "https://static.neec.ooo/hoehoge.png",
                         "updated_user": {
-                            "user_id": 1,
+                            "id": 1,
                             "name": "田中 太郎",
                             "number": "G099C0001",
                             "note": "Hello",
-                            "user_image": "https://static.neec.ooo/hoge.png",
+                            "image": "https://static.neec.ooo/hoge.png",
                             "college": {
                                 "code": "c",
                                 "name": "IT"
@@ -52,14 +54,15 @@
                         "updated_at": "2017-01-09T16:00:00.000Z"
                     },
                     {
-                        "folder_id": "abreveurygbeurveru...",
+                        "id": "abreveurygbeurveru...",
                         "name": "IS-08",
+                        "image": "https://static.neec.ooo/fugafuga.png",
                         "updated_user": {
-                            "user_id": 2,
+                            "id": 2,
                             "name": "山田 花子",
                             "number": "G099C0001",
                             "note": "Hello",
-                            "user_image": "https://static.neec.ooo/hoge.png",
+                            "image": "https://static.neec.ooo/hoge.png",
                             "college": {
                                 "code": "c",
                                 "name": "IT"
@@ -95,7 +98,7 @@
 * Response 201 (application/json)
 
     * Body Attributes
-        * folder_id: (string) - フォルダID
+        * id: (string) - フォルダID
         * name: (string) - フォルダ名
         * created_user: (user) - 作成者
         * created_at: (datetime) - 作成日時
@@ -105,14 +108,14 @@
     * Body
 
             {
-                "folder_id": "neriungerbqoeurgber...",
+                "id": "neriungerbqoeurgber...",
                 "name": "ビジネススキル(2)",
                 "created_user": {
-                    "user_id": 1,
+                    "id": 1,
                     "name": "田中 太郎",
                     "number": "G099C0001",
                     "note": "Hello",
-                    "user_image": "https://static.neec.ooo/hoge.png",
+                    "image": "https://static.neec.ooo/hoge.png",
                     "college": {
                         "code": "c",
                         "name": "IT"
@@ -120,11 +123,11 @@
                 },
                 "created_at": "2017-01-09T16:00:00.000Z",
                 "updated_user": {
-                    "user_id": 1,
+                    "id": 1,
                     "name": "田中 太郎",
                     "number": "G099C0001",
                     "note": "Hello",
-                    "user_image": "https://static.neec.ooo/hoge.png",
+                    "image": "https://static.neec.ooo/hoge.png",
                     "college": {
                         "code": "c",
                         "name": "IT"
@@ -153,7 +156,7 @@
     * Body Attributes
 
         * current_folder: (folder) - カレントフォルダ
-            * folder_id: (string) - フォルダID
+            * id: (string) - フォルダID
             * name: (string) - フォルダ名
             * created_user: (user) - 作成者
             * created_at: (datetime) - 作成日時
@@ -161,8 +164,7 @@
             * updated_at: (datetime) - 更新日時
         * elements: (array[folder or file]) - カレントフォルダ配下の要素配列
             * type: (string) - 要素タイプ( `folder` or `file` )
-            * file_id: (string) - ファイルID(type == `file` )
-            * folder_id: (string) - フォルダID(type == `folder` )
+            * id: (string) - フォルダ or ファイルID
             * name: (string) - フォルダ/ファイル名
             * created_user: (user) - 作成者
             * created_at: (datetime) - 作成日時
@@ -173,14 +175,14 @@
 
             {
                 "current_folder": {
-                    "folder_id": "nireubverlugbreg...",
+                    "id": "nireubverlugbreg...",
                     "name": "IS-07",
                     "created_user": {
-                        "user_id": 1,
+                        "id": 1,
                         "name": "田中 太郎",
                         "number": "G099C0001",
                         "note": "Hello",
-                        "user_image": "https://static.neec.ooo/hoge.png",
+                        "image": "https://static.neec.ooo/hoge.png",
                         "college": {
                             "code": "c",
                             "name": "IT"
@@ -188,11 +190,11 @@
                     },
                     "created_at": "2017-01-09T16:00:00.000Z",
                     "updated_user": {
-                        "user_id": 1,
+                        "id": 1,
                         "name": "田中 太郎",
                         "number": "G099C0001",
                         "note": "Hello",
-                        "user_image": "https://static.neec.ooo/hoge.png",
+                        "image": "https://static.neec.ooo/hoge.png",
                         "college": {
                             "code": "c",
                             "name": "IT"
@@ -203,14 +205,14 @@
                 "elements": [
                     {
                         "type": "file",
-                        "file_id": "abreveurygbeurveru...",
+                        "id": "abreveurygbeurveru...",
                         "name": "後期時間割",
                         "created_user": {
-                            "user_id": 1,
+                            "id": 1,
                             "name": "田中 太郎",
                             "number": "G099C0001",
                             "note": "Hello",
-                            "user_image": "https://static.neec.ooo/hoge.png",
+                            "image": "https://static.neec.ooo/hoge.png",
                             "college": {
                                 "code": "c",
                                 "name": "IT"
@@ -218,11 +220,11 @@
                         },
                         "created_at": "2017-01-09T16:00:00.000Z",
                         "updated_user": {
-                            "user_id": 1,
+                            "id": 1,
                             "name": "田中 太郎",
                             "number": "G099C0001",
                             "note": "Hello",
-                            "user_image": "https://static.neec.ooo/hoge.png",
+                            "image": "https://static.neec.ooo/hoge.png",
                             "college": {
                                 "code": "c",
                                 "name": "IT"
@@ -232,14 +234,14 @@
                     },
                     {
                         "type": "folder",
-                        "folder_id": "abreveurygbeurveru...",
+                        "id": "abreveurygbeurveru...",
                         "name": "ビジネススキル",
                         "created_user": {
-                            "user_id": 1,
+                            "id": 1,
                             "name": "田中 太郎",
                             "number": "G099C0001",
                             "note": "Hello",
-                            "user_image": "https://static.neec.ooo/hoge.png",
+                            "image": "https://static.neec.ooo/hoge.png",
                             "college": {
                                 "code": "c",
                                 "name": "IT"
@@ -247,11 +249,11 @@
                         },
                         "created_at": "2017-01-09T16:00:00.000Z",
                         "updated_user": {
-                            "user_id": 1,
+                            "id": 1,
                             "name": "田中 太郎",
                             "number": "G099C0001",
                             "note": "Hello",
-                            "user_image": "https://static.neec.ooo/hoge.png",
+                            "image": "https://static.neec.ooo/hoge.png",
                             "college": {
                                 "code": "c",
                                 "name": "IT"
@@ -290,7 +292,7 @@
 
     * Body Attributes
 
-        * folder_id: (string) - フォルダID
+        * id: (string) - フォルダID
         * name: (string) - フォルダ名
         * created_user: (user) - 作成者
         * created_at: (datetime) - 作成日時
@@ -300,14 +302,14 @@
     * Body
 
             {
-                "folder_id": "neriungerbqoeurgber...",
+                "id": "neriungerbqoeurgber...",
                 "name": "ビジネススキル(2)",
                 "created_user": {
-                    "user_id": 1,
+                    "id": 1,
                     "name": "田中 太郎",
                     "number": "G099C0001",
                     "note": "Hello",
-                    "user_image": "https://static.neec.ooo/hoge.png",
+                    "image": "https://static.neec.ooo/hoge.png",
                     "college": {
                         "code": "c",
                         "name": "IT"
@@ -315,11 +317,11 @@
                 },
                 "created_at": "2017-01-09T16:00:00.000Z",
                 "updated_user": {
-                    "user_id": 1,
+                    "id": 1,
                     "name": "田中 太郎",
                     "number": "G099C0001",
                     "note": "Hello",
-                    "user_image": "https://static.neec.ooo/hoge.png",
+                    "image": "https://static.neec.ooo/hoge.png",
                     "college": {
                         "code": "c",
                         "name": "IT"
@@ -376,7 +378,7 @@
 
     * Body Attributes
 
-        * file_id: (string) - ファイルID
+        * id: (string) - ファイルID
         * name: (string) - フォルダ/ファイル名
         * created_user: (user) - 作成者
         * created_at: (datetime) - 作成日時
@@ -386,14 +388,14 @@
     * Body
 
             {
-                "file_id": "abreveurygbeurveru...",
+                "id": "abreveurygbeurveru...",
                 "name": "後期時間割",
                 "created_user": {
-                    "user_id": 1,
+                    "id": 1,
                     "name": "田中 太郎",
                     "number": "G099C0001",
                     "note": "Hello",
-                    "user_image": "https://static.neec.ooo/hoge.png",
+                    "image": "https://static.neec.ooo/hoge.png",
                     "college": {
                         "code": "c",
                         "name": "IT"
@@ -401,11 +403,11 @@
                 },
                 "created_at": "2017-01-09T16:00:00.000Z",
                 "updated_user": {
-                    "user_id": 1,
+                    "id": 1,
                     "name": "田中 太郎",
                     "number": "G099C0001",
                     "note": "Hello",
-                    "user_image": "https://static.neec.ooo/hoge.png",
+                    "image": "https://static.neec.ooo/hoge.png",
                     "college": {
                         "code": "c",
                         "name": "IT"
@@ -465,7 +467,7 @@
 
     * Body Attributes
 
-        * file_id: (string) - ファイルID
+        * id: (string) - ファイルID
         * name: (string) - フォルダ/ファイル名
         * created_user: (user) - 作成者
         * created_at: (datetime) - 作成日時
@@ -475,14 +477,14 @@
     * Body
 
             {
-                "file_id": "abreveurygbeurveru...",
+                "id": "abreveurygbeurveru...",
                 "name": "後期時間割システム専攻のみ",
                 "created_user": {
-                    "user_id": 1,
+                    "id": 1,
                     "name": "田中 太郎",
                     "number": "G099C0001",
                     "note": "Hello",
-                    "user_image": "https://static.neec.ooo/hoge.png",
+                    "image": "https://static.neec.ooo/hoge.png",
                     "college": {
                         "code": "c",
                         "name": "IT"
@@ -490,11 +492,11 @@
                 },
                 "created_at": "2017-01-09T16:00:00.000Z",
                 "updated_user": {
-                    "user_id": 1,
+                    "id": 1,
                     "name": "田中 太郎",
                     "number": "G099C0001",
                     "note": "Hello",
-                    "user_image": "https://static.neec.ooo/hoge.png",
+                    "image": "https://static.neec.ooo/hoge.png",
                     "college": {
                         "code": "c",
                         "name": "IT"
@@ -538,12 +540,12 @@
 * Request (multipart/form-data)
 
     * Body Attributes
-        * group_id: 1 (number, required) - グループID
+        * group_id: `7a02bf4c-76de-47fc-a530-1ce893d7e490` (string, required) - グループID
 
     * Body
 
             {
-                "group_id": 1
+                "group_id": "7a02bf4c-76de-47fc-a530-1ce893d7e490"
             }
 
 * Response 204
@@ -561,12 +563,12 @@
 * Request (multipart/form-data)
 
     * Body Attributes
-        * group_id: 1 (number, required) - グループID
+        * group_id: `7a02bf4c-76de-47fc-a530-1ce893d7e490` (string, required) - グループID
 
     * Body
 
             {
-                "group_id": 1
+                "group_id": "7a02bf4c-76de-47fc-a530-1ce893d7e490"
             }
 
 * Response 204

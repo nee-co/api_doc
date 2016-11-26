@@ -18,19 +18,51 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"第1会もくもく会\",\n    \"tags\": [\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"body\": \"第1回もくもく会を開催いたします\",\n    \"started_at\": \"2017/01/01 12:00\",\n    \"ended_at\": \"2017/01/01 15:00\",\n    \"venue\": \"研究棟B 501\",\n    \"entry_upper_limit\": 5\n}"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "第1会もくもく会",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "body",
+									"value": "第1回もくもく会を開催いたします",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "started_at",
+									"value": "2017/01/01 12:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "ended_at",
+									"value": "2017/01/01 15:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "venue",
+									"value": "研究棟B 501",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "entry_upper_limit",
+									"value": "5",
+									"type": "text",
+									"enabled": true
+								}
+							]
 						},
 						"description": "**Note**\n\n* body: Markdown形式\n* tag: 各タグidの配列\n* event_image: json値ではなくイベント画像ファイル\n* 必須項目(title)が未設定の場合 => 400"
 					},
@@ -63,21 +95,53 @@
 						"method": "PATCH",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"第2会もくもく会\",\n    \"tags\": [\n        \"1\",\n        \"2\",\n        \"3\",\n        \"4\"\n    ],\n    \"body\": \"第2回もくもく会を開催いたします\",\n    \"started_at\": \"2018/01/01 13:00\",\n    \"ended_at\": \"2018/01/01 16:00\",\n    \"venue\": \"研究棟B 402\",\n    \"entry_upper_limit\": 6,\n    \"notify\": true\n}"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "第2会もくもく会",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "body",
+									"value": "第2回もくもく会を開催いたします",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "started_at",
+									"value": "2018/01/01 12:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "ended_at",
+									"value": "2018/01/01 15:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "venue",
+									"value": "研究棟B 502",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "entry_upper_limit",
+									"value": "3",
+									"type": "text",
+									"enabled": true
+								}
+							]
 						},
-						"description": "**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - イベントid"
+						"description": ""
 					},
 					"response": []
 				},
@@ -188,19 +252,21 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"body\": \"こんにちは。\"\n}"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "body",
+									"value": "こんにちは",
+									"type": "text",
+									"enabled": true
+								}
+							]
 						},
 						"description": "**Note**\n\n* comment: Markdown形式\n* 開催者のみ, 参加者にコメント投稿通知を送ることができる(任意)\n* 参加者のコメントは開催者に通知が送られる\n* イベントステータスが 非公開 以外の場合にのみ投稿可能 => 204\n* イベントステータスが 非公開 の場合 => 403\n* 対象イベントが見つからない => 404\n\n**URI Parameters**\n\n* event_id `number` (required) Example: `1`\n    - コメント対象イベントid"
 					},
@@ -283,6 +349,354 @@
 							"raw": ""
 						},
 						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cadena-Group",
+			"description": "",
+			"item": [
+				{
+					"name": "新規グループ作成",
+					"request": {
+						"url": "{{host}}/groups",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "IS-07",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "note",
+									"value": "ITスペシャリスト学科 7期のグループ",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "is_private",
+									"value": "false",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "user_ids[]",
+									"value": "1",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "user_ids[]",
+									"value": "2",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "group_image",
+									"value": "",
+									"type": "file",
+									"enabled": true
+								}
+							]
+						},
+						"description": "**Note**\n\n* 必須項目が未設定の場合 => 422\n* ログイン中ユーザは作成したグループに参加する\n* user_idsに値が入っていた場合は、該当するユーザを招待する"
+					},
+					"response": []
+				},
+				{
+					"name": "所属するグループ一覧取得",
+					"request": {
+						"url": "{{host}}/groups",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* ログイン中のユーザが所属するグループを返す"
+					},
+					"response": []
+				},
+				{
+					"name": "グループ検索",
+					"request": {
+						"url": "{{host}}/groups/search?keyword=IS&page=1&per=10",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* public のグループの中から検索する\n* 検索キーワードが未入力の場合は public のものを全て返す"
+					},
+					"response": []
+				},
+				{
+					"name": "グループ詳細取得",
+					"request": {
+						"url": "{{host}}/groups/{{group_id}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* public && グループメンバ以外 => 403\n* private && グループメンバ以外 => 404\n* 対象グループが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "グループ更新",
+					"request": {
+						"url": "{{host}}/groups/{{group_id}}",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "IS-07_Systems",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "note",
+									"value": "ISスペシャリスト科 システム専攻",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "is_private",
+									"value": "true",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "group_image",
+									"value": "",
+									"type": "file",
+									"enabled": true
+								}
+							]
+						},
+						"description": "**Note**\n\n* public && グループメンバ以外 => 403\n* invite && グループメンバ以外 => 404\n* 対象グループが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "グループ参加",
+					"request": {
+						"url": "{{host}}/groups/{{group_id}}/join",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* public => 204\n* private && 招待されている => 204\n* private && 招待さてれてない => 404\n* ログイン中のユーザ is グループメンバ => 403\n* 対象グループが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "グループ脱退",
+					"request": {
+						"url": "{{host}}/groups/{{group_id}}/left",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* ログイン中のユーザ == グループメンバ => 204\n* public && ログイン中のユーザ is グループメンバ以外 => 403\n* private && ログイン中のユーザ is グループメンバ以外 => 404\n* 対象グループが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "グループ招待",
+					"request": {
+						"url": "{{host}}/groups/{{group_id}}/invite",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_ids[]",
+									"value": "1",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "user_ids[]",
+									"value": "2",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "**Note**\n\n* 招待対象ユーザのいずれかが (招待済み || グループメンバ) => 403\n* public && ログインユーザ is グループメンバ以外 => 403\n* private && ログインユーザ is グループメンバ以外 => 404\n* 対象グループが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "グループ招待拒否",
+					"request": {
+						"url": "{{host}}/groups/{{group_id}}/reject",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* 招待を受けたユーザが招待を拒否する\n* ログイン中のユーザ is グループメンバ => 403\n* public && 招待を受けていない => 403\n* private && 招待を受けていない => 404\n* 対象グループが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "グループ招待キャンセル",
+					"request": {
+						"url": "{{host}}/groups/{{group_id}}/cancel",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "**Note**\n\n* グループメンバが招待を取り消す\n* public && (グループメンバ以外) => 403\n* private && (グループメンバ以外) => 404\n* 招待を出していない => 403\n* 対象グループが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "グループフォルダ作成",
+					"request": {
+						"url": "{{host}}/groups/{{group_id}}/folder",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* ログイン中のユーザがグループメンバかどうかのチェックをし、Cajaの TOPフォルダ作成API を呼ぶ\n* すでにTOPフォルダが作成されている場合でも同じ扱いをする(重複は気にしない)\n* public && グループメンバ以外 => 403\n* private && グループメンバ以外 => 404\n* 対象グループが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "グループメンバID取得-内部",
+					"request": {
+						"url": "{{host}}/internal/groups/{{group_id}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* 内部向けAPI(認証の必要がない)\n* 対象グループが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "指定ユーザが所属するグループ一覧-内部",
+					"request": {
+						"url": "{{host}}/internal/groups{{?user_id}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* 内部向けAPI(認証の必要がない)"
 					},
 					"response": []
 				}
@@ -475,39 +889,13 @@
 			]
 		},
 		{
-			"name": "Cuenta-Auth",
-			"description": "**Note**\n\n* 認証系API\n* ログアウトAPIは存在せず、クライアントがアクセストークンを破棄することでログアウトしたとみなす",
-			"item": [
-				{
-					"name": "ログイン",
-					"request": {
-						"url": "{{host}}/auth/login",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"number\": \"g002b8136\",\n  \"password\": \"g002b8136password\"\n}"
-						},
-						"description": "**Note**\n\n* アクセストークンを必要としない\n* 学籍番号(大文字/小文字問わない)とパスワードで認証を行う\n* 認証成功時: Kongと連携しアクセストークンを作成する\n* アクセストークンの有効期限は1週間\n* アクセストークンが作成済みであっても、追加で作成する(複数デバイス対応)\n* APIクライアントはアクセストークンを保持する必要がある。\n* 認証失敗時: 404を返す\n* パラメータ不正時: 400を返す"
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Cuenta-User",
+			"name": "Cuenta-LoginUser",
 			"description": "**Note**\n\n* 全てのリクエストヘッダーにアクセストークンを付加する必要がある",
 			"item": [
 				{
 					"name": "ログイン中のユーザ情報取得",
 					"request": {
-						"url": "{{host}}/users",
+						"url": "{{host}}/user",
 						"method": "GET",
 						"header": [
 							{
@@ -527,14 +915,9 @@
 				{
 					"name": "ログイン中のユーザパスワード変更",
 					"request": {
-						"url": "{{host}}/users/password",
+						"url": "{{host}}/user/password",
 						"method": "PATCH",
 						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
@@ -542,8 +925,21 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"current_password\": \"g002b8136password\",\n  \"new_password\": \"g002b8136\"\n}"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "current_password",
+									"value": "g002b8136password",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "new_password",
+									"value": "g002b8136",
+									"type": "text",
+									"enabled": true
+								}
+							]
 						},
 						"description": "**Note**\n\n* パスワード変更成功時 => 204\n* current_passwordが正しく無い => 403"
 					},
@@ -552,7 +948,7 @@
 				{
 					"name": "ログイン中のユーザ画像更新",
 					"request": {
-						"url": "{{host}}/users/image",
+						"url": "{{host}}/user/image",
 						"method": "POST",
 						"header": [
 							{
@@ -571,9 +967,9 @@
 							"formdata": [
 								{
 									"key": "image",
-									"value": "",
 									"type": "file",
-									"enabled": true
+									"enabled": true,
+									"src": "U04UFSA7M.jpeg"
 								}
 							]
 						},
@@ -582,9 +978,95 @@
 					"response": []
 				},
 				{
-					"name": "ユーザLIKE検索",
+					"name": "ログイン中のユーザ備考更新",
 					"request": {
-						"url": "{{host}}/users/search?str=田&college_ids=c",
+						"url": "{{host}}/user/note",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "note",
+									"value": "hogehoge",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuenta-Token",
+			"description": "**Note**\n\n* アクセストークン関連API\n* ログアウトAPIは存在せず、クライアントがアクセストークンを破棄することでログアウトしたとみなす",
+			"item": [
+				{
+					"name": "アクセストークン発行",
+					"request": {
+						"url": "{{host}}/token",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "number",
+									"value": "g002b8136",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "password",
+									"value": "g002b8136password",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "**Note**\n\n* アクセストークンを必要としない\n* 学籍番号(大文字/小文字問わない)とパスワードで認証を行う\n* 認証成功時: Kongと連携しアクセストークンを作成する\n* アクセストークンの有効期限は1週間\n* アクセストークンが作成済みであっても、追加で作成する(複数デバイス対応)\n* APIクライアントはアクセストークンを保持する必要がある。\n* 認証失敗時: 404を返す\n* パラメータ不正時: 400を返す"
+					},
+					"response": []
+				},
+				{
+					"name": "アクセストークンの再生成",
+					"request": {
+						"url": "{{host}}/token/refresh",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* アクセストークンの有効期限を1週間延長する(トークン再生成)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuenta-Users",
+			"description": "",
+			"item": [
+				{
+					"name": "ユーザ名LIKE検索",
+					"request": {
+						"url": "{{host}}/users/search?name=田&limit=10&offset=0&except_ids=5",
 						"method": "GET",
 						"header": [
 							{
@@ -597,7 +1079,27 @@
 							"mode": "formdata",
 							"formdata": []
 						},
-						"description": "**Note**\n\n* 氏名と学籍番号を対象にLIKE検索\n* 検索結果が0件の場合でも200を返す\n* str が指定されなかった場合のみ400を返す\n* user_ids と college_codesはXORの関係、同時に指定されることはない。\n* 仮に user_ids とcollege_codesの両方が指定された場合は user_ids のみ参照する\n\n**URI Parameters**\n\n* str `string` (required) Example: `田`\n    - 氏名 or 学籍番号\n\n* user_ids `array[string]` (optional) Example: `1+2+3`\n    - 検索対象ユーザID一覧\n\n* college_codes `array[string]` (optional) Example: `c+g`\n    - 検索対象カレッジCode一覧"
+						"description": "**Note**\n\n* 氏名を対象にLIKE検索\n* 検索結果が0件の場合 => 200(空配列)\n* パラメータ不正 => 400\n\n**URI Parameters**\n\n* name `string` (required) Example: `田`\n    - ユーザ名\n\n* limit `number` (required) Example: `1`\n    - 取得数\n\n* offset `number` (required) Example: `0`\n    - 取得開始位置 (0 origin)\n\n* except_ids `array[number]` (required) Example: `1`\n    - 検索対象外ユーザID"
+					},
+					"response": []
+				},
+				{
+					"name": "学籍番号LIKE検索",
+					"request": {
+						"url": "{{host}}/users/search?number=G000B0104&except_ids=",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n\n* 学籍番号を対象にLIKE検索\n* 学籍番号は大文字・小文字どちらでも良い\n* 検索結果が1件の場合にのみユーザ情報を返す(0件 or 2件以上 => 200の空配列)\n* パラメータ不正 => 400\n\n**URI Parameters**\n\n* number `string` (required) Example: `G099C1001`\n    - 学籍番号\n\n* except_ids `array[number]` (required) Example: `1`\n    - 検索対象外ユーザID"
 					},
 					"response": []
 				},
