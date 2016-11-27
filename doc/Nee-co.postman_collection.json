@@ -21,6 +21,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -49,18 +55,6 @@
 									"value": "2017/01/01 15:00",
 									"type": "text",
 									"enabled": true
-								},
-								{
-									"key": "venue",
-									"value": "研究棟B 501",
-									"type": "text",
-									"enabled": true
-								},
-								{
-									"key": "entry_upper_limit",
-									"value": "5",
-									"type": "text",
-									"enabled": true
 								}
 							]
 						},
@@ -78,6 +72,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -98,6 +98,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -126,18 +132,6 @@
 									"value": "2018/01/01 15:00",
 									"type": "text",
 									"enabled": true
-								},
-								{
-									"key": "venue",
-									"value": "研究棟B 502",
-									"type": "text",
-									"enabled": true
-								},
-								{
-									"key": "entry_upper_limit",
-									"value": "3",
-									"type": "text",
-									"enabled": true
 								}
 							]
 						},
@@ -155,6 +149,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -175,6 +175,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -195,6 +201,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -215,6 +227,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -235,6 +253,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -255,6 +279,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -282,6 +312,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -302,6 +338,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -322,6 +364,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -342,6 +390,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -368,6 +422,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -425,6 +485,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -445,6 +511,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -465,6 +537,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -485,6 +563,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -530,6 +614,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -550,6 +640,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -570,6 +666,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -603,6 +705,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -623,6 +731,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -650,6 +764,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -661,37 +781,11 @@
 					"response": []
 				},
 				{
-					"name": "グループメンバID取得-内部",
-					"request": {
-						"url": "{{host}}/internal/groups/{{group_id}}",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": "**Note**\n\n* 内部向けAPI(認証の必要がない)\n* 対象グループが見つからない => 404"
-					},
-					"response": []
-				},
-				{
 					"name": "指定ユーザが所属するグループ一覧-内部",
 					"request": {
-						"url": "{{host}}/internal/groups{{?user_id}}",
+						"url": "{{host}}/internal/groups?user_id",
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
@@ -703,186 +797,328 @@
 			]
 		},
 		{
-			"name": "Caja-Dir",
-			"description": "APIのエンドポイントはCaja-Fileと同等\n\npathの終端に `/` があるかないかで、FileとDirを区別する",
-			"item": [
-				{
-					"name": "ディレクトリ配下情報取得",
-					"request": {
-						"url": "{{host}}/files/top/{{dir_path}}",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": "**Note**\n\n* 現在ログイン中のユーザが閲覧できるディレクトリとファイルを返す\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco/`\n    - 現在のディレクトリ階層(末尾は/)"
-					},
-					"response": []
-				},
-				{
-					"name": "ディレクトリ追加/更新",
-					"request": {
-						"url": "{{host}}/files/top/{{dir_path}}",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"neeco\",\n    \"target_type\": \"college\",\n    \"public_ids\": [\n      \"a\",\n      \"b\",\n      \"c\",\n      \"d\",\n      \"e\",\n      \"f\",\n      \"g\"\n    ]\n}"
-						},
-						"description": "**Note**\n\n* 正常に追加できた場合に201を返す\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco/`\n    - 現在のディレクトリ階層(末尾は/)"
-					},
-					"response": []
-				},
-				{
-					"name": "ディレクトリ削除",
-					"request": {
-						"url": "{{host}}/files/top/{{dir_path}}",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": "**Note**\n\n* 自分が追加したディレクトリのみ削除可能\n* 配下のファイル/ディレクトリも削除する(他人が追加したものも含む)\n* 削除成功時は204を返す。レスポンスボディはなし。\n* 削除失敗時は403を返す。レスポンスボディはなし。\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco/`\n    - 現在のディレクトリ階層(末尾は/)"
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Caja-File",
 			"description": "APIのエンドポイントはCaja-Dirと同等\n\npathの終端に `/` があるかないかで、FileとDirを区別する",
 			"item": [
 				{
-					"name": "ファイルダウンロード",
+					"name": "ファイルアップロード",
 					"request": {
-						"url": "{{host}}/files/top/{{file_path}}",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": "**Note**\n\n* 指定されたファイルを返す\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco.txt`\n    - 現在のディレクトリ階層/ファイル名\n"
-					},
-					"response": []
-				},
-				{
-					"name": "ファイル追加",
-					"request": {
-						"url": "{{host}}/files/top/{{file_path}}",
+						"url": "{{host}}/folders",
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "target_type",
-									"value": "college",
-									"type": "text",
-									"enabled": true
-								},
-								{
-									"key": "public_ids",
-									"value": "\"a,b,c,d,e,f,g\"",
-									"type": "text",
-									"enabled": true
-								},
-								{
 									"key": "file",
 									"value": "",
 									"type": "file",
 									"enabled": true
+								},
+								{
+									"key": "parent_id",
+									"value": "abreveurygbeurveru",
+									"type": "text",
+									"enabled": true
 								}
 							]
 						},
-						"description": "**Note**\n\n* 正常に追加できた場合に201を返す\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco.txt`\n    - 現在のディレクトリ階層/ファイル名\n"
+						"description": "**Note**\n* アップロードされたファイルからファイル名を抽出する\n必須項目がない => 422\n* アップロード先フォルダが見つからない => 404\n* 同名のフォルダ/ファイが存在する場合 => 422\n* Create権限がない => 403"
 					},
 					"response": []
 				},
 				{
-					"name": "ファイル公開対象更新",
+					"name": "ファイルダウンロード",
 					"request": {
-						"url": "{{host}}/files/top/{{file_path}}",
-						"method": "PATCH",
+						"url": "{{host}}/folders/{{file_id}}",
+						"method": "GET",
 						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"neeco.txt\",\n    \"target_type\": \"user\",\n    \"public_ids\": [\n        \"1\",\n        \"2\"\n    ]\n}"
+							"mode": "formdata",
+							"formdata": []
 						},
-						"description": "**Note**\n\n* 自分が追加したファイルのみ更新可能\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco.txt`\n    - 現在のディレクトリ階層/ファイル名\n"
+						"description": "**Note**\n* S3へのパスではなく, 直接バイナリを返す\n* ファイルがみつからない => 404\n* Read権限がない => 403"
+					},
+					"response": []
+				},
+				{
+					"name": "ファイル名変更",
+					"request": {
+						"url": "{{host}}/folders/{{file_id}}",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "後期時間割システム専攻のみ",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "**Note**\n* 必須項目がない => 422\n* ファイルがみつからない => 404\n* Update権限がない => 403"
 					},
 					"response": []
 				},
 				{
 					"name": "ファイル削除",
 					"request": {
-						"url": "{{host}}/files/top/{{file_path}}",
+						"url": "{{host}}/folders/{{file_id}}",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n* ファイルが見つからない => 404\n* Delete権限がない => 403"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Caja-Folder",
+			"description": "",
+			"item": [
+				{
+					"name": "TOPフォルダ一覧取得",
+					"request": {
+						"url": "{{host}}/folders",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": "**Note**\n\n* 自分が追加したファイルのみ削除可能\n* 削除成功時は204を返す。レスポンスボディはなし。\n* 削除失敗時は403を返す。レスポンスボディはなし。\n\n**URI Parameters**\n\n* file_dir_path `string` (required) Example: `example/neeco.txt`\n    - 現在のディレクトリ階層/ファイル名\n"
+						"description": "**Note**\n* 自分が所属しているグループに紐づいているTOPフォルダを返す"
+					},
+					"response": []
+				},
+				{
+					"name": "フォルダ追加",
+					"request": {
+						"url": "{{host}}/folders",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "ビジネススキル",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parent_id",
+									"value": "abreveurygbeurveru",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "**Note**\n* 本APIで作成するフォルダは必ず上階層のフォルダが存在する\n* フォルダは階層構造を表現するためのものであり,実際にはフォルダは作成しない\n* Cread権限がない => 403\n* 必須項目がない => 422\n* 同名のフォルダ/ファイルが存在する場合 => 422"
+					},
+					"response": []
+				},
+				{
+					"name": "フォルダ情報取得",
+					"request": {
+						"url": "{{host}}/folders/{{folder_id}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n* Read権限がない => 403\n* フォルダが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "フォルダ名変更",
+					"request": {
+						"url": "{{host}}/folders/{{folder_id}}",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "ビジネススキル(2)",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "**Note**\n* Update権限がない => 403\n* フォルダが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "フォルダ削除",
+					"request": {
+						"url": "{{host}}/folders/{{folder_id}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "**Note**\n* 配下にあるフォルダ/ファイルも同時に削除する(配下は権限問わず)\n* Delete権限がない => 403\n* フォルダが見つからない => 404"
+					},
+					"response": []
+				},
+				{
+					"name": "Topフォルダ作成-内部",
+					"request": {
+						"url": "{{host}}/internal/folders",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "group_id",
+									"value": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "**Note**\n* 内部向けAPI(認証の必要がない)\n* cadenaが呼ぶ\n* 指定されたグループのトップフォルダを作成する\n* `id: 生成, name: \"top\", group_id: params['group_id'], parent_id: 0`\n* すでに作成されている => 何もせず204を返す"
+					},
+					"response": []
+				},
+				{
+					"name": "Topフォルダ全削除-内部",
+					"request": {
+						"url": "{{host}}/internal/folders/cleanup",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "group_id",
+									"value": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "**Note**\n* 内部向けAPI(認証の必要がない)\n* cadenaが呼ぶ\n* 指定されたグループのフォルダ/ファイルをすべて削除する\n* 存在しない => 何もせずに204を返す"
 					},
 					"response": []
 				}
@@ -902,6 +1138,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -922,6 +1164,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -957,9 +1205,10 @@
 								"description": ""
 							},
 							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"description": ""
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -987,6 +1236,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -1047,6 +1302,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -1073,6 +1334,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -1093,6 +1360,12 @@
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
 								"description": ""
+							},
+							{
+								"key": "//x-consumer-custom-id",
+								"value": "1",
+								"description": "",
+								"disabled": true
 							}
 						],
 						"body": {
