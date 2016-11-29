@@ -25,12 +25,12 @@
 * Response 201 (application/json)
 
     + Body Attributes
-        * image_path: (string) - アップロード画像保存Path
+        * file_name: (string) - Image file name
 
     + Body
 
             {
-                "image_path": "/image/ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png"
+                "file_name": "ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png"
             }
 
 * Response 400 (application/json)
@@ -76,12 +76,12 @@
 * Response 201 (application/json)
 
     + Body Attributes
-        * image_path: (string) - アップロード画像保存Path
+        * file_name: (string) - Image file name
 
     + Body
 
             {
-                "image_path": "/image/ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png"
+                "file_name": "ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png"
             }
 
 * Response 400 (application/json)
