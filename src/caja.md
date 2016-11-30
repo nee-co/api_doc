@@ -29,8 +29,6 @@
             * id: (string) - フォルダID(uuid)
             * name: (string) - フォルダ名(=グループ名)
             * image: (string) - フォルダ画像(=グループ画像)
-            * updated_user (user) - 更新者
-            * updated_at: (datetime) - 更新日時
 
     * Body
 
@@ -39,36 +37,12 @@
                     {
                         "id": "abreveurygbeurveru...",
                         "name": "IS-07",
-                        "image": "https://static.neec.ooo/hoehoge.png",
-                        "updated_user": {
-                            "id": 1,
-                            "name": "田中 太郎",
-                            "number": "G099C0001",
-                            "note": "Hello",
-                            "image": "https://static.neec.ooo/hoge.png",
-                            "college": {
-                                "code": "c",
-                                "name": "IT"
-                            }
-                        },
-                        "updated_at": "2017-01-09T16:00:00.000Z"
+                        "image": "https://static.neec.ooo/hoehoge.png"
                     },
                     {
                         "id": "abreveurygbeurveru...",
                         "name": "IS-08",
-                        "image": "https://static.neec.ooo/fugafuga.png",
-                        "updated_user": {
-                            "id": 2,
-                            "name": "山田 花子",
-                            "number": "G099C0001",
-                            "note": "Hello",
-                            "image": "https://static.neec.ooo/hoge.png",
-                            "college": {
-                                "code": "c",
-                                "name": "IT"
-                            }
-                        },
-                        "updated_at": "2017-01-09T16:00:00.000Z"
+                        "image": "https://static.neec.ooo/fugafuga.png"
                     }
                 ]
             }
