@@ -82,7 +82,7 @@
 * 必須項目がない => 422
 * 同名のフォルダ/ファイルが存在する場合 => 422
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * name: `ビジネススキル` (string, required) - グループ名
@@ -277,7 +277,7 @@
 * Parameters
     * folder_id: `neriungerbqoeurgber...` (string, required) - フォルダID
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * name: `ビジネススキル(2) ` (string, required) - フォルダ名
@@ -452,7 +452,7 @@
 * Parameters
     * file_id: `neriungerbqoeurgber...` (string, required) - ファイルID
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * name: `後期時間割システム専攻のみ` (string, required) - フォルダ名
@@ -537,7 +537,7 @@
 * `id: 生成, name: "top", group_id: params['group_id'], parent_id: 0`
 * すでに作成されている => 何もせず204を返す
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * group_id: `7a02bf4c-76de-47fc-a530-1ce893d7e490` (string, required) - グループID
@@ -560,7 +560,7 @@
 * 指定されたグループのフォルダ/ファイルをすべて削除する
 * 存在しない => 何もせずに204を返す
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * group_id: `7a02bf4c-76de-47fc-a530-1ce893d7e490` (string, required) - グループID

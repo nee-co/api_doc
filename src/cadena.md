@@ -362,7 +362,7 @@
 * Parameters
     + group_id: 1 (number) - グループID
 
-* Request
+* Request (application/x-www-form-urlencoded)
 
     + Body Attributes
         * user_ids: (array[number]) - ユーザID配列
@@ -414,7 +414,7 @@
 * Parameters
     + group_id: 1 (number) - グループID
 
-* Request
+* Request (application/x-www-form-urlencoded)
 
     + Body Attributes
         * user_id: (array[number]) - ユーザID
