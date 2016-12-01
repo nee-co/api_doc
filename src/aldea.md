@@ -312,7 +312,7 @@
 + Parameters
     + event_id: 1 (number) - コメント対象イベントid
 
-+ Request (application/json)
++ Request (application/x-www-form-urlencoded)
 
         {
             "body": "## こんにちは。",
