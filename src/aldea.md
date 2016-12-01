@@ -297,32 +297,6 @@
 + Response 403
 + Response 404
 
-## Event Image [/events/{event_id}/image]
-### イベント画像更新 [PUT]
-
-**Note**
-
-* イベント開催者のみ(それ以外 => 403)
-* イベントの画像を更新する => 204
-* 登録可能拡張子(png jpg jpeg gif)以外 => 403
-* 対象イベントが見つからない => 404
-* 未確定のAPI
-    + 厳重なバリデーション(content_type偽装とか)はしてない
-    + ファイルサイズ制限もしてない
-
-+ Parameters
-    + event_id: 1 (number) - イベントid
-
-+ Request (multipart/form-data)
-
-        {
-            "image": イベント画像
-        }
-
-+ Response 204
-+ Response 403
-+ Response 404
-
 ## Comments Collection [/events/{event_id}/comments]
 ### コメント投稿 [POST]
 
