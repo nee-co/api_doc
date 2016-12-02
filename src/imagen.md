@@ -25,12 +25,12 @@
 * Response 201 (application/json)
 
     + Body Attributes
-        * image_path: (string) - アップロード画像保存Path
+        * image_name: (string) - Image file name
 
     + Body
 
             {
-                "image_path": "/image/ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png"
+                "image_name": "ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png"
             }
 
 * Response 400 (application/json)
@@ -55,12 +55,12 @@
                 "error": "message"
             }
 
-##  image [/internal/images/{file_name}]
+##  image [/internal/images/{image_name}]
 
 ### Overwrite Image - Internal [PUT]
 
 * Parameters
-    + file_name: `ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png` (string, required) - Image file name
+    + image_name: `ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png` (string, required) - Image file name
 
 * Request (multipart/form-data)
 
@@ -76,12 +76,12 @@
 * Response 201 (application/json)
 
     + Body Attributes
-        * image_path: (string) - アップロード画像保存Path
+        * image_name: (string) - Image file name
 
     + Body
 
             {
-                "image_path": "/image/ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png"
+                "image_name": "ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png"
             }
 
 * Response 400 (application/json)
@@ -109,7 +109,7 @@
 ### Delete Image - Internal [DELETE]
 
 * Parameters
-    + file_name: `ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png` (string, required) - Image file name
+    + image_name: `ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png` (string, required) - Image file name
 
 * Response 204
 
