@@ -1,36 +1,115 @@
 ## Group Image API
 
-##  Internal Imagen [/internal/image]
-
-### 画像アップロード-内部 [POST]
-
 **Note**
 * 内部向けAPI(認証の必要がない)
-* old_image_pathが設定されている場合は、その画像を削除する
 * 許可拡張子(jpeg, jpg, png, gif)以外の場合 => 422
+* 許可フォーマット('image/png', 'image/jpeg', 'image/gif')以外の場合 => 422
+* ファイル名はUUIDに変更される。
+* 間違った拡張子はファイルヘッダのMIMEtypeを元に修正される。
+
+##  images [/internal/images]
+
+### Upload Image - Internal [POST]
 
 * Request (multipart/form-data)
 
     + Body Attributes
         * image: (file, required) - アップロード対象画像
-        * old_image_path: `/hoghoge.png` (string, optional) - 削除対象画像パス
 
     + Body
 
             {
-                "image": アップロード画像,
-                "old_image_path": "/hogehoge.png"
+                "image": アップロード画像
             }
 
 * Response 201 (application/json)
 
     + Body Attributes
-        * image_path: (string) - アップロード画像保存Path
+        * image_name: (string) - Image file name
 
     + Body
 
             {
-                "image_path": "/fugafuga.png"
+                "image_name": "ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png"
             }
 
-* Response 422
+* Response 400 (application/json)
+
+    + Body Attributes
+        * error: (string) - エラーメッセージ
+
+    + Body
+
+            {
+                "error": "message"
+            }
+
+* Response 422 (application/json)
+
+    + Body Attributes
+        * error: (string) - エラーメッセージ
+
+    + Body
+
+            {
+                "error": "message"
+            }
+
+##  image [/internal/images/{image_name}]
+
+### Overwrite Image - Internal [PUT]
+
+* Parameters
+    + image_name: `ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png` (string, required) - Image file name
+
+* Request (multipart/form-data)
+
+    + Body Attributes
+        * image: (file, required) - アップロード対象画像
+
+    + Body
+
+            {
+                "image": アップロード画像
+            }
+
+* Response 201 (application/json)
+
+    + Body Attributes
+        * image_name: (string) - Image file name
+
+    + Body
+
+            {
+                "image_name": "ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png"
+            }
+
+* Response 400 (application/json)
+
+    + Body Attributes
+        * error: (string) - エラーメッセージ
+
+    + Body
+
+            {
+                "error": "message"
+            }
+
+* Response 422 (application/json)
+
+    + Body Attributes
+        * error: (string) - エラーメッセージ
+
+    + Body
+
+            {
+                "error": "message"
+            }
+
+### Delete Image - Internal [DELETE]
+
+* Parameters
+    + image_name: `ce8a61c3-9ab0-4d7c-b38b-667273fe44f8.png` (string, required) - Image file name
+
+* Response 204
+

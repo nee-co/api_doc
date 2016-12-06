@@ -18,7 +18,7 @@
 * 認証失敗時: 404を返す
 * パラメータ不正時: 400を返す
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     + Body Attributes
         * number: `g011a1111` (string, required) - 学籍番号
@@ -55,7 +55,7 @@
 **Note**
 * アクセストークンの有効期限を1週間延長する(トークン再生成)
 
-* Request
+* Request (application/x-www-form-urlencoded)
 
     + Headers Attributes
         + Authorization (string, required) - アクセストークン
@@ -127,7 +127,7 @@
 * パスワード変更成功時 => 204
 * current_passwordが正しく無い => 403
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     + Body Attributes
         * current_password: `current_password` (string, required) - 現在のパスワード
@@ -150,7 +150,7 @@
 **Note**
 * 備考変更成功時 => 204
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     + Body Attributes
         * note: `ボーリング得意です` (string, required) - 変更後備考

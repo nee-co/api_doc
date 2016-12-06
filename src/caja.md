@@ -29,8 +29,6 @@
             * id: (string) - フォルダID(uuid)
             * name: (string) - フォルダ名(=グループ名)
             * image: (string) - フォルダ画像(=グループ画像)
-            * updated_user (user) - 更新者
-            * updated_at: (datetime) - 更新日時
 
     * Body
 
@@ -39,36 +37,12 @@
                     {
                         "id": "abreveurygbeurveru...",
                         "name": "IS-07",
-                        "image": "https://static.neec.ooo/hoehoge.png",
-                        "updated_user": {
-                            "id": 1,
-                            "name": "田中 太郎",
-                            "number": "G099C0001",
-                            "note": "Hello",
-                            "image": "https://static.neec.ooo/hoge.png",
-                            "college": {
-                                "code": "c",
-                                "name": "IT"
-                            }
-                        },
-                        "updated_at": "2017-01-09T16:00:00.000Z"
+                        "image": "https://static.neec.ooo/hoehoge.png"
                     },
                     {
                         "id": "abreveurygbeurveru...",
                         "name": "IS-08",
-                        "image": "https://static.neec.ooo/fugafuga.png",
-                        "updated_user": {
-                            "id": 2,
-                            "name": "山田 花子",
-                            "number": "G099C0001",
-                            "note": "Hello",
-                            "image": "https://static.neec.ooo/hoge.png",
-                            "college": {
-                                "code": "c",
-                                "name": "IT"
-                            }
-                        },
-                        "updated_at": "2017-01-09T16:00:00.000Z"
+                        "image": "https://static.neec.ooo/fugafuga.png"
                     }
                 ]
             }
@@ -82,7 +56,7 @@
 * 必須項目がない => 422
 * 同名のフォルダ/ファイルが存在する場合 => 422
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * name: `ビジネススキル` (string, required) - グループ名
@@ -277,7 +251,7 @@
 * Parameters
     * folder_id: `neriungerbqoeurgber...` (string, required) - フォルダID
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * name: `ビジネススキル(2) ` (string, required) - フォルダ名
@@ -452,7 +426,7 @@
 * Parameters
     * file_id: `neriungerbqoeurgber...` (string, required) - ファイルID
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * name: `後期時間割システム専攻のみ` (string, required) - フォルダ名
@@ -537,7 +511,7 @@
 * `id: 生成, name: "top", group_id: params['group_id'], parent_id: 0`
 * すでに作成されている => 何もせず204を返す
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * group_id: `7a02bf4c-76de-47fc-a530-1ce893d7e490` (string, required) - グループID
@@ -560,7 +534,7 @@
 * 指定されたグループのフォルダ/ファイルをすべて削除する
 * 存在しない => 何もせずに204を返す
 
-* Request (multipart/form-data)
+* Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * group_id: `7a02bf4c-76de-47fc-a530-1ce893d7e490` (string, required) - グループID
