@@ -2,10 +2,12 @@
 
 **Note**
 * 内部向けAPI(認証の必要がない)
-* 許可拡張子(jpeg, jpg, png, gif)以外の場合 => 422
-* 許可フォーマット('image/png', 'image/jpeg', 'image/gif')以外の場合 => 422
+* 許可拡張子(jpeg, jpg, png, gif)以外の場合 -> 422
+* 許可フォーマット('image/png', 'image/jpeg', 'image/gif')以外の場合 -> 422
+* イメージのサイズが設定した許容サイズを超えた場合 -> 413
 * ファイル名はUUIDに変更される。
-* 間違った拡張子はファイルヘッダのMIMEtypeを元に修正される。
+* `PUT /internal/images/<image_name>` で `image_name` がUUID形式かは判別しない。
+* イメージはすべてPNGに変換される。
 
 ##  images [/internal/images]
 
@@ -36,23 +38,34 @@
 * Response 400 (application/json)
 
     + Body Attributes
-        * error: (string) - エラーメッセージ
+        * message: (string) - Error Message
 
     + Body
 
             {
-                "error": "message"
+                "message": "Invalid URL extension"
+            }
+
+* Response 413 (application/json)
+
+    + Body Attributes
+        * message: (string) - Error Message
+
+    + Body
+
+            {
+                "message": "The data value transmitted exceeds the capacity limit."
             }
 
 * Response 422 (application/json)
 
     + Body Attributes
-        * error: (string) - エラーメッセージ
+        * message: (string) - Error Message
 
     + Body
 
             {
-                "error": "message"
+                "message": "Invalid Image"
             }
 
 ##  image [/internal/images/{image_name}]
@@ -87,23 +100,34 @@
 * Response 400 (application/json)
 
     + Body Attributes
-        * error: (string) - エラーメッセージ
+        * message: (string) - Error Message
 
     + Body
 
             {
-                "error": "message"
+                "message": "Invalid URL extension"
+            }
+
+* Response 413 (application/json)
+
+    + Body Attributes
+        * message: (string) - Error Message
+
+    + Body
+
+            {
+                "message": "The data value transmitted exceeds the capacity limit."
             }
 
 * Response 422 (application/json)
 
     + Body Attributes
-        * error: (string) - エラーメッセージ
+        * message: (string) - Error Message
 
     + Body
 
             {
-                "error": "message"
+                "message": "Invalid Image"
             }
 
 ### Delete Image - Internal [DELETE]
