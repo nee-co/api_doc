@@ -144,8 +144,8 @@
 **Note**
 * 内部向けAPI(認証の必要がない)
 * cuentaが呼ぶ
-* 正答 => 200
-* 誤答 => 400
+* 正答 => 200(該当するユーザIDを返す)
+* 誤答 => 422
 * 対象の質問がない => 404
 
 * Parameters
@@ -162,6 +162,16 @@
                 "answer": "タマ"
             }
 
-* Response 200
-* Response 400
+* Response 200 (application/json)
+
+    * Body Attributes
+        * user_id: (number) - ユーザID
+
+    * Body
+
+            {
+                "id": 1
+            }
+
+* Response 422
 * Response 404
