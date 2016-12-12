@@ -29,6 +29,10 @@
             * id: (string) - フォルダID(uuid)
             * name: (string) - フォルダ名(=グループ名)
             * image: (string) - フォルダ画像(=グループ画像)
+            * created_user: (user) - 作成者
+            * created_at: (datetime) - 作成日時
+            * updated_user: (user) - 更新者
+            * updated_at: (datetime) - 更新日時
 
     * Body
 
@@ -37,12 +41,60 @@
                     {
                         "id": "abreveurygbeurveru...",
                         "name": "IS-07",
-                        "image": "https://static.neec.ooo/hoehoge.png"
+                        "image": "https://static.neec.ooo/hoehoge.png",
+                        "created_user": {
+                            "id": 1,
+                            "name": "田中 太郎",
+                            "number": "G099C0001",
+                            "note": "Hello",
+                            "image": "https://static.neec.ooo/hoge.png",
+                            "college": {
+                                "code": "c",
+                                "name": "IT"
+                            }
+                        },
+                        "created_at": "2017-01-09T16:00:00.000Z",
+                        "updated_user": {
+                            "id": 1,
+                            "name": "田中 太郎",
+                            "number": "G099C0001",
+                            "note": "Hello",
+                            "image": "https://static.neec.ooo/hoge.png",
+                            "college": {
+                                "code": "c",
+                                "name": "IT"
+                            }
+                        },
+                        "updated_at": "2017-01-09T16:00:00.000Z"
                     },
                     {
                         "id": "abreveurygbeurveru...",
                         "name": "IS-08",
-                        "image": "https://static.neec.ooo/fugafuga.png"
+                        "image": "https://static.neec.ooo/fugafuga.png",
+                        "created_user": {
+                            "id": 1,
+                            "name": "田中 太郎",
+                            "number": "G099C0001",
+                            "note": "Hello",
+                            "image": "https://static.neec.ooo/hoge.png",
+                            "college": {
+                                "code": "c",
+                                "name": "IT"
+                            }
+                        },
+                        "created_at": "2017-01-09T16:00:00.000Z",
+                        "updated_user": {
+                            "id": 1,
+                            "name": "田中 太郎",
+                            "number": "G099C0001",
+                            "note": "Hello",
+                            "image": "https://static.neec.ooo/hoge.png",
+                            "college": {
+                                "code": "c",
+                                "name": "IT"
+                            }
+                        },
+                        "updated_at": "2017-01-09T16:00:00.000Z"
                     }
                 ]
             }
@@ -508,18 +560,20 @@
 * 内部向けAPI(認証の必要がない)
 * cadenaが呼ぶ
 * 指定されたグループのトップフォルダを作成する
-* `id: 生成, name: "top", group_id: params['group_id'], parent_id: 0`
+* `id: 生成, name: "top", group_id: group_id, parent_id: 0, inserted_by: user_id, updated_by: user_id`
 * すでに作成されている => 何もせず204を返す
 
 * Request (application/x-www-form-urlencoded)
 
     * Body Attributes
         * group_id: `7a02bf4c-76de-47fc-a530-1ce893d7e490` (string, required) - グループID
+        * user_id: `1` (number, required) - 作成ユーザID
 
     * Body
 
             {
-                "group_id": "7a02bf4c-76de-47fc-a530-1ce893d7e490"
+                "group_id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
+                "user_id": 1
             }
 
 * Response 204
