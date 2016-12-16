@@ -479,25 +479,6 @@
 * Response 403
 * Response 400
 
-##  Group Create Folder [/groups/{group_id}/folder]
-
-### グループフォルダ作成 [PUT]
-
-**Note**
-
-* ログイン中のユーザがグループメンバかどうかのチェックをし、Cajaの `TOPフォルダ作成API` を呼ぶ
-* すでにTOPフォルダが作成されている場合でも同じ扱いをする(重複は気にしない)
-* `public` && グループメンバ以外 => 403
-* `private` && グループメンバ以外 => 404
-* 対象グループが見つからない => 404
-
-* Parameters
-    + group_id: 1 (number) - グループID
-
-* Response 204
-* Response 403
-* Response 404
-
 ##  Internal Group Collection [/internal/groups{?user_id}]
 
 ### 指定ユーザが所属するグループ一覧-内部 [GET]
