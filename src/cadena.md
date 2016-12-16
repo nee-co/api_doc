@@ -445,7 +445,7 @@
 * Response 404
 * Response 400
 
-##  Group Invitations [/groups/{group_id}/invitations{?limit,offset}]
+##  Group Invitees [/groups/{group_id}/invitees{?limit,offset}]
 
 ### グループ招待中のユーザ一覧取得 [GET]
 
@@ -467,7 +467,7 @@
     + Body
 
             {
-                "invitations": [
+                "invitees": [
                     {
                         "id": 3,
                         "name": "ビル・ジョブズ",
