@@ -195,8 +195,7 @@
 
 **Note**
 
-* `public` && グループメンバ以外 => 403
-* `private` && グループメンバ以外 => 404
+* `private` && グループメンバ以外 && 招待されてない => 404
 * 対象グループが見つからない => 404
 
 + Parameters
@@ -209,7 +208,6 @@
         * note: (string) - 備考
         * is_private: (boolean) - 非公開フラグ
         * image: (string) - グループ画像URL
-        * members: (array[user])
 
     + Body
 
@@ -218,44 +216,7 @@
                 "name": "IS-07",
                 "note": "ITスペシャリスト科 7期のグループ",
                 "is_private": false,
-                "image": "https://static.neec.ooo/hoehoge.png",
-                "members": [
-                    {
-                        "id": 1,
-                        "name": "田中 太郎",
-                        "number": "G099C0001",
-                        "note": "こんにちわ",
-                        "image": "https://static.neec.ooo/tanaka.png",
-                        "college": {
-                            "code": "c",
-                            "name": "IT"
-                        }
-                    },
-                    {
-                        "id": 2,
-                        "name": "山田 花子",
-                        "number": "G099C0002",
-                        "note": "はーい",
-                        "image": "https://static.neec.ooo/yamada.png",
-                        "college": {
-                            "code": "c",
-                            "name": "IT"
-                        }
-                    }
-                ],
-                "invitations": [
-                    {
-                        "id": 3,
-                        "name": "ビル・ジョブズ",
-                        "number": "G099C0004",
-                        "note": "パソコンは友達",
-                        "image": "https://static.neec.ooo/jobs.png",
-                        "college": {
-                            "code": "c",
-                            "name": "IT"
-                        }
-                    }
-                ]
+                "image": "https://static.neec.ooo/hoehoge.png"
             }
 
 * Response 403
@@ -428,6 +389,95 @@
 * Response 204
 * Response 403
 * Response 404
+
+##  Group Members [/groups/{group_id}/members{?limit,offset}]
+
+### グループメンバー取得 [GET]
+
+**Note**
+
+* `private` && グループメンバ以外 && 招待されてない => 404
+* 対象グループが見つからない => 404
+
++ Parameters
+    + group_id: 1 (number) - グループID
+    + limit: 1 (number, required) - 取得数
+    + offset: 0 (number, required) - 取得開始位置 (0 origin)
+
+* Response 200 (application/json)
+    + Body Attributes
+        * members: (array[user])
+
+    + Body
+
+            {
+                "members": [
+                    {
+                        "id": 1,
+                        "name": "田中 太郎",
+                        "number": "G099C0001",
+                        "note": "こんにちわ",
+                        "image": "https://static.neec.ooo/tanaka.png",
+                        "college": {
+                            "code": "c",
+                            "name": "IT"
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "name": "山田 花子",
+                        "number": "G099C0002",
+                        "note": "はーい",
+                        "image": "https://static.neec.ooo/yamada.png",
+                        "college": {
+                            "code": "c",
+                            "name": "IT"
+                        }
+                    }
+                ]
+            }
+
+* Response 403
+* Response 400
+
+##  Group Invitations [/groups/{group_id}/invitations{?limit,offset}]
+
+### グループ招待中のユーザ一覧取得 [GET]
+
+**Note**
+
+* グループメンバ以外 => 404
+* 対象グループが見つからない => 404
+
++ Parameters
+    + group_id: 1 (number) - グループID
+    + limit: 1 (number, required) - 取得数
+    + offset: 0 (number, required) - 取得開始位置 (0 origin)
+
+* Response 200 (application/json)
+    + Body Attributes
+        * invitations: (array[user])
+
+    + Body
+
+            {
+                "invitations": [
+                    {
+                        "id": 3,
+                        "name": "ビル・ジョブズ",
+                        "number": "G099C0004",
+                        "note": "パソコンは友達",
+                        "image": "https://static.neec.ooo/jobs.png",
+                        "college": {
+                            "code": "c",
+                            "name": "IT"
+                        }
+                    }
+                ]
+            }
+
+* Response 403
+* Response 400
 
 ##  Group Create Folder [/groups/{group_id}/folder]
 
