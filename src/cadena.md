@@ -400,6 +400,7 @@
 
 **Note**
 
+* params不足 => 400
 * `private` && グループメンバ以外 && 招待されてない => 404
 * 対象グループが見つからない => 404
 
@@ -441,7 +442,7 @@
                 ]
             }
 
-* Response 403
+* Response 404
 * Response 400
 
 ##  Group Invitations [/groups/{group_id}/invitations{?limit,offset}]
@@ -450,6 +451,7 @@
 
 **Note**
 
+* params不足 => 400
 * グループメンバ以外 => 404
 * 対象グループが見つからない => 404
 
@@ -480,7 +482,7 @@
                 ]
             }
 
-* Response 403
+* Response 404
 * Response 400
 
 ##  Internal Group Collection [/internal/groups{?user_id}]
