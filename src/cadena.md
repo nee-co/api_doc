@@ -67,6 +67,7 @@
         * note: (string) - 備考
         * is_private: (boolean) - 非公開フラグ
         * image: (string) - グループ画像URL
+        * folder_id: (string) - TopフォルダID
 
     + Body
 
@@ -75,7 +76,8 @@
                 "name": "IS-07",
                 "note": "ITスペシャリスト学科 7期のグループ",
                 "is_private": false,
-                "image": "https://static.neec.ooo/hogehoge.png"
+                "image": "https://static.neec.ooo/hogehoge.png",
+                "folder_id": "a67df133-62c3-46fc-bf53-1636fca48615"
             }
 
 * Response 422
@@ -208,6 +210,7 @@
         * note: (string) - 備考
         * is_private: (boolean) - 非公開フラグ
         * image: (string) - グループ画像URL
+        * folder_id: (string) - TopフォルダID
 
     + Body
 
@@ -216,7 +219,8 @@
                 "name": "IS-07",
                 "note": "ITスペシャリスト科 7期のグループ",
                 "is_private": false,
-                "image": "https://static.neec.ooo/hoehoge.png"
+                "image": "https://static.neec.ooo/hoehoge.png",
+                "folder_id": "a67df133-62c3-46fc-bf53-1636fca48615"
             }
 
 * Response 403
