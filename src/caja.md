@@ -552,7 +552,7 @@
 
 * Response 404
 
-## Internal Top Folder [/internal/folders]
+## Internal Top Folder [/internal/folders{?group_id}]
 
 ### Topフォルダ作成-内部 [POST]
 
@@ -577,6 +577,30 @@
             }
 
 * Response 204
+
+### TopフォルダID取得-内部 [GET]
+
+**Note**
+* 内部向けAPI(認証の必要がない)
+* cadenaが呼ぶ
+* 指定されたグループのトップフォルダIDを作成する
+
+* Parameters
+    + group_id: `7a02bf4c-76de-47fc-a530-1ce893d7e490` (string, required) - グループID
+
+* Response 200 (application/json)
+
+    * Body Attributes
+
+        * id: (string) - TopフォルダID
+
+    * Body
+
+            {
+                "id": "abreveurygbeurveru...",
+            }
+
+* Response 404
 
 ## Internal Cleanup Folder [/internal/folders/cleanup]
 
