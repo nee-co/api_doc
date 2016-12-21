@@ -67,6 +67,7 @@
         * note: (string) - 備考
         * is_private: (boolean) - 非公開フラグ
         * image: (string) - グループ画像URL
+        * folder_id: (string) - TopフォルダID
 
     + Body
 
@@ -75,7 +76,8 @@
                 "name": "IS-07",
                 "note": "ITスペシャリスト学科 7期のグループ",
                 "is_private": false,
-                "image": "https://static.neec.ooo/hogehoge.png"
+                "image": "https://static.neec.ooo/hogehoge.png",
+                "folder_id": "a67df133-62c3-46fc-bf53-1636fca48615"
             }
 
 * Response 422
@@ -195,8 +197,7 @@
 
 **Note**
 
-* `public` && グループメンバ以外 => 403
-* `private` && グループメンバ以外 => 404
+* `private` && グループメンバ以外 && 招待されてない => 404
 * 対象グループが見つからない => 404
 
 + Parameters
@@ -209,7 +210,7 @@
         * note: (string) - 備考
         * is_private: (boolean) - 非公開フラグ
         * image: (string) - グループ画像URL
-        * members: (array[user])
+        * folder_id: (string) - TopフォルダID
 
     + Body
 
@@ -219,43 +220,7 @@
                 "note": "ITスペシャリスト科 7期のグループ",
                 "is_private": false,
                 "image": "https://static.neec.ooo/hoehoge.png",
-                "members": [
-                    {
-                        "id": 1,
-                        "name": "田中 太郎",
-                        "number": "G099C0001",
-                        "note": "こんにちわ",
-                        "image": "https://static.neec.ooo/tanaka.png",
-                        "college": {
-                            "code": "c",
-                            "name": "IT"
-                        }
-                    },
-                    {
-                        "id": 2,
-                        "name": "山田 花子",
-                        "number": "G099C0002",
-                        "note": "はーい",
-                        "image": "https://static.neec.ooo/yamada.png",
-                        "college": {
-                            "code": "c",
-                            "name": "IT"
-                        }
-                    }
-                ],
-                "invitations": [
-                    {
-                        "id": 3,
-                        "name": "ビル・ジョブズ",
-                        "number": "G099C0004",
-                        "note": "パソコンは友達",
-                        "image": "https://static.neec.ooo/jobs.png",
-                        "college": {
-                            "code": "c",
-                            "name": "IT"
-                        }
-                    }
-                ]
+                "folder_id": "a67df133-62c3-46fc-bf53-1636fca48615"
             }
 
 * Response 403
@@ -429,24 +394,96 @@
 * Response 403
 * Response 404
 
-##  Group Create Folder [/groups/{group_id}/folder]
+##  Group Members [/groups/{group_id}/members{?limit,offset}]
 
-### グループフォルダ作成 [PUT]
+### グループメンバー取得 [GET]
 
 **Note**
 
-* ログイン中のユーザがグループメンバかどうかのチェックをし、Cajaの `TOPフォルダ作成API` を呼ぶ
-* すでにTOPフォルダが作成されている場合でも同じ扱いをする(重複は気にしない)
-* `public` && グループメンバ以外 => 403
-* `private` && グループメンバ以外 => 404
+* params不足 => 400
+* `private` && グループメンバ以外 && 招待されてない => 404
 * 対象グループが見つからない => 404
 
-* Parameters
++ Parameters
     + group_id: 1 (number) - グループID
+    + limit: 1 (number, required) - 取得数
+    + offset: 0 (number, required) - 取得開始位置 (0 origin)
 
-* Response 204
-* Response 403
+* Response 200 (application/json)
+    + Body Attributes
+        * members: (array[user])
+
+    + Body
+
+            {
+                "members": [
+                    {
+                        "id": 1,
+                        "name": "田中 太郎",
+                        "number": "G099C0001",
+                        "note": "こんにちわ",
+                        "image": "https://static.neec.ooo/tanaka.png",
+                        "college": {
+                            "code": "c",
+                            "name": "IT"
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "name": "山田 花子",
+                        "number": "G099C0002",
+                        "note": "はーい",
+                        "image": "https://static.neec.ooo/yamada.png",
+                        "college": {
+                            "code": "c",
+                            "name": "IT"
+                        }
+                    }
+                ]
+            }
+
 * Response 404
+* Response 400
+
+##  Group Invitees [/groups/{group_id}/invitees{?limit,offset}]
+
+### グループ招待中のユーザ一覧取得 [GET]
+
+**Note**
+
+* params不足 => 400
+* グループメンバ以外 => 404
+* 対象グループが見つからない => 404
+
++ Parameters
+    + group_id: 1 (number) - グループID
+    + limit: 1 (number, required) - 取得数
+    + offset: 0 (number, required) - 取得開始位置 (0 origin)
+
+* Response 200 (application/json)
+    + Body Attributes
+        * invitations: (array[user])
+
+    + Body
+
+            {
+                "invitees": [
+                    {
+                        "id": 3,
+                        "name": "ビル・ジョブズ",
+                        "number": "G099C0004",
+                        "note": "パソコンは友達",
+                        "image": "https://static.neec.ooo/jobs.png",
+                        "college": {
+                            "code": "c",
+                            "name": "IT"
+                        }
+                    }
+                ]
+            }
+
+* Response 404
+* Response 400
 
 ##  Internal Group Collection [/internal/groups{?user_id}]
 
