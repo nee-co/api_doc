@@ -29,6 +29,42 @@
 
 ##  Group Collection [/groups]
 
+### 所属するグループ一覧取得 [GET]
+
+**Note**
+
+* トレイ対応API
+* ログイン中のユーザが所属するグループを返す
+
+* Response 200 (application/json)
+
+    + Body Attributes
+        * elements: (array[group]) - グループ一覧
+            + id: (string) - グループID(uuid)
+            + type (string) - `group` 固定(遷移先の決定に利用)
+            + title: (string) - グループ名
+            + image: (string) - グループ画像URL
+
+    + Body
+
+            {
+                "elements": [
+                    {
+                        "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
+                        "type": "group",
+                        "name": "IS-07",
+                        "image": "https://static.neec.ooo/hoehoge.png"
+
+                    },
+                    {
+                        "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
+                        "type": "group",
+                        "name": "テニスサークル",
+                        "image": "https://static.neec.ooo/fugafuga.jpg"
+                    }
+                ]
+            }
+
 ### 新規グループ作成 [POST]
 
 **Note**
@@ -82,57 +118,39 @@
 
 * Response 422
 
-### 所属するグループ一覧取得 [GET]
+##  Group Invitations [/groups/invitations]
+
+### 招待を受けているグループ一覧取得 [GET]
 
 **Note**
 
-* ログイン中のユーザが所属するグループを返す
+* トレイ対応API
+* ログイン中のユーザが招待を受けている
 
 * Response 200 (application/json)
 
     + Body Attributes
-        * groups: (array[group]) - グループ一覧
+        * elements: (array[group]) - グループ一覧
             + id: (string) - グループID(uuid)
-            + name: (string) - グループ名
-            + note: (string) - 備考
-            + is_private: (boolean) - 非公開フラグ
+            + type (string) - `group` 固定(遷移先の決定に利用)
+            + title: (string) - グループ名
             + image: (string) - グループ画像URL
-        * invitations: (array[group]) - 招待を受けているグループ一覧
 
     + Body
 
             {
-                "groups": [
+                "elements": [
                     {
                         "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
-                        "name": "IS-07",
-                        "note": "ITスペシャリスト科 7期のグループ",
-                        "is_private": false,
-                        "image": "https://static.neec.ooo/hoehoge.png"
-
-                    },
-                    {
-                        "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
-                        "name": "テニスサークル",
-                        "note": "",
-                        "is_private": true,
-                        "image": "https://static.neec.ooo/fugafuga.jpg"
-                    }
-                ],
-                "invitation": [
-                    {
-                        "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
+                        "type": "group",
                         "name": "IS-07-Systems",
-                        "note": "ITスペシャリスト科 7期 システム専攻",
-                        "is_private": true,
                         "image": "https://static.neec.ooo/aiueo.png"
 
                     },
                     {
                         "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
+                        "type": "group",
                         "name": "ITカレッジ Vimmerの会",
-                        "note": "Vim大好きクラブ",
-                        "is_private": false,
                         "image": "https://static.neec.ooo/vim.png"
 
                     }

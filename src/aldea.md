@@ -282,94 +282,6 @@
 
 * Response 404
 
-## Event Entries [/events/entries{?page,per}]
-### 参加予定イベント一覧取得 [GET]
-
-**Note**
-* 自分が参加している && 開催日 >= 今日
-
-* Parameters
-    * page: 1 (number, required) - ページ番号
-    * per: 10 (number, required) - 1ページあたりの件数
-
-* Response 200 (application/json)
-
-    * Body Attributes
-        * page: (number) - ページ番号
-        * per: (number) - 1ページあたりの件数
-        * total_count: (number) - 全イベント数
-        * events: (array) - イベント一覧
-          - id: (number) - イベントID
-          - title: (string) - イベントタイトル
-          - image: (string) - イベント画像URL
-          - start_date: (date) - 開催日
-
-    * Body
-
-            {
-                "page": 1,
-                "per": 10,
-                "total_count": 2,
-                "events": [
-                    {
-                        "id": 1,
-                        "title": "第1会もくもく会",
-                        "image": "http://example.com/image/sample1.jpg",
-                        "start_date": "2016-06-03"
-                    },
-                    {
-                        "id": 2,
-                        "title": "Rails勉強会",
-                        "image": "http://example.com/image/sample2.jpg",
-                        "start_date": "2016-06-03"
-                    }
-                ]
-            }
-
-## Event Own [/events/own{?page,per}]
-### 自分が開催しているイベント一覧取得 [GET]
-
-**Note**
-* 自分が開催している && 開催日 >= 今日
-
-* Parameters
-    * page: 1 (number, required) - ページ番号
-    * per: 10 (number, required) - 1ページあたりの件数
-
-* Response 200 (application/json)
-
-    * Body Attributes
-        * page: (number) - ページ番号
-        * per: (number) - 1ページあたりの件数
-        * total_count: (number) - 全イベント数
-        * events: (array) - イベント一覧
-          - id: (number) - イベントID
-          - title: (string) - イベントタイトル
-          - image: (string) - イベント画像URL
-          - start_date: (date) - 開催日
-
-    * Body
-
-            {
-                "page": 1,
-                "per": 10,
-                "total_count": 2,
-                "events": [
-                    {
-                        "id": 1,
-                        "title": "第1会もくもく会",
-                        "image": "http://example.com/image/sample1.jpg",
-                        "start_date": "2016-06-03"
-                    },
-                    {
-                        "id": 2,
-                        "title": "Rails勉強会",
-                        "image": "http://example.com/image/sample2.jpg",
-                        "start_date": "2016-06-03"
-                    }
-                ]
-            }
-
 ## Event Search [/events/search{?keyword,page,per}]
 ### イベント検索 [GET]
 
@@ -417,3 +329,103 @@
             }
 
 * Response 400
+
+## Event Entries [/events/entries{?limit,offset}]
+### 参加予定イベント一覧取得 [GET]
+
+**Note**
+* トレイ対応API
+* 自分が参加している && 開催日 >= 今日
+
+* Parameters
+    + limit: 1 (number, required) - 取得数
+    + offset: 0 (number, required) - 取得開始位置 (0 origin)
+
+* Response 200 (application/json)
+
+    * Body Attributes
+        * elements: (array[event]) - イベント一覧
+          + id: (number) - イベントID
+          + type (string) - `event` 固定(遷移先の決定に利用)
+          + title: (string) - イベントタイトル
+          + image: (string) - イベント画像URL
+          + meta: (object) - メタ情報
+            - type: (string) - `date` 固定
+            - body: (string) - 開催日 (ISO 8601)
+
+    * Body
+
+            {
+                "elements": [
+                    {
+                        "id": 1,
+                        "type": "event",
+                        "title": "第1会もくもく会",
+                        "image": "http://example.com/image/sample1.jpg",
+                        "meta": {
+                          "type": "date",
+                          "body": "2017-01-10T16:00:00.000Z"
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "type": "event",
+                        "title": "Rails勉強会",
+                        "image": "http://example.com/image/sample2.jpg",
+                        "meta": {
+                          "type": "date",
+                          "body": "2017-01-10T16:00:00.000Z"
+                        }
+                    }
+                ]
+            }
+
+## Event Own [/events/own{?limit,offset}]
+### 開催予定イベント一覧取得 [GET]
+
+**Note**
+* トレイ対応API
+* 自分が開催している && 開催日 >= 今日
+
+* Parameters
+    + limit: 1 (number, required) - 取得数
+    + offset: 0 (number, required) - 取得開始位置 (0 origin)
+
+* Response 200 (application/json)
+
+    * Body Attributes
+        * elements: (array[event]) - イベント一覧
+          + id: (number) - イベントID
+          + type (string) - `event` 固定(遷移先の決定に利用)
+          + title: (string) - イベントタイトル
+          + image: (string) - イベント画像URL
+          + meta: (object) - メタ情報
+            - type: (string) - `date` 固定
+            - body: (string) - 開催日 (ISO 8601)
+
+    * Body
+
+            {
+                "elements": [
+                    {
+                        "id": 1,
+                        "type": "event",
+                        "title": "第1会もくもく会",
+                        "image": "http://example.com/image/sample1.jpg",
+                        "meta": {
+                          "type": "date",
+                          "body": "2017-01-10T16:00:00.000Z"
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "type": "event",
+                        "title": "Rails勉強会",
+                        "image": "http://example.com/image/sample2.jpg",
+                        "meta": {
+                          "type": "date",
+                          "body": "2017-01-10T16:00:00.000Z"
+                        }
+                    }
+                ]
+            }
