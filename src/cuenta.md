@@ -147,6 +147,25 @@
                 "expires_at" "2016-11-27T00:50:23.883467+09:00"
             }
 
+##  Token Revoke [/token/revoke]
+
+### アクセストークン無効化 [POST]
+
+**Note**
+* アクセストークンを無効化する
+* 明示的にログアウトした際に呼ぶ
+
+* Request
+
+    + Headers Attributes
+        + Authorization (string, required) - アクセストークン
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
+
+* Response 204
+
 ## Group Login User API
 
 **Note**
