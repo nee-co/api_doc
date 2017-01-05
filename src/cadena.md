@@ -27,7 +27,7 @@
 
             Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
 
-##  Group Collection [/groups]
+##  Group Collection [/groups{?limit,offset}]
 
 ### 所属するグループ一覧取得 [GET]
 
@@ -35,6 +35,10 @@
 
 * トレイ対応API
 * ログイン中のユーザが所属するグループを返す
+
+* Parameters
+    + limit: 1 (number, required) - 取得数
+    + offset: 0 (number, required) - 取得開始位置 (0 origin)
 
 * Response 200 (application/json)
 
@@ -118,7 +122,7 @@
 
 * Response 422
 
-##  Group Invitations [/groups/invitations]
+##  Group Invitations [/groups/invitations{?limit,offset}]
 
 ### 招待を受けているグループ一覧取得 [GET]
 
@@ -126,6 +130,10 @@
 
 * トレイ対応API
 * ログイン中のユーザが招待を受けている
+
+* Parameters
+    + limit: 1 (number, required) - 取得数
+    + offset: 0 (number, required) - 取得開始位置 (0 origin)
 
 * Response 200 (application/json)
 
