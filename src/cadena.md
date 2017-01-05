@@ -56,14 +56,14 @@
                     {
                         "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
                         "type": "group",
-                        "name": "IS-07",
+                        "title": "IS-07",
                         "image": "https://static.neec.ooo/hoehoge.png"
 
                     },
                     {
                         "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
                         "type": "group",
-                        "name": "テニスサークル",
+                        "title": "テニスサークル",
                         "image": "https://static.neec.ooo/fugafuga.jpg"
                     }
                 ]
@@ -151,14 +151,14 @@
                     {
                         "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
                         "type": "group",
-                        "name": "IS-07-Systems",
+                        "title": "IS-07-Systems",
                         "image": "https://static.neec.ooo/aiueo.png"
 
                     },
                     {
                         "id": "7a02bf4c-76de-47fc-a530-1ce893d7e490",
                         "type": "group",
-                        "name": "ITカレッジ Vimmerの会",
+                        "title": "ITカレッジ Vimmerの会",
                         "image": "https://static.neec.ooo/vim.png"
 
                     }
