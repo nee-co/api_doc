@@ -48,6 +48,77 @@
 
 * Response 404
 
+##  Token Challenge [/token/challenge/{number}]
+
+**Note**
+* パスワード忘れた場合の救い (秘密の質問・答え) API
+
+### 秘密の質問ランダム取得 [GET]
+
+**Note**
+* アクセストークンを必要としない
+* 対象のユーザが存在しない => 404
+
+* Parameters
+    * number: g011a1111 (string) - 学籍番号
+
+* Response 200 (application/json)
+
+    + Body Attributes
+        * id: (number) - 質問ID
+        * message: (string) - 質問内容
+
+    + Body
+
+            {
+                "id": 1,
+                "message": "ペットの名前は？"
+            }
+
+* Response 404
+
+### 秘密の質問 回答 [POST]
+
+**Note**
+* アクセストークンを必要としない
+* 正答 => パスワードを変更し、アクセストークンを返す
+* 誤答 => 422
+
+* Parameters
+    * number: g011a1111 (string) - 学籍番号
+
+* Request (application/x-www-form-urlencoded)
+
+    + Body Attributes
+        * id: (number, required) - 質問ID
+        * answer: (string, required) - 回答
+        * password: (string, required) - 新パスワード
+
+    + Body
+
+            {
+                "id": 1,
+                "answer": "タマ",
+                "password": "g011a1111password"
+            }
+
+* Response 201 (application/json)
+
+    + Body Attributes
+        * token: (string) - アクセストークン
+        * expires_at: (string) - アクセストークン有効期限(ISO 8601)
+
+    + Body
+
+            {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
+                "expires_at" "2016-11-27T00:50:23.883467+09:00"
+            }
+
+* Response 422
+
+* Response 404
+
 ##  Token Refresh [/token/refresh]
 
 ### アクセストークンの再生成 [POST]
@@ -75,6 +146,25 @@
                 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....",
                 "expires_at" "2016-11-27T00:50:23.883467+09:00"
             }
+
+##  Token Revoke [/token/revoke]
+
+### アクセストークン無効化 [POST]
+
+**Note**
+* アクセストークンを無効化する
+* 明示的にログアウトした際に呼ぶ
+
+* Request
+
+    + Headers Attributes
+        + Authorization (string, required) - アクセストークン
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsI6IkpXVCJ9.eyJleHAi...
+
+* Response 204
 
 ## Group Login User API
 
