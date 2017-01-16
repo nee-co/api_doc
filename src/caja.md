@@ -196,6 +196,7 @@
             * created_at: (datetime) - 作成日時
             * updated_user: (user) - 更新者
             * updated_at: (datetime) - 更新日時
+            * size: (number) - ファイルサイズ(byte/typeが"file"のみ)
 
     * Body
 
@@ -256,7 +257,8 @@
                                 "name": "IT"
                             }
                         },
-                        "updated_at": "2017-01-09T16:00:00.000Z"
+                        "updated_at": "2017-01-09T16:00:00.000Z",
+                        "size": 12345
                     },
                     {
                         "type": "folder",
@@ -410,6 +412,7 @@
         * created_at: (datetime) - 作成日時
         * updated_user: (user) - 更新者
         * updated_at: (datetime) - 更新日時
+        * size: (number) - ファイルサイズ(byte)
 
     * Body
 
@@ -439,7 +442,8 @@
                         "name": "IT"
                     }
                 },
-                "updated_at": "2017-01-09T16:00:00.000Z"
+                "updated_at": "2017-01-09T16:00:00.000Z",
+                "size": 12345
             }
 
 * Response 403
@@ -494,11 +498,12 @@
     * Body Attributes
 
         * id: (string) - ファイルID
-        * name: (string) - フォルダ/ファイル名
+        * name: (string) - ファイル名
         * created_user: (user) - 作成者
         * created_at: (datetime) - 作成日時
         * updated_user: (user) - 更新者
         * updated_at: (datetime) - 更新日時
+        * size: (number) - ファイルサイズ(byte)
 
     * Body
 
@@ -528,7 +533,8 @@
                         "name": "IT"
                     }
                 },
-                "updated_at": "2017-01-10T16:00:00.000Z"
+                "updated_at": "2017-01-10T16:00:00.000Z",
+                "size": 12345
             }
 
 * Response 403
