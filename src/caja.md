@@ -181,6 +181,9 @@
 
     * Body Attributes
 
+        * parents: (array) - 親フォルダ (TOPまで)
+            * id: (string) - フォルダID
+            * name: (string) - フォルダ名 (TOPの場合はグループ名)
         * current_folder: (folder) - カレントフォルダ
             * id: (string) - フォルダID
             * name: (string) - フォルダ名
@@ -201,9 +204,23 @@
     * Body
 
             {
+                "parents": [
+                  {
+                    "id": "nireubverlugbreg...",
+                    "name": "IS-07"
+                  },
+                  {
+                    "id": "aaaa...",
+                    "name": "システム専攻"
+                  },
+                  {
+                    "id": "bbbb...",
+                    "name": "グループ開発演習"
+                  }
+                ],
                 "current_folder": {
                     "id": "nireubverlugbreg...",
-                    "name": "IS-07",
+                    "name": "1班",
                     "created_user": {
                         "id": 1,
                         "name": "田中 太郎",
@@ -233,7 +250,7 @@
                     {
                         "type": "file",
                         "id": "abreveurygbeurveru...",
-                        "name": "後期時間割",
+                        "name": "開発計画表",
                         "created_user": {
                             "id": 1,
                             "name": "田中 太郎",
@@ -263,7 +280,7 @@
                     {
                         "type": "folder",
                         "id": "abreveurygbeurveru...",
-                        "name": "ビジネススキル",
+                        "name": "成果物",
                         "created_user": {
                             "id": 1,
                             "name": "田中 太郎",
