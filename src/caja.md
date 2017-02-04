@@ -471,19 +471,27 @@
 
 ## File [/files/{file_id}]
 
-### ファイルダウンロード [GET]
+### ファイルダウンロードURL取得 [GET]
 
 **Note**
-* S3へのパスではなく, 直接バイナリを返す
 * ファイルがみつからない => 404
 * Read権限がない => 403
+* Read権限がある場合はワンタイムトークンを発行する
 
 * Parameters
     * file_id: `neriungerbqoeurgber...` (string, required) - ファイルID
 
 * Response 200
 
-        ファイルデータ
+    * Body Attributes
+
+        * download_url: (string) - ファイルダウンロードURL(ワンタイムトークン付き)
+
+    * Body
+
+            {
+                "download_url": "https://api.neec.ooo/download/neriungerbqoeurgber...?token=aaaaaaaa..."
+            }
 
 * Response 403
 
@@ -570,6 +578,30 @@
     * file_id: `neriungerbqoeurgber...` (string, required) - ファイルID
 
 * Response 204
+
+* Response 403
+
+* Response 404
+
+## Download [/download/{file_id}{?token}]
+
+### ファイルダウンロード [GET]
+
+**Note**
+* ワンタイムトークン認証(アクセストークンは不要)
+* S3へのパスではなく, 直接バイナリを返す
+* ファイルがみつからない => 404
+* tokenが不正 => 403
+* Read権限がある場合はワンタイムトークンを発行する
+* ダウンロード後, トークンを無効化する
+
+* Parameters
+    * file_id: `neriungerbqoeurgber...` (string, required) - ファイルID
+    * token: `aaaaaaaa...` (string, required) - ワンタイムトークン
+
+* Response 200
+
+        ファイルデータ
 
 * Response 403
 
